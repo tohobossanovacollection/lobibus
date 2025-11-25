@@ -71,15 +71,75 @@ header.site-header {
 
 /* Position the logo at the extreme left and language/actions at the extreme right
 	 while keeping the nav centered. We use absolute positioning inside the container. */
-.site-header .container { position: relative; }
-.site-header .logo-wrap { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); z-index: 1110; }
-.site-header .main-nav { margin: 0 auto; }
-.site-header .actions { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 1110; }
+
+/* Desktop: position logo and actions flush to header edges and keep nav centered
+   Logo and actions are absolutely positioned to the header so they can sit at the
+   viewport edges while the main nav remains centered inside the project container. */
+@media (min-width: 768px) {
+	.site-header {
+		/* header becomes the positioning context for absolute children */
+		position: relative;
+	}
+
+	/* absolutely place the logo at the left edge of the header */
+	.site-header .logo-wrap {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding-left: 15px; /* flush to edge */
+		z-index: 1110;
+	}
+
+	/* absolutely place the actions (language button, etc.) at the right edge */
+	.site-header .actions {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding-right: 15px; /* flush to edge */
+		z-index: 1110;
+	}
+
+	/* keep navigation centered inside the project container; add horizontal
+	   padding so nav doesn't overlap the absolute logo/actions */
+	.site-header .container {
+		display: block;
+		padding-left: 110px; /* reserve horizontal space for the absolute logo */
+		padding-right: 160px; /* reserve horizontal space for the absolute actions */
+		min-height: 64px;
+		align-items: center;
+	}
+
+	.site-header .main-nav {
+		display: flex;
+		justify-content: center;
+		gap: 1.25rem;
+		white-space: nowrap; /* prevent links from wrapping */
+		z-index: 1105;
+	}
+}
+
+/* Mobile fallback: restore normal flow so hamburger/menu displays correctly */
+@media (max-width: 767px) {
+	.site-header .container { display: block; padding-left: 12px; padding-right: 12px; }
+	.site-header .logo-wrap, .site-header .actions, .site-header .main-nav { position: static; transform: none; }
+	.site-header .main-nav { display: none; } /* stays hidden per .d-none d-md-flex usage */
+}
 
 /* On small screens, fall back to normal flow so hamburger/menu isn't hidden */
 @media (max-width: 767px) {
-	.site-header .logo-wrap, .site-header .actions { position: static; transform: none; }
-	.site-header .main-nav { margin: 0; }
+	/* restore normal flow on mobile so hamburger/menu displays correctly */
+	.site-header .logo-wrap,
+	.site-header .actions { position: static; transform: none; }
+	.site-header .main-nav { position: static; transform: none; margin: 0; }
+	.site-header .container { padding-left: 12px; padding-right: 12px; }
 }
 
 /* keep some local overrides and keep hero styles for fallback */
@@ -190,3 +250,7 @@ header.site-header {
 body { background: #f7f9fb; }
       header.site-header { border-bottom: 4px solid #0b5; }
       .brand-name { color: #0b5; font-weight:700 }
+
+/* small helper for the inline refresh icon used in the language button */
+.icon-refresh { display:inline-block; width:18px; height:18px; vertical-align:middle; color:inherit; }
+.btn .icon-refresh { margin:3px; }

@@ -14,11 +14,11 @@
   <body>
 
     <header class="site-header bg-white shadow-sm">
+      <div class="logo-wrap d-flex align-items-center gap-2">
+        <img src="images/logo.svg" alt="XeNhanh logo" class="logo">
+        <span class="brand-name h5 mb-0">XeNhanh</span>
+      </div>
       <div class="container d-flex align-items-center justify-content-between py-2">
-        <div class="logo-wrap d-flex align-items-center gap-2">
-          <img src="images/logo.svg" alt="XeNhanh logo" class="logo">
-          <span class="brand-name h5 mb-0">XeNhanh</span>
-        </div>
         <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
           <a class="nav-link px-3" href="#" data-i18n="book">Đặt chuyến</a>
           <a class="nav-link px-3" href="#" data-i18n="lookup">Tra cứu chuyến</a>
@@ -27,18 +27,26 @@
           <a class="nav-link px-3" href="#" data-i18n="news">Tin tức</a>
           <a class="nav-link px-3" href="#" data-i18n="contact">Liên hệ</a>
         </nav>
-
-        <div class="actions d-flex align-items-center gap-2">
-          <div class="btn-group">
-            <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Language</button>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><button class="dropdown-item lang-select" data-lang="vi">Tiếng Việt</button></li>
-              <li><button class="dropdown-item lang-select" data-lang="en">English</button></li>
-            </ul>
-          </div>
-          <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
-        </div>
       </div>
+      <div class="actions d-flex align-items-center gap-2">
+        <div class="btn-group">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ">
+            <!-- refresh icon (inline SVG) -->
+            <svg class="icon-refresh" width="20" height="20" viewBox="0 0 65 65" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+              <g fill="currentColor">
+                <path d="m32.5 4.999c-5.405 0-10.444 1.577-14.699 4.282l-5.75-5.75v16.11h16.11l-6.395-6.395c3.18-1.787 6.834-2.82 10.734-2.82 12.171 0 22.073 9.902 22.073 22.074 0 2.899-0.577 5.664-1.599 8.202l4.738 2.762c1.47-3.363 2.288-7.068 2.288-10.964 0-15.164-12.337-27.501-27.5-27.501z"/>
+                <path d="m43.227 51.746c-3.179 1.786-6.826 2.827-10.726 2.827-12.171 0-22.073-9.902-22.073-22.073 0-2.739 0.524-5.35 1.439-7.771l-4.731-2.851c-1.375 3.271-2.136 6.858-2.136 10.622 0 15.164 12.336 27.5 27.5 27.5 5.406 0 10.434-1.584 14.691-4.289l5.758 5.759v-16.112h-16.111l6.389 6.388z"/>
+              </g>
+            </svg>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item lang-select" data-lang="vi">Tiếng Việt</button></li>
+            <li><button class="dropdown-item lang-select" data-lang="en">English</button></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
+      </div>
+    </header>
     </header>
 
     <!-- Carousel -->
