@@ -216,9 +216,94 @@ header.site-header {
 .feature-body h5 { margin:0 0 0.3rem; font-size:1rem }
 .feature-body p { margin:0; color:#666; font-size:0.9rem }
 
+/* Trending Trips Section - Uniform card sizing */
+.trending-trips .trip-card {
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Fixed height for all cards */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trending-trips .trip-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+/* Image container takes exactly 70% of card height */
+.trending-trips .trip-card .card-img-top {
+  width: 100%;
+  height: 70%; /* 70% of card height */
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+}
+
+/* Card body takes exactly 30% of card height */
+.trending-trips .trip-card .card-body {
+  height: 30%; /* 30% of card height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.875rem;
+  flex-shrink: 0;
+}
+
+/* Uniform title sizing */
+.trending-trips .trip-card .card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+  color: #222;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Description text uniform sizing */
+.trending-trips .trip-card .card-text {
+  font-size: 0.8rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* Price and button row */
+.trending-trips .trip-card .d-flex {
+  margin-top: auto;
+}
+
+.trending-trips .trip-card .text-primary {
+  font-size: 1.1rem;
+}
+
+.trending-trips .trip-card .btn-sm {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.65rem;
+}
+
 @media (max-width:767px) {
 	.feature-card { align-items:center }
 	.feature-icon { width:48px; height:48px }
+	
+	/* Adjust trip cards on mobile */
+	.trending-trips .trip-card {
+	  height: 350px; /* Smaller height on mobile */
+	}
+	
+	.trending-trips .trip-card .card-title {
+	  font-size: 0.95rem;
+	}
+	
+	.trending-trips .trip-card .card-text {
+	  font-size: 0.75rem;
+	}
 }
 
 
