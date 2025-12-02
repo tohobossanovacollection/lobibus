@@ -53,16 +53,17 @@
           <div class="d-flex align-items-center gap-2 mb-3">
             <a href="LichTrinh.html" class="btn btn-outline-secondary btn-sm">← Quay lại</a>
           </div>
+          <!-- Ảnh minh họa cho tuyến (chung card) -->
+          <div class="route-thumb mb-3">
+            <img id="routeThumbImg" src="images/Screenshot (5).png" alt="Ảnh minh họa tuyến" />
+          </div>
           <h2 class="mb-3" id="routeTitle">Tuyến: <span id="routeName">Đang tải...</span></h2>
           <div class="row">
-            <div class="col-md-4">
-              <strong>Loại xe:</strong> <span id="busType">-</span>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
               <strong>Quãng đường:</strong> <span id="distance">-</span>
             </div>
-            <div class="col-md-4">
-              <strong>Thời gian:</strong> <span id="duration">-</span>
+            <div class="col-md-6">
+              <strong>Thời gian dự kiến:</strong> <span id="duration">-</span>
             </div>
           </div>
         </div>
@@ -70,32 +71,181 @@
 
       <!-- Bus List Section -->
       <section class="bus-list container my-4">
-        <div class="card p-4 shadow-sm">
-          <h3 class="mb-4">Danh sách các chuyến xe</h3>
-          
-          <!-- Date Filter Card -->
-          <div class="card mb-4 bg-light">
-            <div class="card-body">
-              <h5 class="card-title mb-3">Chọn ngày khởi hành</h5>
-              <div class="row align-items-end">
-                <div class="col-md-8">
-                  <label for="dateFilter" class="form-label">Ngày đi</label>
-                  <input type="date" id="dateFilter" class="form-control" 
-                         min="2025-01-01" max="2025-12-30">
+        <div class="row g-4">
+          <!-- Left sidebar: filters and sorting -->
+          <div class="col-md-4 sticky-filter">
+            <!-- Date Filter Card -->
+            <div class="card sidebar-card mb-4">
+              <div class="card-body">
+                <h5 class="card-title mb-3">Chọn ngày khởi hành</h5>
+                <div class="row align-items-end">
+                  <div class="col-12">
+                    <label for="dateFilter" class="form-label">Ngày đi</label>
+                    <input type="date" id="dateFilter" class="form-control" min="2025-01-01" max="2025-12-30">
+                  </div>
+                  <div class="col-12 d-flex gap-2 mt-3 filter-actions">
+                    <button id="btnFilterDate" class="btn btn-success flex-fill">Tìm chuyến</button>
+                    <button id="btnClearDate" class="btn btn-outline-secondary flex-fill">Xem tất cả</button>
+                  </div>
                 </div>
-                <div class="col-md-4 mt-3 mt-md-0">
-                  <button id="btnFilterDate" class="btn btn-success w-100">Tìm chuyến</button>
-                  <button id="btnClearDate" class="btn btn-outline-secondary w-100 mt-2">Xem tất cả</button>
+              </div>
+            </div>
+
+            <!-- Sort Options Card -->
+            <div class="card sidebar-card">
+              <div class="card-body">
+                <h5 class="card-title mb-3">Sắp xếp</h5>
+                <div class="sort-options">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="sortOption" id="sortDefault" value="default" checked>
+                  <label class="form-check-label" for="sortDefault">Mặc định</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="sortOption" id="sortEarly" value="early">
+                  <label class="form-check-label" for="sortEarly">Giờ đi sớm nhất</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="sortOption" id="sortLate" value="late">
+                  <label class="form-check-label" for="sortLate">Giờ đi muộn nhất</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="sortOption" id="sortRating" value="rating">
+                  <label class="form-check-label" for="sortRating">Đánh giá cao nhất</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="sortOption" id="sortPriceAsc" value="priceAsc">
+                  <label class="form-check-label" for="sortPriceAsc">Giá tăng dần</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="sortOption" id="sortPriceDesc" value="priceDesc">
+                  <label class="form-check-label" for="sortPriceDesc">Giá giảm dần</label>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filter Card: Giờ đi, Loại xe, Giá vé, Tiện ích, Đánh giá -->
+            <div class="card sidebar-card mt-3">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <h5 class="card-title mb-0">Bộ lọc</h5>
+                  <a id="filterClearLink" role="button" class="text-primary text-decoration-none">Xóa</a>
+                </div>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <label class="form-label mb-1">Giờ đi</label>
+                      <span id="filterTimeBadge" class="badge rounded-pill text-bg-danger">05:00 - 24:00</span>
+                    </div>
+                    <div class="range-dual">
+                      <input type="range" id="filterTimeMin" class="form-range range-min" min="0" max="1439" step="1">
+                      <input type="range" id="filterTimeMax" class="form-range range-max" min="0" max="1439" step="1">
+                      <div class="range-track"></div>
+                    </div>
+                    <div class="d-flex align-items-end gap-2 mt-2">
+                      <div class="flex-grow-1">
+                        <label class="form-label small mb-1">Từ</label>
+                        <input type="text" id="filterTimeMinInput" class="form-control form-control-sm" value="05:00" readonly>
+                      </div>
+                      <span class="pb-1">-</span>
+                      <div class="flex-grow-1">
+                        <label class="form-label small mb-1">Đến</label>
+                        <input type="text" id="filterTimeMaxInput" class="form-control form-control-sm" value="24:00" readonly>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <label class="form-label mb-0">Tên loại xe</label>
+                      <button class="btn btn-sm p-0" type="button" data-bs-toggle="collapse" data-bs-target="#typeCollapse" aria-expanded="false" aria-controls="typeCollapse" style="border: none; background: transparent;">
+                        <svg width="16" height="16" fill="currentColor" class="chevron-icon">
+                          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="collapse" id="typeCollapse">
+                      <div id="filterTypeGroup" class="d-flex flex-column gap-2 mt-2"></div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <label class="form-label mb-1">Giá vé</label>
+                      <span id="filterPriceBadge" class="badge rounded-pill text-bg-light">0 ₫ - 2,000,000 ₫</span>
+                    </div>
+                    <div class="range-dual">
+                      <input type="range" id="filterPriceMin" class="form-range range-min" min="0" max="2000000" step="10000">
+                      <input type="range" id="filterPriceMax" class="form-range range-max" min="0" max="2000000" step="10000">
+                      <div class="range-track"></div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between small text-muted">
+                      <span id="filterPriceMinValue">0 ₫</span>
+                      <span id="filterPriceMaxValue">2,000,000 ₫</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <label class="form-label mb-0">Tiện ích</label>
+                      <button class="btn btn-sm p-0" type="button" data-bs-toggle="collapse" data-bs-target="#amenityCollapse" aria-expanded="false" aria-controls="amenityCollapse" style="border: none; background: transparent;">
+                        <svg width="16" height="16" fill="currentColor" class="chevron-icon">
+                          <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                      </button>
+                    </div>
+                    <div class="collapse" id="amenityCollapse">
+                      <div class="amenity-checks mt-2">
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="WiFi" id="amenWifi"><label class="form-check-label" for="amenWifi">WiFi</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Điều hòa" id="amenAC"><label class="form-check-label" for="amenAC">Điều hòa</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Nước uống" id="amenWater"><label class="form-check-label" for="amenWater">Nước uống</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Khăn lạnh" id="amenTowel"><label class="form-check-label" for="amenTowel">Khăn lạnh</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Cổng sạc" id="amenCharge"><label class="form-check-label" for="amenCharge">Cổng sạc</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="TV" id="amenTV"><label class="form-check-label" for="amenTV">TV</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Chăn gối" id="amenBlanket"><label class="form-check-label" for="amenBlanket">Chăn gối</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Giường nằm" id="amenSleeper"><label class="form-check-label" for="amenSleeper">Giường nằm</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Màn che riêng tư" id="amenCurtain"><label class="form-check-label" for="amenCurtain">Màn che riêng tư</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Ghế massage" id="amenMassage"><label class="form-check-label" for="amenMassage">Ghế massage</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Rộng rãi" id="amenSpacious"><label class="form-check-label" for="amenSpacious">Rộng rãi</label></div>
+                      <div class="form-check"><input class="form-check-input" type="checkbox" value="Cửa USB" id="amenUSB"><label class="form-check-label" for="amenUSB">Cửa USB</label></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="d-flex align-items-center justify-content-between">
+                      <label class="form-label mb-1">Đánh giá</label>
+                      <span id="filterRatingBadge" class="badge rounded-pill text-bg-danger">4 sao trở lên</span>
+                    </div>
+                    <div class="rating-options mt-1">
+                      <button type="button" class="rating-option-btn d-flex align-items-center gap-2 w-100 border-0 bg-transparent p-2" data-rating="4">
+                        <span class="stars" aria-hidden="true">⭐⭐⭐⭐☆</span>
+                        <span class="small text-muted">trở lên</span>
+                      </button>
+                      <button type="button" class="rating-option-btn d-flex align-items-center gap-2 w-100 border-0 bg-transparent p-2" data-rating="3">
+                        <span class="stars" aria-hidden="true">⭐⭐⭐☆☆</span>
+                        <span class="small text-muted">trở lên</span>
+                      </button>
+                      <input type="range" id="filterMinRating" class="form-range mt-2" min="0" max="5" step="0.1" aria-label="Đánh giá tối thiểu">
+                      <div class="small text-muted mt-1"><span id="filterMinRatingValue">0.0</span> sao trở lên</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div id="busList" class="bus-items">
-            <!-- Danh sách xe sẽ được thêm động từ JavaScript -->
-            <div class="text-center py-4">
-              <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Đang tải...</span>
+
+          <!-- Right content: bus list -->
+          <div class="col-md-8">
+            <div class="card p-4 shadow-sm">
+              <h3 class="mb-4">Danh sách các chuyến xe</h3>
+              <div id="busList" class="bus-items">
+                <!-- Danh sách xe sẽ được thêm động từ JavaScript -->
+                <div class="text-center py-4">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Đang tải...</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -2,12 +2,39 @@
 .trip-section .card {
   min-height: auto !important;
   height: auto !important;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
 }
 
 .trip-section .trip-item {
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: flex-start; /* Align items to the top */
+  border-bottom: none;
+  display: block;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: #000; /* fallback while image loads */
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* Ảnh minh họa nằm phía trên, chiếm toàn bộ chiều ngang của một mục */
+.trip-section .trip-item .trip-thumb {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 140px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0; /* Ghi đè padding mặc định của .trip-item > div */
+}
+
+.trip-section .trip-item .trip-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .trip-section .trip-item:last-child {
@@ -23,50 +50,26 @@
   border: none !important;
 }
 
+/* Reset direct child spacing; overlay will handle padding */
 .trip-section .trip-item > div {
-  display: flex;
-  align-items: flex-start; /* Align content to the top */
-  justify-content: flex-start; /* Align content to the left */
-  text-align: left; /* Align text to the left */
-  font-size: 1.1rem; /* Increased font size for better readability */
-  padding: 10px 15px;
+  padding: 0;
 }
 
+/* Hide original column layout spacing; items will be relocated into overlay */
 .trip-section .trip-route,
 .trip-section .trip-type,
 .trip-section .trip-distance,
 .trip-section .trip-duration,
 .trip-section .trip-price {
-  flex: 1 1 20%;
-  display: flex;
-  align-items: flex-start; /* Align items to the top */
+  display: block;
 }
 
-.trip-section .trip-price {
-  display: none;
-}
+.trip-section .trip-price { display: none; }
 
-.trip-section .trip-action {
-  flex: 0 0 auto;
-  margin-left: auto;
-  align-self: center;
-  display: inline-flex;
-  align-items: center;
-}
+/* Ẩn khu vực nút cũ; dùng CTA hover mới */
+.trip-section .trip-action { display: none !important; }
 
-.trip-section .trip-action .btn {
-  border-width: 1px;
-  border-radius: 20px;
-  padding: 5px 30px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-}
-
-.trip-section .trip-action .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
-}
+/* CTA mới sẽ được style riêng */
 
 /* Trip Info Card Styling */
 .trip-info {
@@ -78,4 +81,77 @@
   font-size: 1.2rem;
   padding: 10px 0;
   text-align: left; /* Align text to the left */
+}
+
+/* Ảnh minh họa nằm phía trên, chiếm toàn bộ chiều ngang của một mục */
+.trip-section .trip-item .trip-thumb {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 220px;
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.trip-section .trip-item .trip-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lớp phủ nội dung trên ảnh */
+.trip-section .trip-item .trip-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0) 35%, rgba(0,0,0,0.65) 100%);
+}
+
+.trip-section .trip-item .trip-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 56px 6px 0; /* chừa chỗ cho CTA */
+}
+
+.trip-section .trip-item .trip-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.trip-section .trip-item .trip-meta .dot {
+  opacity: 0.6;
+}
+
+/* CTA mũi tên hiển thị khi hover */
+.trip-section .trip-item .trip-cta {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: #28a745;
+  color: #fff;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 14px rgba(40,167,69,0.35);
+}
+
+.trip-section .trip-item:hover .trip-cta {
+  opacity: 1;
+  transform: translateY(0);
 }

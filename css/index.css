@@ -1,11 +1,22 @@
 /* Basic reset and typography */
 * { box-sizing: border-box; }
-html,body { height:100%; margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#222 }
+html,body {
+	height:100%;
+	margin:0;
+	font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+	color:#222;
+	font-size: 17px;
+	line-height: 1.55;
+}
 a { color: inherit; text-decoration: none }
 
 /* ===== Lightweight fallback styles (used when Bootstrap CDN is unavailable) ===== */
 /* These are intentionally compact and only target classes used in this project. */
-.container { width:100%; max-width:1100px; margin-left:auto; margin-right:auto; padding-left:0.75rem; padding-right:0.75rem; }
+.container { width:100%; max-width:1200px; margin-left:auto; margin-right:auto; padding-left:1rem; padding-right:1rem; }
+/* Unified width across site; previous container-wide merged into .container */
+/* Utility to allow a section to stretch but keep inner readable width */
+.section-wide-bg { width:100%; }
+.section-wide-bg > .inner { width:100%; max-width:1400px; margin:0 auto; padding:0 1rem; }
 .d-flex { display:flex; }
 .align-items-center { align-items:center; }
 .justify-content-between { justify-content:space-between; }
@@ -26,23 +37,24 @@ a { color: inherit; text-decoration: none }
 .p-3 { padding:1rem; }
 
 /* Buttons */
-.btn { display:inline-block; padding:0.45rem 0.75rem; border-radius:6px; cursor:pointer; border:1px solid transparent; background:#e9ecef; color:#111; }
-.btn-sm { padding:0.25rem 0.5rem; font-size:0.85rem; }
-.btn-outline-primary { background:transparent; border-color:#0d6efd; color:#0d6efd; }
+.btn { display:inline-block; padding:0.55rem 0.9rem; border-radius:8px; cursor:pointer; border:1px solid transparent; background:#e9ecef; color:#111; font-size:0.925rem; }
+.btn-sm { padding:0.35rem 0.6rem; font-size:0.875rem; }
+.btn-outline-primary { background:transparent; border-color:#27ae60; color:#27ae60; }
+.btn-outline-primary:hover { background:#27ae60; color:#fff; }
 .btn-outline-secondary { background:transparent; border-color:#6c757d; color:#6c757d; }
-.btn-outline-primary:hover, .btn-outline-secondary:hover { opacity:0.9; }
+.btn-outline-secondary:hover { opacity:0.9; }
 .btn-success { background:#198754; color:#fff; border-color:#198754; }
 .btn-group { display:inline-flex; }
 .btn-check { display:none; }
 
 /* Forms */
-.form-control, input[type="date"], select.form-select { display:block; width:100%; padding:0.45rem 0.6rem; border:1px solid #ced4da; border-radius:6px; }
-.form-label { display:block; margin-bottom:0.25rem; font-size:0.8rem; color:#556; font-weight:600 }
+.form-control, input[type="date"], select.form-select { display:block; width:100%; padding:0.58rem 0.7rem; border:1px solid #ced4da; border-radius:8px; font-size:0.95rem; }
+.form-label { display:block; margin-bottom:0.3rem; font-size:0.9rem; color:#334; font-weight:650 }
 
 .form-label.visually-hidden { position:absolute !important; clip:rect(1px,1px,1px,1px); padding:0 !important; border:0 !important; height:1px !important; width:1px !important; overflow:hidden }
 
 /* Nav / links */
-.nav-link { padding:0.45rem 0.75rem; color:#333; display:inline-block; }
+.nav-link { padding:0.5rem 0.85rem; color:#333; display:inline-block; }
 .nav-link:hover { background:#f8f9fa; }
 .nav-link:hover {
   box-shadow: 0 4px 8px rgba(40, 167, 69, 0.5); /* Green shadow */
@@ -163,9 +175,9 @@ header.site-header {
 
 /* keep some local overrides and keep hero styles for fallback */
 .hero { padding:3rem 1rem; text-align:center }
-.hero h1 { margin:0 0 0.5rem; font-size:1.75rem }
-.hero p { margin:0 0 1rem; color:#555 }
-.cta { display:inline-block; padding:0.7rem 1rem; background:#0b5; color:#fff; border-radius:8px; font-weight:700 }
+.hero h1 { margin:0 0 0.5rem; font-size:1.85rem }
+.hero p { margin:0 0 1rem; color:#555; font-size:1rem }
+.cta { display:inline-block; padding:0.75rem 1.05rem; background:#0b5; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem }
 
 /* small utility adjustments */
 /* Only make the main hero carousel a fixed height. Other carousels (testimonials)
@@ -184,7 +196,7 @@ header.site-header {
 .booking .inputs-row { display:flex; gap:0.75rem; align-items:flex-end; }
 .booking .inputs-row .field { flex:1 1 0; min-width:160px; display:flex; flex-direction:column; }
 .booking .inputs-row .field.narrow { flex:0 0 140px; min-width:120px; }
-.booking .inputs-row .field .form-control, .booking .inputs-row .field .form-select { width:100%; }
+.booking .inputs-row .field .form-control, .booking .inputs-row .field .form-select { width:100%; font-size:0.95rem; }
 
 @media (max-width:767px) {
 	.booking .inputs-row { flex-direction:column; }
@@ -194,11 +206,15 @@ header.site-header {
 /* Testimonials styles */
 .testimonials h3 { font-weight:700; margin-top:0; }
 .testimonial-card { display:flex; gap:1rem; background:#fff; border:1px solid #eef2f4; border-radius:8px; align-items:flex-start; }
+/* Return natural auto height; remove column flex stretching */
+.testimonial-card .testi-body { display:flex; flex-direction:column; }
+/* Optional center mode */
+.testimonial-card.centered .testi-body { justify-content:center; }
 .testimonial-card .testi-avatar { width:96px; height:96px; object-fit:cover; border-radius:6px; }
 .testimonial-card .testi-body { flex:1 }
 .testi-name { color:#1e73be; margin:0 0 0.25rem; font-size:1.15rem }
-.testi-role { color:#666; font-size:0.9rem; margin-bottom:0.5rem }
-.testi-text { color:#333; font-size:0.95rem; line-height:1.5 }
+.testi-role { color:#666; font-size:0.95rem; margin-bottom:0.5rem }
+.testi-text { color:#333; font-size:0.95rem; line-height:1.6 }
 
 .testimonial-card p { margin:0 }
 
@@ -232,8 +248,8 @@ header.site-header {
 .feature-icon.bg-yellow { background:#fff6e6; color:#f59e0b }
 .feature-icon.bg-green { background:#e9f8ef; color:#16a34a }
 .feature-icon.bg-red { background:#fff0f0; color:#ef4444 }
-.feature-body h5 { margin:0 0 0.3rem; font-size:1rem }
-.feature-body p { margin:0; color:#666; font-size:0.9rem }
+.feature-body h5 { margin:0 0 0.3rem; font-size:1.05rem }
+.feature-body p { margin:0; color:#666; font-size:0.95rem }
 
 @media (max-width:767px) {
 	.feature-card { align-items:center }
@@ -253,7 +269,7 @@ header.site-header {
 .brand-center h2 { font-weight:700; color:#0b5; }
 
 /* Booking card tweaks */
-.booking .card { max-width:1100px; margin-left:auto; margin-right:auto; }
+.booking .card { max-width:1200px; margin-left:auto; margin-right:auto; width:100%; }
 
 @media (max-width:767px) {
 	.carousel-inner { height:260px; }
@@ -266,7 +282,7 @@ header.site-header {
 .site-footer a:hover {
   color: #28a745; /* Green color */
 }
-.site-footer .footer-left strong { display:block; font-size:1.05rem; color:#fff; }
+.site-footer .footer-left strong { display:block; font-size:1.1rem; color:#fff; }
 .site-footer .footer-contact { color:rgba(255,255,255,0.95); margin-top:6px; line-height:1.6 }
 .site-footer .social-icon { width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:transparent; border:1px solid rgba(255,255,255,0.08); padding:4px }
 .site-footer .social-img { width:100%; height:100%; object-fit:contain; display:block }

@@ -5,7 +5,7 @@ function normalizeName(name) {
     return name.trim()
         .toLowerCase()
         .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '') // Loại bỏ dấu
+        .replace(/[\u0300-\u036f]/g, '') 
         .replace(/đ/g, 'd')
         .replace(/tp\.hcm/gi, 'tphcm')
         .replace(/tp\s*hcm/gi, 'tphcm')
@@ -43,7 +43,7 @@ function filterTrips() {
             const toRoute = normalizeName(parts[1]);
             
             if (!fromValue && !toValue) {
-                item.style.display = 'flex';
+                item.style.display = 'block';
                 item.style.visibility = 'visible';
                 item.classList.remove('hidden');
                 foundCount++;
@@ -55,7 +55,7 @@ function filterTrips() {
             const matchesTo = !toValue || toRoute.includes(toValue) || toValue.includes(toRoute);
             
             if (matchesFrom && matchesTo) {
-                item.style.display = 'flex';
+                item.style.display = 'block';
                 item.style.visibility = 'visible';
                 item.classList.remove('hidden');
                 foundCount++;
@@ -106,14 +106,12 @@ function handleBookTicket(event) {
     
     if (tripItem) {
         const route = tripItem.querySelector('.trip-route').textContent.trim();
-        const type = tripItem.querySelector('.trip-type').textContent.trim();
         const distance = tripItem.querySelector('.trip-distance').textContent.trim();
         const duration = tripItem.querySelector('.trip-duration').textContent.trim();
         
         // Chuyển sang trang chi tiết với thông tin tuyến
         const params = new URLSearchParams({
             route: route,
-            type: type,
             distance: distance,
             duration: duration
         });
@@ -128,6 +126,121 @@ document.addEventListener('DOMContentLoaded', function() {
     const fromInput = document.getElementById('from');
     const toInput = document.getElementById('to');
     
+    // Thêm ảnh minh họa phía trên cho mỗi chuyến đi (nếu chưa có)
+    (function ensureTripThumbnails() {
+        const items = document.querySelectorAll('.trip-item');
+        items.forEach(item => {
+                // Helper: build slug from route text "A → B" => "a-b" (normalized)
+                const getRouteSlug = () => {
+                    const routeEl = item.querySelector('.trip-route');
+                    const routeText = routeEl ? routeEl.textContent.trim() : '';
+                    if (!routeText) return '';
+                    const parts = routeText.split('→');
+                    if (parts.length < 2) return normalizeName(routeText);
+                    const from = normalizeName(parts[0]);
+                    const to = normalizeName(parts[1]);
+                    return `${from}-${to}`;
+                };
+
+            // Ảnh minh họa (nếu chưa có)
+            if (!item.querySelector('.trip-thumb')) {
+                const routeEl = item.querySelector('.trip-route');
+                const routeText = routeEl ? routeEl.textContent.trim() : 'Chuyến xe';
+                const thumb = document.createElement('div');
+                thumb.className = 'trip-thumb';
+                const img = document.createElement('img');
+                    img.src = 'images/Screenshot (5).png';
+                    img.alt = `Ảnh minh họa - ${routeText}`;
+                thumb.appendChild(img);
+                item.insertBefore(thumb, item.firstChild);
+                }
+
+                // Cập nhật ảnh theo tuyến với fallback
+                const imgEl = item.querySelector('.trip-thumb img');
+                if (imgEl) {
+                    const slug = getRouteSlug();
+                    const fallback = 'images/Screenshot (5).png';
+                    const candidates = slug ? [
+                        `images/routes/${slug}.jpg`,
+                        `images/routes/${slug}.png`,
+                        `images/routes/${slug}.webp`
+                    ] : [];
+                    let idx = 0;
+                    const tryNext = () => {
+                        if (idx < candidates.length) {
+                            imgEl.onerror = tryNext;
+                            imgEl.src = candidates[idx++];
+                        } else {
+                            imgEl.onerror = null;
+                            imgEl.src = fallback;
+                        }
+                    };
+                    tryNext();
+            }
+
+            // Tạo lớp phủ nội dung trên ảnh
+            if (!item.querySelector('.trip-overlay')) {
+                const overlay = document.createElement('div');
+                overlay.className = 'trip-overlay';
+
+                const route = item.querySelector('.trip-route');
+                const type = item.querySelector('.trip-type');
+                const distance = item.querySelector('.trip-distance');
+                const duration = item.querySelector('.trip-duration');
+                const oldAction = item.querySelector('.trip-action');
+
+                // Di chuyển phần tiêu đề tuyến vào overlay và áp dụng style
+                if (route) {
+                    route.classList.add('trip-title');
+                    overlay.appendChild(route);
+                } else {
+                    const fallback = document.createElement('div');
+                    fallback.className = 'trip-title';
+                    fallback.textContent = 'Tuyến xe';
+                    overlay.appendChild(fallback);
+                }
+
+                // Gom các thông tin meta vào một hàng; giữ nguyên các phần tử gốc để logic khác vẫn hoạt động
+                const meta = document.createElement('div');
+                meta.className = 'trip-meta';
+
+                const addWithDot = (el) => {
+                    if (!el) return;
+                    if (meta.childNodes.length) {
+                        const dot = document.createElement('span');
+                        dot.className = 'dot';
+                        dot.textContent = '•';
+                        meta.appendChild(dot);
+                    }
+                    meta.appendChild(el);
+                };
+
+                addWithDot(type);
+                addWithDot(distance);
+                addWithDot(duration);
+
+                overlay.appendChild(meta);
+
+                // Nút CTA mũi tên (ẩn, chỉ hiện khi hover)
+                const cta = document.createElement('button');
+                cta.type = 'button';
+                cta.className = 'trip-cta';
+                cta.setAttribute('aria-label', 'Xem chi tiết');
+                cta.textContent = '➔';
+                overlay.appendChild(cta);
+
+                // Thêm overlay vào item
+                item.appendChild(overlay);
+
+                // Xóa/ẩn khu vực nút cũ để tránh trùng lặp
+                if (oldAction) oldAction.remove();
+
+                // Gắn sự kiện đặt vé cho CTA mũi tên
+                cta.addEventListener('click', handleBookTicket);
+            }
+        });
+    })();
+    
     // Chỉ lọc khi submit form (bấm nút Tìm kiếm)
     if (searchForm) {
         searchForm.addEventListener('submit', function(event) {
@@ -139,13 +252,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Hiển thị tất cả chuyến đi khi tải trang
     const tripItems = document.querySelectorAll('.trip-item');
-    tripItems.forEach(item => {
-        item.style.display = 'flex';
-    });
+    tripItems.forEach(item => { item.style.display = 'block'; });
     console.log('Đã tải', tripItems.length, 'chuyến đi');
     
     // Gắn sự kiện cho tất cả nút "Đặt vé"
-    const bookButtons = document.querySelectorAll('.trip-action .btn');
+    const bookButtons = document.querySelectorAll('.trip-action .btn, .trip-cta');
     bookButtons.forEach(button => {
         button.addEventListener('click', handleBookTicket);
     });

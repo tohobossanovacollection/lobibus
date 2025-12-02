@@ -45,7 +45,7 @@
       testimonialsTitle: 'Khách hàng nói gì về Vexere',
           testi1Name: 'Anh Nguyễn Tuấn Quỳnh',
           testi1Role: 'CEO Saigon Books',
-          testi1Text: 'Lần trước tôi có việc gấp phải đi công tác, lên mạng tìm đặt vé xe thì tình cờ tìm thấy Vexere. Sau khi tham khảo, tôi quyết định đặt vé và thanh toán.',
+          testi1Text: 'Lần trước tôi có việc gấp phải đi công tác, lên mạng tìm đặt vé xe thì tình cờ tìm thấy Vexere. Sau khi tham khảo, tôi quyết định đặt vé.',
           testi2Name: 'Shark Phi',
           testi2Role: 'Giám đốc BSSC',
           testi2Text: 'Các đối tác của Vexere đều là những hãng xe lớn, có uy tín nên tôi hoàn toàn yên tâm khi lựa chọn đặt vé cho bản thân và gia đình.',

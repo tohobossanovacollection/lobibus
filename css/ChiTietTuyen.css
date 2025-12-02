@@ -1,3 +1,87 @@
+.range-dual { position: relative; height: 20px; margin: 8px 10px; display: flex; align-items: center; }
+.range-dual .form-range { position: absolute; left: 0; right: 0; width: 100%; pointer-events: none; appearance: none; -webkit-appearance: none; background: transparent; height: 20px; margin: 0; padding: 0; }
+.range-dual .form-range::-webkit-slider-runnable-track { background: transparent; height: 4px; border: none; }
+.range-dual .form-range::-moz-range-track { background: transparent; border: none; height: 4px; }
+.range-dual .form-range::-ms-track { background: transparent; border-color: transparent; color: transparent; height: 4px; }
+.range-dual .range-min { pointer-events: auto; cursor: pointer; }
+.range-dual .range-max { pointer-events: auto; cursor: pointer; }
+.range-dual .range-min:active { z-index: 10; }
+.range-dual .range-max:active { z-index: 10; }
+.range-dual .range-track { position: absolute; left: 0; right: 0; height: 4px; border-radius: 3px; background: #dee2e6; z-index: 1; pointer-events: none; top: 50%; transform: translateY(-50%); }
+.range-dual.fill-ready .range-track { background: linear-gradient(to right, #dee2e6 var(--fill-start,0%), #27ae60 var(--fill-start,0%), #27ae60 var(--fill-end,100%), #dee2e6 var(--fill-end,100%)); }
+
+/* Style the thumbs centered on track */
+.range-dual .form-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 2px solid #27ae60; box-shadow: 0 0 0 4px rgba(39,174,96,0.18); cursor: pointer; position: relative; z-index: 10; margin-top: -7px; }
+.range-dual .form-range::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 2px solid #27ae60; cursor: pointer; }
+.range-dual .form-range::-ms-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 2px solid #27ae60; cursor: pointer; }
+
+#filterTimeBadge { font-weight: 600; }
+
+/* Hide horizontal scrollbar */
+body { overflow-x: hidden; }
+
+/* Rating option buttons */
+.rating-option-btn { cursor: pointer; border-radius: 6px; transition: background-color 0.2s; }
+.rating-option-btn:hover { background-color: rgba(13, 110, 253, 0.1) !important; }
+/* Green themed rating slider */
+#filterMinRating.form-range { height:20px; }
+#filterMinRating.form-range::-webkit-slider-runnable-track { height:4px; background: #27ae60; border-radius:3px; }
+#filterMinRating.form-range::-webkit-slider-thumb { -webkit-appearance:none; appearance:none; width:18px; height:18px; border-radius:50%; background:#fff; border:2px solid #27ae60; box-shadow:0 0 0 4px rgba(39,174,96,0.18); margin-top:-7px; cursor:pointer; }
+#filterMinRating.form-range::-moz-range-track { height:4px; background:#27ae60; border-radius:3px; }
+#filterMinRating.form-range::-moz-range-thumb { width:18px; height:18px; border-radius:50%; background:#fff; border:2px solid #27ae60; cursor:pointer; }
+#filterMinRating.form-range::-ms-track { height:4px; background:#27ae60; border-radius:3px; color:transparent; border:none; }
+#filterMinRating.form-range::-ms-thumb { width:18px; height:18px; border-radius:50%; background:#fff; border:2px solid #27ae60; cursor:pointer; }
+
+/* Chevron icon rotation */
+.chevron-icon { transition: transform 0.2s; }
+button[aria-expanded="true"] .chevron-icon { transform: rotate(180deg); }
+.amenity-checks .form-check { margin-bottom: 6px; }
+.card.sidebar-card .form-range { margin-top: 4px; }
+.card.sidebar-card .form-select { min-height: 80px; }
+.journey .journey-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    font-weight: 600;
+}
+.bus-price-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.bus-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.bus-rating-inline {
+    color: #f0b90b;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.seat-badge {
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: linear-gradient(90deg,#eef3ff,#e1ecff);
+    color: #1d4ed8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing:.3px;
+}
+.journey .sep {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #6c757d;
+    vertical-align: middle;
+}
+/* Make the label slimmer to keep one line */
+.bus-detail-item.journey .bus-detail-label {
+    min-width: 90px;
+}
 /* Chi tiết tuyến xe styles */
 
 .route-info h2 {
@@ -5,8 +89,90 @@
     font-weight: 600;
 }
 
+.journey-node.time {
+    font-weight: 700;
+}
+.journey-arrow {
+    width: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, #cfd6e4 0%, #98a3b8 80%);
+    position: relative;
+    display: inline-block;
+    margin: 0 4px;
+}
+.journey-arrow::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -3px;
+    border-left: 6px solid #98a3b8;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+.duration-pill {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background-color: #f5f7fa;
+    color: #495057;
+    font-size: 0.85rem;
+    border: 1px dashed #cfd6e4;
+}
 .route-info #routeName {
     color: #27ae60;
+}
+
+/* Sidebar filter/sort cards */
+.sidebar-card {
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    max-height: 600px;
+    overflow-y: auto;
+}
+.sticky-filter { position: sticky; top: 88px; }
+@media (max-width: 991px){ .sticky-filter { position: static; top:auto; } }
+.sidebar-card .card-body { padding: 16px; }
+.sidebar-card .card-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 12px !important;
+    display: flex; align-items: center; gap: 8px;
+}
+.sidebar-card .card-title::before {
+    content: "";
+    width: 6px; height: 18px; border-radius: 3px; background: #27ae60;
+}
+
+/* Date filter actions */
+.filter-actions .btn { height: 40px; font-weight: 600; }
+
+/* Sort options styling */
+.sort-options { display: flex; flex-direction: column; gap: 8px; }
+.sort-options .form-check {
+    padding: 10px 12px; border: 1px solid #eef2f4; border-radius: 10px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+}
+.sort-options .form-check:hover { border-color: #d5e8dd; box-shadow: 0 2px 4px rgba(39,174,96,0.08); }
+.sort-options .form-check-input { margin-top: 0.25rem; }
+.sort-options .form-check-input:checked { background-color: #27ae60; border-color: #27ae60; }
+.sort-options .form-check-input:focus { box-shadow: 0 0 0 0.2rem rgba(39,174,96,0.15); }
+.sort-options .form-check-input:checked + .form-check-label { color: #27ae60; font-weight: 700; }
+.sort-options .form-check-label { cursor: pointer; font-weight: 600; }
+
+/* Ảnh minh họa đầu card tuyến */
+.route-info .card .route-thumb {
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.route-info .card .route-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .bus-items {
@@ -16,16 +182,17 @@
 }
 
 .bus-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    transition: all 0.3s ease;
-    background-color: #fff;
+    border: 1px solid #d9e2e8;
+    border-radius: 14px;
+    padding: 22px 24px 18px;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+    background: linear-gradient(135deg,#ffffff,#f9fbfc 55%);
 }
 
 .bus-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     border-color: #27ae60;
+    transform: translateY(-3px);
 }
 
 .bus-header {
@@ -41,19 +208,28 @@
     font-size: 1.2rem;
     font-weight: 600;
     color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
+.bus-thumb-wrap { flex-shrink: 0; }
+.bus-thumb-img { width: 120px; height: 80px; border-radius: 10px; object-fit: cover; box-shadow: 0 3px 6px rgba(0,0,0,0.18); border: 1px solid #d8d8d8; background: linear-gradient(135deg, rgba(255,255,255,0.65), rgba(255,255,255,0)); }
 
-.bus-price {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #27ae60;
+@media (max-width: 768px) {
+    .bus-thumb-img { width: 90px; height: 60px; }
 }
+.bus-name-text { line-height: 1.1; }
+
+.bus-price-rating { text-align: right; }
+.bus-price { font-size: 1.3rem; font-weight: bold; color: #27ae60; }
+.bus-price::before { content:""; display:inline-block; width:10px; height:10px; border-radius:50%; background:#27ae60; margin-right:6px; box-shadow:0 0 0 3px rgba(39,174,96,0.18); }
+.bus-rating { font-size: 0.9rem; color: #f39c12; line-height: 1.2; }
 
 .bus-details {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    margin-bottom: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px 22px;
+    margin-bottom: 18px;
 }
 
 .bus-detail-item {
@@ -77,17 +253,39 @@
 .bus-amenities {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 15px;
 }
 
+/* Fallback text badge nếu chưa có icon */
 .amenity-badge {
     background-color: #ecf0f1;
     padding: 5px 12px;
     border-radius: 15px;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #2c3e50;
+    font-weight: 600;
+    letter-spacing: .2px;
 }
+/* Icon style */
+.amenity-icon {
+    width: 32px;
+    height: 32px;
+    background: #f5f7fa;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e1e6ec;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    transition: background .25s, transform .25s;
+    color: #1f6f5f;
+}
+.amenity-icon:hover { background: #e3eef9; transform: translateY(-2px); }
+.amenity-svg { width:20px; height:20px; display:block; }
+.amenity-icon-inline { width:22px; height:22px; margin-right:6px; background:transparent; border:none; box-shadow:none; }
+.amenity-icon-inline .amenity-svg { width:20px; height:20px; }
+.amenity-checks label { display:flex; align-items:center; line-height:1.2; }
 
 .bus-actions {
     display: flex;
@@ -125,6 +323,9 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .sidebar-card { border-radius: 10px; }
+    .sidebar-card .card-title { font-size: 1rem; }
+    .route-info .card .route-thumb { height: 180px; }
     .bus-header {
         flex-direction: column;
         align-items: flex-start;
