@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Tin tức | XeNhanh</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/news.css">
+  </head>
+  <body>
+
+    <header class="site-header bg-white shadow-sm">
+      <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
+        <img src="images/logo.svg" alt="XeNhanh logo" class="logo">
+        <span class="brand-name h5 mb-0">XeNhanh</span>
+      </div></a>
+      <div class="container d-flex align-items-center justify-content-between py-2">
+        <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
+          <a class="nav-link px-3" href="#" data-i18n="book">Đặt chuyến</a>
+          <a class="nav-link px-3" href="#" data-i18n="lookup">Tra cứu chuyến</a>
+          <a class="nav-link px-3" href="#" data-i18n="available">Chuyến đi có sẵn</a>
+          <a class="nav-link px-3" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="nav-link px-3 active" href="news.html" data-i18n="news">Tin tức</a>
+          <a class="nav-link px-3" href="contact.html" data-i18n="contact">Liên hệ</a>
+        </nav>
+      </div>
+      <div class="actions d-flex align-items-center gap-2">
+        <div class="btn-group">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ">
+            <img id="lang-flag" src="images/vietnam-flag.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+            <span id="lang-text">VI</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="vi">
+              <img src="images/viet-nam.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+              Tiếng Việt
+            </button></li>
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="en">
+              <img src="images/united-states.png" alt="USA" style="width: 20px; height: 15px; object-fit: cover;">
+              English
+            </button></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
+      </div>
+    </header>
+
+    <main class="container py-5">
+      <h1 class="mb-4" data-i18n="newsPageTitle">Tin tức</h1>
+      <section id="news-list">
+        <article class="news-card">
+          <h2 class="news-title">Vexere ra mắt tính năng đặt vé siêu tốc</h2>
+          <p class="news-date">01/12/2025</p>
+          <p class="news-summary">Giúp khách hàng đặt vé xe khách nhanh chóng, tiện lợi hơn với giao diện mới.</p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
+        </article>
+        <article class="news-card">
+          <h2 class="news-title">Ưu đãi tháng 12: Giảm giá 20% tất cả tuyến</h2>
+          <p class="news-date">28/11/2025</p>
+          <p class="news-summary">Đặt vé ngay hôm nay để nhận ưu đãi hấp dẫn cho các chuyến đi cuối năm.</p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
+        </article>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-4">
+      <div class="container">
+        <div class="row align-items-center py-4">
+          <div class="col-12 col-md-6 footer-left">
+            <strong>XeNhanh</strong>
+            <div class="footer-contact mt-2">
+              <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
+              <div>Hotline: 0123 456 789</div>
+              <div>Email: <a href="mailto:info@xenhanh.vn">info@xenhanh.vn</a></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
+            <div class="d-flex align-items-center gap-3">
+              <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
+                <img src="images/fb.png" alt="Facebook" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="Instagram" title="Instagram">
+                <img src="images/ig.png" alt="Instagram" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="YouTube" title="YouTube">
+                <img src="images/yt.png" alt="YouTube" class="social-img">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center py-3 footer-copy">© 2025 xenhanh.com. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/news.js"></script>
+  </body>
+</html>
