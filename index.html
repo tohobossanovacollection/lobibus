@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>LobiBus — Bán vé xe</title>
+    <link rel="icon" href="images/logo.svg" type="image/x-icon">
 
     <!-- Bootstrap CSS (CDN) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,9 +21,9 @@
       </div></a>
       <div class="container d-flex align-items-center justify-content-between py-2">
         <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
-          <a class="nav-link px-3" href="#" data-i18n="book">Đặt chuyến</a>
-          <a class="nav-link px-3" href="#" data-i18n="lookup">Tra cứu chuyến</a>
-          <a class="nav-link px-3" href="#" data-i18n="available">Chuyến đi có sẵn</a>
+          <a class="nav-link px-3" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="nav-link px-3" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="nav-link px-3" href="TraCuu.html" data-i18n="available">Tra cứu mã đặt vé</a>
           <a class="nav-link px-3" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
           <a class="nav-link px-3" href="news.html" data-i18n="news">Tin tức</a>
           <a class="nav-link px-3" href="contact.html" data-i18n="contact">Liên hệ</a>
@@ -30,7 +31,7 @@
       </div>
       <div class="actions d-flex align-items-center gap-2">
         <div class="btn-group">
-          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ" style="border-radius: 6px; border-width: 1px; border-style: solid; border-color: #6c757d;">
             <img id="lang-flag" src="images/vietnam-flag.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
             <span id="lang-text">VI</span>
           </button>
@@ -48,7 +49,6 @@
         <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
       </div>
     </header>
-    </header>
 
   <!-- Carousel (full-bleed) -->
   <div class="container-fluid px-0 mt-3">
@@ -62,7 +62,19 @@
           <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
         </div>
         <div class="carousel-inner rounded overflow-hidden shadow-sm">
+          <!-- Video slide content -->
           <div class="carousel-item active" data-bs-interval="3000">
+            <div class="ratio ratio-16x9 bg-dark">
+              <iframe id="carouselYoutube" class="w-100 h-100" src="https://www.youtube.com/embed/9PuNkM90Oxk?enablejsapi=1&rel=0&autoplay=1&mute=1" title="YouTube video player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Video giới thiệu</h5>
+              <p>Xem video ngắn về dịch vụ.</p>
+            </div>
+          </div>
+
+          <!-- Original first slide content -->
+          <div class="carousel-item" data-bs-interval="3000">
             <img src="images/118897428_p0.jpg" class="d-block w-100" alt="Slide 1">
             <div class="carousel-caption d-none d-md-block text-start">
               <h5 data-i18n="heroTitle">Đặt vé xe nhanh chóng</h5>
@@ -70,50 +82,38 @@
             </div>
           </div>
 
-            <!-- Slide 1: Đặt vé dễ dàng -->
-            <div class="carousel-item" data-bs-interval="3000">
-              <img src="images/83105924_p0_master1200.jpg" class="d-block w-100" alt="Đặt vé dễ dàng">
-              <div class="carousel-caption d-none d-md-block text-start">
-                <h5>Đặt vé dễ dàng, mọi lúc mọi nơi</h5>
-                <p>Chỉ với vài thao tác đơn giản, bạn có thể đặt vé xe khách trực tuyến 24/7. Giao diện thân thiện, hỗ trợ nhiều phương thức thanh toán, giúp bạn chủ động lên kế hoạch di chuyển.</p>
-              </div>
+          <!-- Slide 1: Đặt vé dễ dàng -->
+          <div class="carousel-item" data-bs-interval="3000">
+            <img src="images/83105924_p0_master1200.jpg" class="d-block w-100" alt="Đặt vé dễ dàng">
+            <div class="carousel-caption d-none d-md-block text-start">
+              <h5>Đặt vé dễ dàng, mọi lúc mọi nơi</h5>
+              <p>Chỉ với vài thao tác đơn giản, bạn có thể đặt vé xe khách trực tuyến 24/7. Giao diện thân thiện, hỗ trợ nhiều phương thức thanh toán, giúp bạn chủ động lên kế hoạch di chuyển.</p>
             </div>
+          </div>
 
-            <!-- Slide 2: So sánh giá -->
-            <div class="carousel-item" data-bs-interval="3000">
-              <img src="images/199533194_322853549478458_7024767257376436995_n.jpg" class="d-block w-100" alt="So sánh giá">
-              <div class="carousel-caption d-none d-md-block text-start">
-                <h5>So sánh giá, chọn chuyến phù hợp</h5>
-                <p>Hệ thống tự động so sánh giá vé, hãng xe, giờ xuất phát và các tiện ích đi kèm. Bạn dễ dàng chọn chuyến đi phù hợp nhất với nhu cầu và ngân sách của mình.</p>
-              </div>
+          <!-- Slide 2: So sánh giá -->
+          <div class="carousel-item" data-bs-interval="3000">
+            <img src="images/199533194_322853549478458_7024767257376436995_n.jpg" class="d-block w-100" alt="So sánh giá">
+            <div class="carousel-caption d-none d-md-block text-start">
+              <h5>So sánh giá, chọn chuyến phù hợp</h5>
+              <p>Hệ thống tự động so sánh giá vé, hãng xe, giờ xuất phát và các tiện ích đi kèm. Bạn dễ dàng chọn chuyến đi phù hợp nhất với nhu cầu và ngân sách của mình.</p>
             </div>
+          </div>
 
-            <!-- Slide 3: Hỗ trợ khách hàng -->
-            <div class="carousel-item" data-bs-interval="3000">
-              <img src="images/burgers-400.jpg" class="d-block w-100" alt="Hỗ trợ khách hàng">
-              <div class="carousel-caption d-none d-md-block text-start">
-                <h5>Hỗ trợ khách hàng nhanh chóng</h5>
-                <p>Đội ngũ chăm sóc khách hàng sẵn sàng hỗ trợ bạn trước, trong và sau chuyến đi. Nhận thông báo thời gian xe đến, hướng dẫn lên xe, và giải đáp mọi thắc mắc qua hotline hoặc chat trực tuyến.</p>
-              </div>
+          <!-- Slide 3: Hỗ trợ khách hàng -->
+          <div class="carousel-item" data-bs-interval="3000">
+            <img src="images/burgers-400.jpg" class="d-block w-100" alt="Hỗ trợ khách hàng">
+            <div class="carousel-caption d-none d-md-block text-start">
+              <h5>Hỗ trợ khách hàng nhanh chóng</h5>
+              <p>Đội ngũ chăm sóc khách hàng sẵn sàng hỗ trợ bạn trước, trong và sau chuyến đi. Nhận thông báo thời gian xe đến, hướng dẫn lên xe, và giải đáp mọi thắc mắc qua hotline hoặc chat trực tuyến.</p>
             </div>
+          </div>
 
           <div class="carousel-item" data-bs-interval="3000">
             <img src="images/bread-800.jpg" class="d-block w-100" alt="Slide 2">
             <div class="carousel-caption d-none d-md-block">
               <h5>Ưu đãi hấp dẫn</h5>
               <p>Giảm giá cho nhiều tuyến đường.</p>
-            </div>
-          </div>
-
-          <!-- Video slide: embed YouTube (enablejsapi=1) so JS can control play/pause and pause the carousel while playing -->
-          <div class="carousel-item" data-bs-interval="false">
-            <div class="ratio ratio-16x9 bg-dark">
-              <!-- embed with enablejsapi and muted autoplay to satisfy browser autoplay policies -->
-              <iframe id="carouselYoutube" class="w-100 h-100" src="https://www.youtube.com/embed/9PuNkM90Oxk?enablejsapi=1&rel=0&autoplay=1&mute=1" title="YouTube video player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Video giới thiệu</h5>
-              <p>Xem video ngắn về dịch vụ.</p>
             </div>
           </div>
         </div>
@@ -180,6 +180,31 @@
                 <option value="dong_thap">Đồng Tháp</option>
                 <option value="ca_mau">Cà Mau</option>
                 <option value="an_giang">An Giang</option>
+                <option value="da_lat">Đà Lạt</option>
+                <option value="nha_trang">Nha Trang</option>
+                <option value="phan_thiet">Phan Thiết</option>
+                <option value="hoi_an">Hội An</option>
+                <option value="nam_dinh">Nam Định</option>
+                <option value="vung_tau">Vũng Tàu</option>
+                <option value="tam_ky">Tam Kỳ</option>
+                <option value="bien_hoa">Biên Hòa</option>
+                <option value="phu_yen">Phú Yên</option>
+                <option value="soc_trang">Sóc Trăng</option>
+                <option value="kon_tum">Kon Tum</option>
+                <option value="binh_dinh">Bình Định</option>
+                <option value="ba_ria">Bà Rịa</option>
+                <option value="hau_giang">Hậu Giang</option>
+                <option value="kien_giang">Kiên Giang</option>
+                <option value="tra_vinh">Trà Vinh</option>
+                <option value="ben_tre">Bến Tre</option>
+                <option value="long_an">Long An</option>
+                <option value="binh_duong">Bình Dương</option>
+                <option value="phan_rang">Phan Rang</option>
+                <option value="yen_bai">Yên Bái</option>
+                <option value="bac_kan">Bắc Kạn</option>
+                <option value="thai_binh">Thái Bình</option>
+                <option value="bac_giang">Bắc Giang</option>
+                <option value="binh_phuoc">Bình Phước</option>
               </select>
             </div>
 
@@ -221,6 +246,31 @@
                 <option value="dong_thap">Đồng Tháp</option>
                 <option value="ca_mau">Cà Mau</option>
                 <option value="an_giang">An Giang</option>
+                <option value="da_lat">Đà Lạt</option>
+                <option value="nha_trang">Nha Trang</option>
+                <option value="phan_thiet">Phan Thiết</option>
+                <option value="hoi_an">Hội An</option>
+                <option value="nam_dinh">Nam Định</option>
+                <option value="vung_tau">Vũng Tàu</option>
+                <option value="tam_ky">Tam Kỳ</option>
+                <option value="bien_hoa">Biên Hòa</option>
+                <option value="phu_yen">Phú Yên</option>
+                <option value="soc_trang">Sóc Trăng</option>
+                <option value="kon_tum">Kon Tum</option>
+                <option value="binh_dinh">Bình Định</option>
+                <option value="ba_ria">Bà Rịa</option>
+                <option value="hau_giang">Hậu Giang</option>
+                <option value="kien_giang">Kiên Giang</option>
+                <option value="tra_vinh">Trà Vinh</option>
+                <option value="ben_tre">Bến Tre</option>
+                <option value="long_an">Long An</option>
+                <option value="binh_duong">Bình Dương</option>
+                <option value="phan_rang">Phan Rang</option>
+                <option value="yen_bai">Yên Bái</option>
+                <option value="bac_kan">Bắc Kạn</option>
+                <option value="thai_binh">Thái Bình</option>
+                <option value="bac_giang">Bắc Giang</option>
+                <option value="binh_phuoc">Bình Phước</option>
               </select>
             </div>
 
@@ -239,6 +289,9 @@
               <select id="passengers" class="form-select">
                 <option>1 Người lớn</option>
                 <option>2 Người lớn</option>
+                <option>3 Người lớn</option>
+                <option>4 Người lớn</option>
+                <option>5 Người lớn</option>
               </select>
             </div>
           </div>
@@ -345,7 +398,7 @@
                   <div class="testi-body">
                     <h5 class="testi-name" data-i18n="testi1Name">Anh Nguyễn Tuấn Quỳnh</h5>
                     <div class="testi-role" data-i18n="testi1Role">CEO Saigon Books</div>
-                    <p class="testi-text" data-i18n="testi1Text">Lần trước tôi có việc gấp phải đi công tác, lên mạng tìm đặt vé xe thì tình cờ tìm thấy Vexere. Sau khi tham khảo, tôi quyết định đặt vé và thanh toán.</p>
+                    <p class="testi-text" data-i18n="testi1Text">Lần trước tôi có việc gấp phải đi công tác, lên mạng tìm đặt vé xe thì tình cờ tìm thấy Vexere. Sau khi tham khảo, tôi quyết định đặt vé.</p>
                   </div>
                 </article>
               </div>
@@ -431,7 +484,7 @@
             <div class="feature-icon bg-red">🏷️</div>
             <div class="feature-body">
               <h5 data-i18n="platform4Title">Nhiều ưu đãi</h5>
-              <p data-i18n="platform4Text">Hàng ngàn ưu đãi cực chất độc quyền tại Vexere.</p>
+              <p data-i18n="platform4Text">Hàng ngàn ưu đãi cực chất độc quyền tại LobiBus. Không thể bỏ lỡ!</p>
             </div>
           </div>
         </div>
@@ -443,16 +496,13 @@
       <div class="container">
         <div class="row align-items-center py-4">
           <div class="col-12 col-md-6 footer-left">
-            <strong>XeNhanh</strong>
+            <strong style="font-size: 1.5rem;">LobiBus</strong>
             <div class="footer-contact mt-2">
               <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
-              <div>Hotline: 0123 456 789</div>
+              <div>Hotline: 0936 363 363</div>
               <div>Email: <a href="mailto:info@mountaintravel.vn">info@XeNhanh.vn</a></div>
             </div>
-          </div>
-
-          <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
-            <div class="d-flex align-items-center gap-3">
+            <div class="d-flex align-items-center gap-3 mt-3">
               <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
                 <img src="images/fb.png" alt="Facebook" class="social-img">
               </a>
@@ -462,6 +512,31 @@
               <a class="social-icon" href="#" aria-label="YouTube" title="YouTube">
                 <img src="images/yt.png" alt="YouTube" class="social-img">
               </a>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-start mt-3 mt-md-0">
+            <div class="footer-links">
+              <div class="row g-4">
+                <div class="col-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Thông tin</strong></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Điều khoản sử dụng</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Hỗ trợ khách hàng</a></li>
+                    <li class="mb-2"><a href="#">Về chúng tôi</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 ps-5">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Dịch vụ</strong></li>
+                    <li class="mb-2"><a href="index.html" style="white-space: nowrap;">Đặt vé xe</a></li>
+                    <li class="mb-2"><a href="TraCuu.html" style="white-space: nowrap;">Tra cứu mã đặt vé</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Chuyến đi hot trend</a></li>
+                    <li class="mb-2"><a href="#" style="white-space: nowrap;">Liên hệ</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
