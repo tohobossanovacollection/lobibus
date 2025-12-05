@@ -49,21 +49,229 @@
     </header>
 
     <main class="container py-5">
-      <h1 class="mb-4" data-i18n="newsPageTitle">Tin tức</h1>
-      <section id="news-list">
-        <article class="news-card">
-          <h2 class="news-title">Vexere ra mắt tính năng đặt vé siêu tốc</h2>
-          <p class="news-date">01/12/2025</p>
-          <p class="news-summary">Giúp khách hàng đặt vé xe khách nhanh chóng, tiện lợi hơn với giao diện mới.</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
-        </article>
-        <article class="news-card">
-          <h2 class="news-title">Ưu đãi tháng 12: Giảm giá 20% tất cả tuyến</h2>
-          <p class="news-date">28/11/2025</p>
-          <p class="news-summary">Đặt vé ngay hôm nay để nhận ưu đãi hấp dẫn cho các chuyến đi cuối năm.</p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết</a>
-        </article>
-      </section>
+      <div class="row">
+        <!-- Sidebar Categories -->
+        <aside class="col-12 col-lg-3 mb-4">
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+              <h5 class="mb-0" data-i18n="newsCategories">Danh mục tin tức</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none category-link active" data-category="all">
+                  <span data-i18n="allNews">Tất cả tin tức</span>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none category-link" data-category="promotion">
+                  <span data-i18n="promotions">Khuyến mãi</span>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none category-link" data-category="news">
+                  <span data-i18n="companyNews">Tin công ty</span>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none category-link" data-category="guide">
+                  <span data-i18n="guides">Hướng dẫn</span>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="text-decoration-none category-link" data-category="travel">
+                  <span data-i18n="travelTips">Cẩm nang du lịch</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Weather Widget -->
+          <div class="card shadow-sm weather-widget">
+            <div class="card-header bg-info text-white">
+              <h5 class="mb-0">🌤️ <span data-i18n="weather">Thời tiết</span></h5>
+            </div>
+            <div class="card-body">
+              <div class="weather-location mb-3">
+                <h6 class="mb-2 fw-bold">Hà Nội</h6>
+                <div class="weather-main d-flex align-items-center justify-content-between mb-3">
+                  <div class="weather-temp">
+                    <span class="display-4 fw-bold">22°</span>
+                    <span class="text-muted">C</span>
+                  </div>
+                  <div class="weather-icon">
+                    <span style="font-size: 3rem;">⛅</span>
+                  </div>
+                </div>
+                <div class="weather-details small">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>🌡️ Cảm giác như:</span>
+                    <span class="fw-bold">20°C</span>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>💧 Độ ẩm:</span>
+                    <span class="fw-bold">75%</span>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>💨 Gió:</span>
+                    <span class="fw-bold">12 km/h</span>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="weather-location">
+                <h6 class="mb-2 fw-bold">TP. Hồ Chí Minh</h6>
+                <div class="weather-main d-flex align-items-center justify-content-between mb-3">
+                  <div class="weather-temp">
+                    <span class="display-4 fw-bold">28°</span>
+                    <span class="text-muted">C</span>
+                  </div>
+                  <div class="weather-icon">
+                    <span style="font-size: 3rem;">☀️</span>
+                  </div>
+                </div>
+                <div class="weather-details small">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>🌡️ Cảm giác như:</span>
+                    <span class="fw-bold">31°C</span>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>💧 Độ ẩm:</span>
+                    <span class="fw-bold">68%</span>
+                  </div>
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>💨 Gió:</span>
+                    <span class="fw-bold">8 km/h</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="weather-note mt-3 p-2 bg-light rounded small">
+                <strong>💡 Gợi ý:</strong> Thời tiết đẹp, thích hợp cho các chuyến đi xa!
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- News Grid -->
+        <div class="col-12 col-lg-9">
+          <h1 class="mb-4" data-i18n="newsPageTitle">Tin tức</h1>
+          
+          <div class="row g-4" id="newsGrid">
+            <!-- News Card 1 -->
+            <div class="col-12 col-md-6" data-category="promotion">
+              <article class="card h-100 shadow-sm news-item">
+                <img src="images/118897428_p0.jpg" class="card-img-top" alt="Khuyến mãi" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <span class="badge bg-danger mb-2">Khuyến mãi</span>
+                  <h5 class="card-title">Giảm giá 30% các tuyến đường miền Bắc</h5>
+                  <p class="text-muted small mb-2">
+                    <i class="bi bi-calendar"></i> 01/12/2025
+                  </p>
+                  <p class="card-text">Chương trình ưu đãi đặc biệt cho khách hàng đặt vé trước dịp Tết Nguyên Đán. Áp dụng từ nay đến hết tháng 12.</p>
+                  <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết →</a>
+                </div>
+              </article>
+            </div>
+
+            <!-- News Card 2 -->
+            <div class="col-12 col-md-6" data-category="news">
+              <article class="card h-100 shadow-sm news-item">
+                <img src="images/83105924_p0_master1200.jpg" class="card-img-top" alt="Tin công ty" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <span class="badge bg-primary mb-2">Tin công ty</span>
+                  <h5 class="card-title">Khai trương tuyến mới Hà Nội - Sapa</h5>
+                  <p class="text-muted small mb-2">
+                    <i class="bi bi-calendar"></i> 28/11/2025
+                  </p>
+                  <p class="card-text">LobiBus chính thức khai trương tuyến xe Hà Nội - Sapa với chất lượng dịch vụ cao cấp, giường nằm hiện đại.</p>
+                  <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết →</a>
+                </div>
+              </article>
+            </div>
+
+            <!-- News Card 3 -->
+            <div class="col-12 col-md-6" data-category="guide">
+              <article class="card h-100 shadow-sm news-item">
+                <img src="images/199533194_322853549478458_7024767257376436995_n.jpg" class="card-img-top" alt="Hướng dẫn" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <span class="badge bg-success mb-2">Hướng dẫn</span>
+                  <h5 class="card-title">Cách đặt vé xe online nhanh chóng</h5>
+                  <p class="text-muted small mb-2">
+                    <i class="bi bi-calendar"></i> 25/11/2025
+                  </p>
+                  <p class="card-text">Hướng dẫn chi tiết từng bước để đặt vé xe trực tuyến trên website và ứng dụng di động một cách dễ dàng.</p>
+                  <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết →</a>
+                </div>
+              </article>
+            </div>
+
+            <!-- News Card 4 -->
+            <div class="col-12 col-md-6" data-category="travel">
+              <article class="card h-100 shadow-sm news-item">
+                <img src="images/bread-800.jpg" class="card-img-top" alt="Du lịch" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <span class="badge bg-warning text-dark mb-2">Cẩm nang</span>
+                  <h5 class="card-title">Top 10 địa điểm du lịch đẹp nhất miền Trung</h5>
+                  <p class="text-muted small mb-2">
+                    <i class="bi bi-calendar"></i> 20/11/2025
+                  </p>
+                  <p class="card-text">Khám phá những điểm đến tuyệt vời tại miền Trung Việt Nam với cảnh đẹp thiên nhiên và văn hóa độc đáo.</p>
+                  <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết →</a>
+                </div>
+              </article>
+            </div>
+
+            <!-- News Card 5 -->
+            <div class="col-12 col-md-6" data-category="promotion">
+              <article class="card h-100 shadow-sm news-item">
+                <img src="images/118897428_p0.jpg" class="card-img-top" alt="Khuyến mãi" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <span class="badge bg-danger mb-2">Khuyến mãi</span>
+                  <h5 class="card-title">Ưu đãi sinh viên: Giảm 20% tất cả tuyến</h5>
+                  <p class="text-muted small mb-2">
+                    <i class="bi bi-calendar"></i> 15/11/2025
+                  </p>
+                  <p class="card-text">Chương trình ưu đãi đặc biệt dành cho sinh viên với giá vé giảm 20% khi xuất trình thẻ sinh viên.</p>
+                  <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết →</a>
+                </div>
+              </article>
+            </div>
+
+            <!-- News Card 6 -->
+            <div class="col-12 col-md-6" data-category="news">
+              <article class="card h-100 shadow-sm news-item">
+                <img src="images/83105924_p0_master1200.jpg" class="card-img-top" alt="Tin công ty" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <span class="badge bg-primary mb-2">Tin công ty</span>
+                  <h5 class="card-title">Ra mắt xe giường nằm cao cấp 5 sao</h5>
+                  <p class="text-muted small mb-2">
+                    <i class="bi bi-calendar"></i> 10/11/2025
+                  </p>
+                  <p class="card-text">LobiBus tự hào giới thiệu dòng xe giường nằm 5 sao với tiện nghi hiện đại, mang lại trải nghiệm tốt nhất.</p>
+                  <a href="#" class="btn btn-outline-primary btn-sm">Xem chi tiết →</a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <nav aria-label="News pagination" class="mt-5">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">‹ Trước</a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Sau ›</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </main>
 
     <!-- Footer -->
