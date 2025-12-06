@@ -13,12 +13,12 @@
     <!-- Inline debug/fallback styles to confirm CSS is loading -->
   </head>
   <body>
-    <header class="site-header bg-white shadow-sm">
+    <header class="site-header bg-white">
       <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
-        <img src="images/logo.svg" alt="XeNhanh logo" class="logo">
-        <span class="brand-name h5 mb-0">XeNhanh</span>
+        <img src="images/logo.svg" alt="LobiBus logo" class="logo">
+        <span class="brand-name h5 mb-0">LobiBus</span>
       </div></a>
-      <div class="container d-flex align-items-center justify-content-between py-2">
+      <div class="container d-flex align-items-center justify-content-between">
         <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
           <a class="nav-link px-3" href="index.html" data-i18n="book">Đặt chuyến</a>
           <a class="nav-link px-3" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
@@ -28,6 +28,23 @@
           <a class="nav-link px-3" href="contact.html" data-i18n="contact">Liên hệ</a>
         </nav>
       </div>
+      
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close">×</button>
+        </div>
+        <div class="mobile-nav-body">
+          <a class="mobile-nav-link" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="mobile-nav-link" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="mobile-nav-link" href="TraCuu.html" data-i18n="available">Tra cứu mã đặt vé</a>
+          <a class="mobile-nav-link" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="mobile-nav-link" href="news.html" data-i18n="news">Tin tức</a>
+          <a class="mobile-nav-link" href="contact.html" data-i18n="contact">Liên hệ</a>
+        </div>
+      </nav>
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
       <div class="actions d-flex align-items-center gap-2">
         <div class="btn-group">
           <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ" style="border-radius: 6px; border-width: 1px; border-style: solid; border-color: #6c757d;">
@@ -316,13 +333,13 @@
     <!-- Hot Trending Trips Section -->
     <section class="trending-trips container my-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="mb-0" data-i18n="trendingTitle">Chuyến đi hot trend</h3>
+        <h3 class="mb-0 section-title" data-i18n="trendingTitle"><span class="title-line"></span>Chuyến đi hot trend<span class="title-line"></span></h3>
         <a href="trending.html" class="btn btn-outline-primary btn-sm" data-i18n="viewAll">Xem tất cả →</a>
       </div>
       <div class="row g-4">
         <div class="col-12 col-md-6 col-lg-3">
           <div class="trip-card card h-100 shadow-sm">
-            <img src="images/118897428_p0.jpg" class="card-img-top" alt="Hà Nội - Đà Nẵng">
+            <img src="images/routes/danang.jpg" class="card-img-top" alt="Hà Nội - Đà Nẵng">
             <div class="card-body">
               <h5 class="card-title" data-i18n="trip1Title">Hà Nội → Đà Nẵng</h5>
               <p class="card-text text-muted small" data-i18n="trip1Desc">Tuyến đường nổi tiếng, phong cảnh đẹp</p>
@@ -336,7 +353,7 @@
 
         <div class="col-12 col-md-6 col-lg-3">
           <div class="trip-card card h-100 shadow-sm">
-            <img src="images/83105924_p0_master1200.jpg" class="card-img-top" alt="TP.HCM - Đà Lạt">
+            <img src="images/routes/dalat.jpg" class="card-img-top" alt="TP.HCM - Đà Lạt">
             <div class="card-body">
               <h5 class="card-title" data-i18n="trip2Title">TP.HCM → Đà Lạt</h5>
               <p class="card-text text-muted small" data-i18n="trip2Desc">Thành phố ngàn hoa, khí hậu mát mẻ</p>
@@ -350,7 +367,7 @@
 
         <div class="col-12 col-md-6 col-lg-3">
           <div class="trip-card card h-100 shadow-sm">
-            <img src="images/199533194_322853549478458_7024767257376436995_n.jpg" class="card-img-top" alt="Hà Nội - Hải Phòng">
+            <img src="images/routes/haiphong.webp" class="card-img-top" alt="Hà Nội - Hải Phòng">
             <div class="card-body">
               <h5 class="card-title" data-i18n="trip3Title">Hà Nội → Hải Phòng</h5>
               <p class="card-text text-muted small" data-i18n="trip3Desc">Tuyến ngắn, tiện lợi, giá tốt</p>
@@ -364,7 +381,7 @@
 
         <div class="col-12 col-md-6 col-lg-3">
           <div class="trip-card card h-100 shadow-sm">
-            <img src="images/bread-800.jpg" class="card-img-top" alt="Cần Thơ - Cà Mau">
+            <img src="images/routes/camau.png" class="card-img-top" alt="Cần Thơ - Cà Mau">
             <div class="card-body">
               <h5 class="card-title" data-i18n="trip4Title">Cần Thơ → Cà Mau</h5>
               <p class="card-text text-muted small" data-i18n="trip4Desc">Miền Tây sông nước, ẩm thực phong phú</p>
@@ -380,7 +397,7 @@
 
     <!-- Testimonials (carousel: two slides, each shows 4 cards) -->
     <section class="testimonials container my-5">
-  <h3 class="mb-4" data-i18n="testimonialsTitle">Khách hàng nói gì về Vexere</h3>
+  <h3 class="mb-4 text-center section-title" data-i18n="testimonialsTitle"><span class="title-line"></span>Khách hàng nói gì về LobiBus<span class="title-line"></span></h3>
 
       <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="false">
         <div class="carousel-indicators mb-3">
@@ -446,7 +463,7 @@
 
     <!-- Platform features section -->
     <section class="platform container my-5">
-  <h4 class="mb-4" data-i18n="platformTitle">Nền tảng kết nối người dùng và nhà xe</h4>
+  <h3 class="mb-4 text-center section-title" data-i18n="platformTitle"><span class="title-line"></span>Nền tảng kết nối người dùng và nhà xe<span class="title-line"></span></h3>
       <div class="row g-3">
         <div class="col-12 col-md-3">
           <div class="feature-card p-3">
@@ -496,13 +513,13 @@
         <div class="row align-items-start py-4">
           <div class="col-12 col-md-6 footer-left">
             <div class="d-flex align-items-center gap-2 mb-3">
-              <img src="images/logo.svg" alt="XeNhanh logo" style="width: 40px; height: 40px;">
-              <strong style="font-size: 1.8rem; color: #27ae60;">XeNhanh</strong>
+              <img src="images/logo.svg" alt="LobiBus logo" style="width: 40px; height: 40px;">
+              <strong style="font-size: 1.8rem; color: #27ae60;">LobiBus</strong>
             </div>
             <div class="footer-contact mt-2">
               <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
               <div>Hotline: 0936 363 363</div>
-              <div>Email: <a href="mailto:info@mountaintravel.vn">info@XeNhanh.vn</a></div>
+              <div>Email: <a href="mailto:info@mountaintravel.vn">info@LobiBus.vn</a></div>
             </div>
             <div class="d-flex align-items-center gap-3 mt-3">
               <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
@@ -558,7 +575,7 @@
         </div>
 
         <div class="row">
-          <div class="col-12 text-center py-3 footer-copy">© 2025 xenhanh.com. All rights reserved.</div>
+          <div class="col-12 text-center py-3 footer-copy">© 2025 lobibus.com. All rights reserved.</div>
         </div>
       </div>
     </footer>

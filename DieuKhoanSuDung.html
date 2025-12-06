@@ -12,12 +12,12 @@
   </head>
   <body>
 
-    <header class="site-header bg-white shadow-sm">
+    <header class="site-header bg-white">
       <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
         <img src="images/logo.svg" alt="LobiBus logo" class="logo">
         <span class="brand-name h5 mb-0">LobiBus</span>
       </div></a>
-      <div class="container d-flex align-items-center justify-content-between py-2">
+      <div class="container d-flex align-items-center justify-content-between">
         <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
           <a class="nav-link px-3" href="index.html" data-i18n="book">Đặt chuyến</a>
           <a class="nav-link px-3" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
@@ -46,6 +46,23 @@
         </div>
         <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
       </div>
+      
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close">×</button>
+        </div>
+        <div class="mobile-nav-body">
+          <a class="mobile-nav-link" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="mobile-nav-link" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="mobile-nav-link" href="TraCuu.html" data-i18n="available">Tra cứu mã đặt vé</a>
+          <a class="mobile-nav-link" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="mobile-nav-link" href="news.html" data-i18n="news">Tin tức</a>
+          <a class="mobile-nav-link" href="contact.html" data-i18n="contact">Liên hệ</a>
+        </div>
+      </nav>
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     </header>
 
     <!-- Main Content -->
@@ -61,9 +78,9 @@
             <p><strong>Lưu ý:</strong> Chỗ ngồi không đặt được trên LobiBus không đồng nghĩa là chỗ đó đã được bán. Nhà xe có thể muốn giữ chỗ đó để xử lý trường hợp đặc biệt, hoặc không mở bán trên Sàn, hoặc vì các lý do khác phụ thuộc vào nghiệp vụ nhà xe.</p>
 
             <!-- I. Các Thuật Ngữ -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>I. Các Thuật Ngữ Sử Dụng Tại Sàn Giao Dịch Thương Mại Điện Tử LobiBus</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">I. Các Thuật Ngữ Sử Dụng Tại Sàn Giao Dịch Thương Mại Điện Tử LobiBus</h3>
             
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">Các định nghĩa:</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">Các định nghĩa:</h4>
             <ul style="margin-left: 20px;">
               <li><strong>"Biểu phí":</strong> là các loại phí thuế theo quy định của Hãng vận tải và Nhà chức trách.</li>
               <li><strong>"Tuyến đường":</strong> Được xác định bởi hành trình điểm đi, điểm đến đối với xe tuyến cố định và nơi đi, nơi đến của xe hợp đồng và xe du lịch.</li>
@@ -75,7 +92,7 @@
             </ul>
 
             <!-- II. Hoá Đơn -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>II. Hoá Đơn</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">II. Hoá Đơn</h3>
             <ul style="margin-left: 20px;">
               <li>Hoá đơn là bằng chứng xác nhận hợp đồng vận chuyển hành khách và Hãng vận chuyển.</li>
               <li>Hoá đơn chỉ có giá trị đối với hành khách có tên và hành trình được ghi rõ trong hoá đơn.</li>
@@ -84,7 +101,7 @@
             </ul>
 
             <!-- III. Giá Cước Vận Chuyển -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>III. Giá/Cước Vận Chuyển</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">III. Giá/Cước Vận Chuyển</h3>
             <ul style="margin-left: 20px;">
               <li>Giá cước là giá do Hãng vận tải công bố vào từng thời điểm đặt chỗ.</li>
               <li>Hành khách có trách nhiệm thanh toán mọi khoản thuế, phí và lệ phí; phụ thu áp dụng cho hành khách được quy định bởi Nhà chức trách hoặc tổ chức có thẩm quyền, hoặc LobiBus hoặc các Hãng vận chuyển.</li>
@@ -92,14 +109,14 @@
             </ul>
 
             <!-- IV. Điểm Dừng -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>IV. Điểm Dừng</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">IV. Điểm Dừng</h3>
             <ul style="margin-left: 20px;">
               <li>Điểm dừng có thể được chấp nhận nếu phù hợp với yêu cầu của Nhà chức trách và quy định của Hãng vận chuyển.</li>
               <li>Điểm dừng phải được thu xếp trước với hãng vận chuyển và được ghi trên hoá đơn.</li>
             </ul>
 
             <!-- V. Đặt Chỗ -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>V. Đặt Chỗ</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">V. Đặt Chỗ</h3>
             <ul style="margin-left: 20px;">
               <li><strong>"Đặt giữ chỗ":</strong> Được thực hiện trên hệ thống thông qua Sàn giao dịch hoặc Phòng vé hoặc Đại lý hoặc Tổng đài, sau đó hành khách sẽ được cấp mã số đặt chỗ.</li>
               <li><strong>"Xác nhận đặt chỗ":</strong> Được thực hiện sau khi hành khách hoàn tất việc thanh toán trên hệ thống.</li>
@@ -112,7 +129,7 @@
             </ul>
 
             <!-- VI. Nguyên Tắc Hoạt Động -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>VI. Nguyên Tắc Hoạt Động của LobiBus</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">VI. Nguyên Tắc Hoạt Động của LobiBus</h3>
             <ul style="margin-left: 20px;">
               <li>Các tổ chức, cá nhân tham gia giao dịch trên LobiBus phải tôn trọng quyền và lợi ích hợp pháp của các bên tham gia.</li>
               <li>LobiBus không sở hữu và/hoặc vận hành trực tiếp các dịch vụ xe khách. Hành khách có thể đặt dịch vụ xe khách trực tuyến từ bất cứ đâu có kết nối internet bằng cách lựa chọn hãng xe, thời gian khởi hành và giá cả.</li>
@@ -120,9 +137,9 @@
             </ul>
 
             <!-- VII. Quy Trình Giao Dịch -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>VII. Quy Trình Giao Dịch</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">VII. Quy Trình Giao Dịch</h3>
             
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">1. Cách Thức Đặt Chỗ và Thanh Toán Trên LobiBus</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">1. Cách Thức Đặt Chỗ và Thanh Toán Trên LobiBus</h4>
             <p>Khi có nhu cầu đặt chỗ trên LobiBus, khách hàng thực hiện theo các bước sau đây:</p>
             <ol style="margin-left: 20px;">
               <li>Tìm kiếm tuyến xe khách hàng đang quan tâm bằng cách chọn nơi đi, nơi đến, ngày giờ đi trên LobiBus và nhấn vào nút "Tìm chuyến".</li>
@@ -136,7 +153,7 @@
               <li>Khách hàng có thể xem lại thông tin đơn hàng đã đặt trong mục Quản lý đơn hàng.</li>
             </ol>
 
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">2. Bảo Đảm An Toàn Giao Dịch</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">2. Bảo Đảm An Toàn Giao Dịch</h4>
             <ul style="margin-left: 20px;">
               <li>LobiBus quản lý thông tin của nhà cung cấp dịch vụ vận chuyển hành khách một cách chặt chẽ.</li>
               <li>Kiểm soát giao dịch của LobiBus: Tất cả các giao dịch sẽ được LobiBus đưa vào nội dung quản lý, thường xuyên cập nhật tình trạng.</li>
@@ -144,7 +161,7 @@
               <li>Mọi thông tin giao dịch được bảo mật, trừ trường hợp cung cấp cho cơ quan có thẩm quyền khi được yêu cầu.</li>
             </ul>
 
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">3. Khuyến Mãi và Giảm Giá</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">3. Khuyến Mãi và Giảm Giá</h4>
             <ul style="margin-left: 20px;">
               <li>Chỉ được áp dụng tối đa 01 chương trình giảm giá/khuyến mãi hoặc 01 mã giảm giá/khuyến mãi cho một lần thanh toán đặt chỗ.</li>
               <li>Bất kỳ khuyến mãi nào được đưa ra bởi LobiBus có thể được thay đổi mà không cần thông báo trước.</li>
@@ -152,23 +169,23 @@
             </ul>
 
             <!-- VIII. Quyền Và Trách Nhiệm -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>VIII. Quyền và Trách Nhiệm</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">VIII. Quyền và Trách Nhiệm</h3>
             
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">Quyền của LobiBus</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">Quyền của LobiBus</h4>
             <ul style="margin-left: 20px;">
               <li>Có quyền kiểm tra, cập nhật, chỉnh sửa các thông tin liên quan đến các hãng xe, tuyến xe và các thông tin khác.</li>
               <li>Từ chối, tạm ngừng hoặc chấm dứt cung cấp thông tin về hãng xe, các tuyến xe trong trường hợp có cơ sở chứng minh các hãng xe cung cấp thông tin không chính xác, không đầy đủ.</li>
               <li>Giữ bản quyền sử dụng dịch vụ và các nội dung trên website LobiBus theo quy định pháp luật.</li>
             </ul>
 
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">Quyền của Hành Khách Đặt Dịch Vụ Tại LobiBus</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">Quyền của Hành Khách Đặt Dịch Vụ Tại LobiBus</h4>
             <ul style="margin-left: 20px;">
               <li>Được hỗ trợ đặt dịch vụ trực tuyến và tiết kiệm thời gian xếp hàng tại các văn phòng nhà xe.</li>
               <li>Được quyền khiếu nại, yêu cầu bồi thường liên quan đến Dịch vụ của Hãng xe cung cấp không đảm bảo chất lượng.</li>
               <li>Có quyền đóng góp ý kiến cho Sàn giao dịch thương mại điện tử trong quá trình hoạt động.</li>
             </ul>
 
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">Trách Nhiệm của Hành Khách</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">Trách Nhiệm của Hành Khách</h4>
             <ul style="margin-left: 20px;">
               <li>Có trách nhiệm cung cấp các thông tin cần thiết liên quan đến bản thân để đảm bảo hoàn thành đơn hàng.</li>
               <li>Có mặt ít nhất 30 phút trước giờ khởi hành dự kiến (đối với ngày lễ tết cần ra trước 60 phút).</li>
@@ -177,7 +194,7 @@
             </ul>
 
             <!-- IX. Xử Lý Khiếu Nại -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>IX. Xử Lý Khiếu Nại</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">IX. Xử Lý Khiếu Nại</h3>
             <ul style="margin-left: 20px;">
               <li>Khi có khiếu nại, hành khách cần thông báo trong thời gian 7 ngày kể từ ngày khởi hành.</li>
               <li>Khiếu nại về hãng xe có thể gửi đến Ban quản lý LobiBus theo hướng dẫn chi tiết.</li>
@@ -185,7 +202,7 @@
             </ul>
 
             <!-- X. Chính Sách Hủy -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>X. Chính Sách Hủy</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">X. Chính Sách Hủy</h3>
             <p>Để hủy đơn hàng, hành khách có thể:</p>
             <ul style="margin-left: 20px;">
               <li>Dùng số điện thoại hay email đã sử dụng để đặt chỗ và liên hệ cskh@lobibus.com hoặc gọi đến số điện thoại 0936 363 363.</li>
@@ -196,7 +213,7 @@
             </ul>
 
             <!-- XI. Chính Sách Hoàn Tiền -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>XI. Chính Sách Hoàn Tiền</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">XI. Chính Sách Hoàn Tiền</h3>
             <ul style="margin-left: 20px;">
               <li>Tiền sẽ được hoàn trả trong các trường hợp hủy đơn hàng được chuyển vào tài khoản ngân hàng, thẻ ghi nợ, hoặc tài khoản ví mà hành khách sử dụng.</li>
               <li>Tất cả các khoản hoàn tiền được xử lý tự động khi huỷ đơn hàng. Ngân hàng thông thường sẽ cần vài ngày làm việc để ghi có số tiền này.</li>
@@ -206,7 +223,7 @@
             </ul>
 
             <!-- XII. Bảo Mật Thông Tin -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>XII. Chính Sách Bảo Mật Thông Tin</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">XII. Chính Sách Bảo Mật Thông Tin</h3>
             <ul style="margin-left: 20px;">
               <li>Khách hàng không cần phải tạo tài khoản thành viên để giao dịch và/hoặc đặt dịch vụ trực tuyến tại Sàn giao dịch thương mại điện tử LobiBus.</li>
               <li>LobiBus chỉ thu thập thông tin cá nhân của người dùng trong trường hợp khách đặt chỗ trực tuyến.</li>
@@ -215,7 +232,7 @@
             </ul>
 
             <!-- XIII. Giới Hạn Trách Nhiệm -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>XIII. Giới Hạn Trách Nhiệm Trong Trường Hợp Phát Sinh Lỗi Kỹ Thuật</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">XIII. Giới Hạn Trách Nhiệm Trong Trường Hợp Phát Sinh Lỗi Kỹ Thuật</h3>
             <ul style="margin-left: 20px;">
               <li>Khi thực hiện các giao dịch trên Sàn, bắt buộc các khách hàng phải thực hiện đúng theo các quy trình hướng dẫn.</li>
               <li>Ban quản lý LobiBus cam kết cung cấp chất lượng dịch vụ tốt nhất cho khách hàng tham gia giao dịch.</li>
@@ -224,23 +241,23 @@
             </ul>
 
             <!-- XIV. Cơ Chế Giải Quyết Tranh Chấp -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>XIV. Cơ Chế Giải Quyết Tranh Chấp, Khiếu Nại</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">XIV. Cơ Chế Giải Quyết Tranh Chấp, Khiếu Nại</h3>
             
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">Tranh Chấp Về Đặt Chỗ Trực Tuyến</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">Tranh Chấp Về Đặt Chỗ Trực Tuyến</h4>
             <p>Nếu có tranh chấp xảy ra trong việc xác nhận đơn hàng đặt mua trực tuyến giữa khách hàng và thương nhân để nhận dịch vụ, LobiBus sẽ cử đại diện tham gia vào quá trình giải quyết tranh chấp này.</p>
 
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">Tranh Chấp Về Chất Lượng Dịch Vụ</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">Tranh Chấp Về Chất Lượng Dịch Vụ</h4>
             <p>Đối với trường hợp có tranh chấp xảy ra trong hoặc sau khi thương nhân cung cấp dịch vụ cho khách hàng. Khách hàng vui lòng gửi khiếu nại trực tiếp đến bộ phận hỗ trợ khách hàng của LobiBus.</p>
 
-            <h4 style="color: #27ae60; font-weight: 600; margin-top: 20px;">Tranh Chấp Phát Sinh Trong Quá Trình Giao Dịch</h4>
+            <h4 style="color: #000; font-weight: 600; margin-top: 20px;">Tranh Chấp Phát Sinh Trong Quá Trình Giao Dịch</h4>
             <p>Trong quá trình đặt dịch vụ xe khách trên LobiBus, nếu có bất kỳ sự cố nào trong quá trình đặt chỗ, xác nhận thông tin hoặc thanh toán, khách hàng sẽ liên hệ trực tiếp tới bộ phận hỗ trợ khách hàng của LobiBus.</p>
 
             <!-- XV. Điều Khoản Áp Dụng -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>XV. Điều Khoản Áp Dụng</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">XV. Điều Khoản Áp Dụng</h3>
             <p>Mọi tranh chấp phát sinh trong quá trình giao dịch trên Sàn giao dịch thương mại điện tử LobiBus giữa hãng xe và hành khách sẽ được các bên thương lượng giải quyết, trong trường hợp không tự giải quyết được thì một trong hai bên có quyền đưa ra Cơ quan có thẩm quyền giải quyết theo quy định pháp luật.</p>
 
             <!-- XVI. Cam Kết của LobiBus -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>XVI. Cam Kết của LobiBus Dành Cho Khách Hàng</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">XVI. Cam Kết của LobiBus Dành Cho Khách Hàng</h3>
             <ul style="margin-left: 20px;">
               <li>Mọi thông tin mà khách hàng cung cấp trong suốt quá trình đặt vé sẽ được bảo mật tuyệt đối, không chuyển giao cho bên thứ ba nào khác, trừ trường hợp buộc phải cung cấp khi Cơ quan pháp luật yêu cầu.</li>
               <li>LobiBus sẽ có biện pháp xử lý khi phát hiện hoặc nhận được phản ánh từ khách hàng khi sử dụng dịch vụ và có phát sinh mâu thuẫn với hãng xe.</li>
@@ -249,7 +266,7 @@
             </ul>
 
             <!-- XVII. Thông Tin Liên Hệ -->
-            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;"><strong>XVII. Thông Tin Về Thương Nhân, Tổ Chức</strong></h3>
+            <h3 style="color: #27ae60; font-weight: 600; margin-top: 30px; margin-bottom: 20px;">XVII. Thông Tin Về Thương Nhân, Tổ Chức</h3>
             <div style="background-color: #f0f0f0; padding: 20px; border-radius: 8px; margin: 20px 0;">
               <p><strong>Tên thương nhân, tổ chức:</strong> Công ty TNHH Thương Mại Dịch Vụ LobiBus</p>
               <p><strong>Tên giao dịch:</strong> LOBIBUS</p>
@@ -259,7 +276,6 @@
             </div>
 
             <div style="background-color: #e8f5e9; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <h4 style="color: #27ae60;">Thông Tin Hỗ Trợ Hành Khách</h4>
               <p><strong>Ban quản lý Sàn thương mại điện tử LobiBus:</strong> Công ty TNHH Thương Mại Dịch Vụ LobiBus</p>
               <p><strong>Địa chỉ:</strong> Số 12, Phố Chùa Bộc, Hà Nội, Việt Nam</p>
               <p><strong>Điện thoại hotline:</strong> 0936 363 363</p>

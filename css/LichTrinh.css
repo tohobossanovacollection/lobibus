@@ -15,26 +15,31 @@
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 16px;
-  background: #000; /* fallback while image loads */
+  background: transparent;
   box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  height: 220px;
 }
 
 /* Ảnh minh họa nằm phía trên, chiếm toàn bộ chiều ngang của một mục */
 .trip-section .trip-item .trip-thumb {
   flex: 0 0 100%;
   width: 100%;
-  height: 140px;
-  margin-bottom: 8px;
-  border-radius: 12px;
+  height: 220px;
+  margin: 0;
+  border-radius: 0;
   overflow: hidden;
-  padding: 0; /* Ghi đè padding mặc định của .trip-item > div */
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .trip-section .trip-item .trip-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
 }
 
 .trip-section .trip-item:last-child {
@@ -83,22 +88,7 @@
   text-align: left; /* Align text to the left */
 }
 
-/* Ảnh minh họa nằm phía trên, chiếm toàn bộ chiều ngang của một mục */
-.trip-section .trip-item .trip-thumb {
-  flex: 0 0 100%;
-  width: 100%;
-  height: 220px;
-  margin: 0;
-  border-radius: 0;
-  overflow: hidden;
-}
 
-.trip-section .trip-item .trip-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
 /* Lớp phủ nội dung trên ảnh */
 .trip-section .trip-item .trip-overlay {

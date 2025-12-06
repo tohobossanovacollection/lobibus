@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="css/VeChungToi.css">
   </head>
   <body>
-    <header class="site-header bg-white shadow-sm">
+    <header class="site-header bg-white">
       <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
         <img src="images/logo.svg" alt="LobiBus logo" class="logo">
         <span class="brand-name h5 mb-0">LobiBus</span>
       </div></a>
-      <div class="container d-flex align-items-center justify-content-between py-2">
+      <div class="container d-flex align-items-center justify-content-between">
         <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
           <a class="nav-link px-3" href="index.html" data-i18n="book">Đặt chuyến</a>
           <a class="nav-link px-3" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
@@ -44,6 +44,23 @@
         </div>
         <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
       </div>
+      
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close">×</button>
+        </div>
+        <div class="mobile-nav-body">
+          <a class="mobile-nav-link" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="mobile-nav-link" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="mobile-nav-link" href="TraCuu.html" data-i18n="available">Tra cứu mã đặt vé</a>
+          <a class="mobile-nav-link" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="mobile-nav-link" href="news.html" data-i18n="news">Tin tức</a>
+          <a class="mobile-nav-link" href="contact.html" data-i18n="contact">Liên hệ</a>
+        </div>
+      </nav>
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     </header>
 
     <main class="container my-5">
@@ -51,27 +68,27 @@
         <section class="about-hero mb-4">
           <div class="row g-4 align-items-center">
             <div class="col-md-7">
-              <h1>LobiBus - Kết nối hành trình Việt</h1>
-              <p>Chúng tôi xây dựng hệ sinh thái đặt vé xe khách minh bạch, an toàn và thân thiện, giúp hàng triệu hành khách di chuyển thuận tiện mỗi ngày.</p>
+              <h1>LobiBus - Đồng hành mọi hành trình</h1>
+              <p>Chúng tôi tự hào là công ty vận chuyển hành khách với đội xe hiện đại và đội ngũ lái xe chuyên nghiệp, mang đến dịch vụ an toàn, đúng giờ và thoải mái cho mọi chuyến đi.</p>
               <div class="about-badges">
-                <span class="about-badge">An toàn & minh bạch</span>
+                <span class="about-badge">Đội xe chất lượng cao</span>
+                <span class="about-badge">Lái xe chuyên nghiệp</span>
                 <span class="about-badge">Hỗ trợ 24/7</span>
-                <span class="about-badge">Đối tác uy tín</span>
               </div>
             </div>
             <div class="col-md-5">
               <div class="about-stats">
                 <div class="about-stat-card">
-                  <div class="about-stat-number">2M+</div>
-                  <div>Khách hàng sử dụng</div>
+                  <div class="about-stat-number">500K+</div>
+                  <div>Khách hàng tin dùng</div>
                 </div>
                 <div class="about-stat-card">
-                  <div class="about-stat-number">500+</div>
-                  <div>Nhà xe đối tác</div>
+                  <div class="about-stat-number">150+</div>
+                  <div>Xe khách hiện đại</div>
                 </div>
                 <div class="about-stat-card">
-                  <div class="about-stat-number">63</div>
-                  <div>Tỉnh/TP phủ sóng</div>
+                  <div class="about-stat-number">50+</div>
+                  <div>Tuyến đường hoạt động</div>
                 </div>
                 <div class="about-stat-card">
                   <div class="about-stat-number">98%</div>
@@ -85,82 +102,82 @@
         <section class="mb-4">
           <h2 class="about-section-title">Giới thiệu</h2>
           <div class="about-intro">
-            <p><strong>Chào mừng</strong> đến với nền tảng LobiBus, được thiết kế và vận hành bởi CÔNG TY TNHH LobiBus Việt Nam. Chúng tôi mang đến trải nghiệm đặt vé xe khách trực tuyến minh bạch, an toàn và tiện lợi cho hành khách trên toàn quốc.</p>
-            <p><strong>LobiBus là ai?</strong> LobiBus cho phép nhà xe đăng tải, quản lý lịch trình và ghế ngồi trực tuyến; đồng thời giúp hành khách xem, so sánh và đặt vé chỉ với vài thao tác. Chúng tôi không trực tiếp cung cấp dịch vụ vận chuyển, mà đóng vai trò cầu nối đáng tin cậy giữa hành khách và nhà xe.</p>
-            <p class="mb-0"><strong>Tại sao chọn LobiBus?</strong> Quy trình đặt vé đơn giản, hiển thị chỗ ngồi trực quan, thanh toán đa phương thức và đội ngũ chăm sóc khách hàng đồng hành 24/7.</p>
-            <p class="mb-0"><strong>Liên hệ:</strong> contact@lobibus.vn<br><strong>Hotline:</strong> 1900 989901<br><strong>Địa chỉ:</strong> Số 12, Phố Chùa Bộc, Hà Nội</p>
+            <p><strong>Chào mừng</strong> đến với LobiBus - Công ty vận chuyển hành khách uy tín được thành lập và vận hành bởi CÔNG TY TNHH LobiBus Việt Nam. Chúng tôi tự hào là đơn vị trực tiếp sở hữu và điều hành đội xe hiện đại, mang đến dịch vụ vận chuyển chất lượng cao cho hành khách trên toàn quốc.</p>
+            <p><strong>LobiBus là ai?</strong> LobiBus là công ty vận chuyển hành khách chuyên nghiệp với đội ngũ lái xe giàu kinh nghiệm và hệ thống xe khách hiện đại. Chúng tôi tự cung cấp các chuyến xe trên nhiều tuyến đường khác nhau, đảm bảo an toàn, đúng giờ và thoải mái cho mọi hành trình. Bên cạnh dịch vụ vận chuyển, chúng tôi còn xây dựng nền tảng đặt vé trực tuyến giúp hành khách dễ dàng tra cứu lịch trình, đặt chỗ và thanh toán nhanh chóng.</p>
+            <p class="mb-0"><strong>Tại sao chọn LobiBus?</strong> Với đội xe được bảo dưỡng định kỳ, lái xe chuyên nghiệp, quy trình đặt vé đơn giản, hiển thị chỗ ngồi trực quan, thanh toán đa phương thức và đội ngũ chăm sóc khách hàng đồng hành 24/7, LobiBus cam kết mang đến trải nghiệm di chuyển tốt nhất.</p>
+            <p class="mb-0"><strong>Liên hệ:</strong> contact@lobibus.vn<br><strong>Hotline:</strong> 0936 363 363<br><strong>Địa chỉ:</strong> Số 12, Phố Chùa Bộc, Hà Nội</p>
           </div>
         </section>
 
         <section class="mb-4">
           <h2 class="about-section-title">Sứ mệnh & tầm nhìn</h2>
-          <p class="about-section-subtext">LobiBus hướng tới trải nghiệm di chuyển liền mạch, đáng tin cậy cho mọi hành trình.</p>
+          <p class="about-section-subtext">LobiBus cam kết mang đến dịch vụ vận chuyển chất lượng cao, an toàn và đúng giờ.</p>
           <div class="about-card-grid">
             <div class="about-card">
               <span class="about-pill">Sứ mệnh</span>
-              <p>Đưa công nghệ vào từng chặng đường, giúp hành khách đặt vé nhanh, rõ ràng về giá, thời gian và chất lượng.</p>
+              <p>Cung cấp dịch vụ vận chuyển hành khách chuyên nghiệp với đội xe hiện đại và lái xe giàu kinh nghiệm, mang đến sự an tâm cho mỗi chuyến đi.</p>
             </div>
             <div class="about-card">
               <span class="about-pill">Tầm nhìn</span>
-              <p>Trở thành nền tảng đặt xe khách được tin dùng nhất Việt Nam, mở rộng kết nối liên vận trong khu vực.</p>
+              <p>Trở thành công ty vận chuyển hành khách hàng đầu Việt Nam, được khách hàng tin tựa nhờ chất lượng dịch vụ vượt trội và công nghệ đặt vé tiện lợi.</p>
             </div>
             <div class="about-card">
               <span class="about-pill">Giá trị cốt lõi</span>
-              <p>Minh bạch - An toàn - Đồng hành. Mỗi quyết định đều đặt lợi ích hành khách làm trung tâm.</p>
+              <p>An toàn - Đúng giờ - Tận tâm. Mỗi chuyến xe đều được vận hành với tiêu chuẩn cao nhất để đảm bảo trải nghiệm tốt nhất cho hành khách.</p>
             </div>
           </div>
         </section>
 
         <section class="mb-4">
           <h2 class="about-section-title">Hành trình phát triển</h2>
-          <p class="about-section-subtext">Những cột mốc tiêu biểu trên chặng đường của LobiBus.</p>
+          <p class="about-section-subtext">Những cột mốc quan trọng đánh dấu sự phát triển của LobiBus.</p>
           <div class="about-timeline">
             <div class="about-step">
               <strong>2019</strong>
-              <span>Ra mắt LobiBus với 20 đối tác xe khách tại Hà Nội & TP.HCM.</span>
+              <span>Thành lập công ty với 20 xe khách phục vụ tuyến Hà Nội - Hải Phòng và TP.HCM - Vũng Tàu.</span>
             </div>
             <div class="about-step">
               <strong>2021</strong>
-              <span>Mở rộng 45 tỉnh/TP, tích hợp thanh toán thẻ và ví điện tử lớn.</span>
+              <span>Mở rộng đội xe lên 80 xe, phủ thêm 15 tuyến đường mới và ra mắt hệ thống đặt vé trực tuyến.</span>
             </div>
             <div class="about-step">
               <strong>2023</strong>
-              <span>Đạt mốc 1 triệu lượt đặt, bổ sung bảo hiểm hành trình và hỗ trợ 24/7.</span>
+              <span>Đạt 150+ xe hiện đại, phục vụ 500K+ khách hàng và triển khai bảo hiểm hành trình cho mọi vé.</span>
             </div>
             <div class="about-step">
               <strong>2025</strong>
-              <span>Phủ 63 tỉnh/TP, ra mắt trợ lý AI gợi ý chuyến và chăm sóc khách hàng.</span>
+              <span>Vận hành 50+ tuyến đường, nâng cấp ứng dụng đặt vé với AI gợi ý chuyến và hỗ trợ khách hàng 24/7.</span>
             </div>
           </div>
         </section>
 
         <section class="mb-5">
           <h2 class="about-section-title">Chúng tôi làm gì để bạn yên tâm?</h2>
-          <p class="about-section-subtext">Cam kết chất lượng dịch vụ trên mỗi vé xe.</p>
+          <p class="about-section-subtext">Cam kết chất lượng dịch vụ trên mỗi chuyến xe.</p>
           <div class="about-card-grid">
             <div class="about-card">
-              <span class="about-pill">Chọn lọc đối tác</span>
-              <p>Chỉ hợp tác với nhà xe có giấy phép đầy đủ, quy trình an toàn rõ ràng và phản hồi khách hàng tốt.</p>
+              <span class="about-pill">Xe đạt chuẩn an toàn</span>
+              <p>Đội xe được bảo dưỡng định kỳ, kiểm tra kỹ thuật nghiêm ngặt và đáp ứng đầy đủ tiêu chuẩn vận chuyển hành khách.</p>
             </div>
             <div class="about-card">
-              <span class="about-pill">Giá minh bạch</span>
-              <p>Hiển thị phí rõ ràng, không phụ thu ẩn; hoàn hủy theo chính sách rõ ràng của từng hãng.</p>
+              <span class="about-pill">Lái xe chuyên nghiệp</span>
+              <p>Đội ngũ lái xe có bằng lái phù hợp, giấy phép hành nghề đầy đủ và được đào tạo về kỹ năng lái xe an toàn, văn hóa phục vụ.</p>
             </div>
             <div class="about-card">
-              <span class="about-pill">Hỗ trợ 24/7</span>
-              <p>Đội ngũ chăm sóc khách hàng sẵn sàng qua hotline, email và chat để xử lý sự cố khẩn cấp.</p>
+              <span class="about-pill">Giá rõ ràng</span>
+              <p>Công khai giá vé trên website, không phụ thu ẩn; chính sách hoàn hủy minh bạch và dễ hiểu.</p>
             </div>
             <div class="about-card">
-              <span class="about-pill">Bảo mật</span>
-              <p>Mã hóa thanh toán, không lưu thông tin thẻ; tuân thủ quy định bảo vệ dữ liệu cá nhân.</p>
+              <span class="about-pill">Hỗ trợ tận tâm</span>
+              <p>Đội ngũ chăm sóc khách hàng 24/7 qua hotline, email và chat trực tuyến để giải đáp thắc mắc và hỗ trợ khẩn cấp.</p>
             </div>
           </div>
         </section>
 
         <section class="about-cta">
-          <h3>Đồng hành cùng LobiBus</h3>
-          <p>Nếu bạn là nhà xe uy tín hoặc muốn hợp tác, hãy liên hệ với chúng tôi để cùng nâng tầm trải nghiệm di chuyển.</p>
-          <a href="mailto:partner@lobibus.com">Liên hệ hợp tác</a>
+          <h3>Hợp tác cùng LobiBus</h3>
+          <p>Nếu bạn là đơn vị muốn hợp tác kinh doanh, cung cấp dịch vụ hoặc đầu tư vào LobiBus, hãy liên hệ với chúng tôi để cùng phát triển.</p>
+          <a href="mailto:contact@lobibus.vn">Liên hệ hợp tác</a>
         </section>
       </div>
     </main>

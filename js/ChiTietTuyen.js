@@ -48,14 +48,13 @@ function normalizeText(str) {
         .trim();
 }
 
-// Tạo slug từ tuyến: "Hà Nội → Đà Nẵng" -> "hanoi-danang"
+// Tạo slug từ tuyến: "Hà Nội → Đà Nẵng" -> "danang" (chỉ lấy điểm đến)
 function makeRouteSlug(route) {
     if (!route) return '';
     const parts = String(route).split('→');
     if (parts.length < 2) return normalizeText(route).replace(/\s+/g, '-');
-    const from = normalizeText(parts[0]).replace(/\s+/g, '');
     const to = normalizeText(parts[1]).replace(/\s+/g, '');
-    return `${from}-${to}`;
+    return to;
 }
 
 // Đặt ảnh minh họa theo tuyến, thử theo thứ tự jpg -> png -> webp, fallback mặc định

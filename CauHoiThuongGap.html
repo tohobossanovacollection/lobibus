@@ -13,12 +13,12 @@
   </head>
   <body>
 
-    <header class="site-header bg-white shadow-sm">
+    <header class="site-header bg-white">
       <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
         <img src="images/logo.svg" alt="LobiBus logo" class="logo">
         <span class="brand-name h5 mb-0">LobiBus</span>
       </div></a>
-      <div class="container d-flex align-items-center justify-content-between py-2">
+      <div class="container d-flex align-items-center justify-content-between">
         <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
           <a class="nav-link px-3" href="index.html" data-i18n="book">Đặt chuyến</a>
           <a class="nav-link px-3" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
@@ -47,6 +47,23 @@
         </div>
         <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
       </div>
+      
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close">×</button>
+        </div>
+        <div class="mobile-nav-body">
+          <a class="mobile-nav-link" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="mobile-nav-link" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="mobile-nav-link" href="TraCuu.html" data-i18n="available">Tra cứu mã đặt vé</a>
+          <a class="mobile-nav-link" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="mobile-nav-link" href="news.html" data-i18n="news">Tin tức</a>
+          <a class="mobile-nav-link" href="contact.html" data-i18n="contact">Liên hệ</a>
+        </div>
+      </nav>
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     </header>
 
     <!-- Main Content -->

@@ -130,16 +130,15 @@ document.addEventListener('DOMContentLoaded', function() {
     (function ensureTripThumbnails() {
         const items = document.querySelectorAll('.trip-item');
         items.forEach(item => {
-                // Helper: build slug from route text "A → B" => "a-b" (normalized)
+                // Helper: build slug from route text "A → B" => "b" (chỉ lấy điểm đến, normalized)
                 const getRouteSlug = () => {
                     const routeEl = item.querySelector('.trip-route');
                     const routeText = routeEl ? routeEl.textContent.trim() : '';
                     if (!routeText) return '';
                     const parts = routeText.split('→');
                     if (parts.length < 2) return normalizeName(routeText);
-                    const from = normalizeName(parts[0]);
                     const to = normalizeName(parts[1]);
-                    return `${from}-${to}`;
+                    return to;
                 };
 
             // Ảnh minh họa (nếu chưa có)

@@ -106,6 +106,106 @@ a { color: inherit; text-decoration: none }
 	.d-md-none { display:none; }
 }
 
+/* Mobile Navigation */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  z-index: 2000;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobile-nav.active {
+  right: 0;
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+}
+
+.mobile-nav-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.mobile-nav-close {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-close:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+
+.mobile-nav-body {
+  padding: 1rem 0;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  background: linear-gradient(90deg, rgba(39,174,96,0.1) 0%, transparent 100%);
+  border-left-color: #27ae60;
+  color: #27ae60;
+  padding-left: 2rem;
+}
+
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 1999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .mobile-nav,
+  .mobile-nav-overlay {
+    display: none;
+  }
+}
+
 /* End fallback styles */
 
 .site-header .logo { width:44px; height:44px }
@@ -117,6 +217,8 @@ header.site-header {
 	position: sticky;
 	top: 0;
 	z-index: 1100;
+	border-bottom: 3px solid #23995b;
+	padding: 0.75rem 0;
 }
 /* Desktop: absolutely position logo and actions to edges; center nav */
 @media (min-width: 768px) {
@@ -134,7 +236,7 @@ header.site-header {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding-left: 15px; /* flush to edge */
+		padding-left: 20px; /* slightly increased padding */
 		z-index: 1110;
 	}
 
@@ -146,8 +248,8 @@ header.site-header {
 		transform: translateY(-50%);
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding-right: 15px; /* flush to edge */
+		gap: 0.75rem;
+		padding-right: 25px; /* increased padding to push right */
 		z-index: 1110;
 	}
 
@@ -155,16 +257,16 @@ header.site-header {
 	   padding so nav doesn't overlap the absolute logo/actions */
 	.site-header .container {
 		display: block;
-		padding-left: 110px; /* reserve horizontal space for the absolute logo */
-		padding-right: 160px; /* reserve horizontal space for the absolute actions */
-		min-height: 64px;
+		padding-left: 130px; /* reserve horizontal space for the absolute logo */
+		padding-right: 200px; /* reserve horizontal space for the absolute actions */
+		min-height: 70px;
 		align-items: center;
 	}
 
 	.site-header .main-nav {
 		display: flex;
 		justify-content: center;
-		gap: 1.25rem;
+		gap: 1.5rem;
 		white-space: nowrap; /* prevent links from wrapping */
 		z-index: 1105;
 	}
@@ -268,7 +370,7 @@ header.site-header {
 .trending-trips .trip-card {
   display: flex;
   flex-direction: column;
-  height: 450px; /* Increased height for better content fit */
+  height: 600px; /* Increased height for better content fit */
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -281,7 +383,7 @@ header.site-header {
 /* Image container takes exactly 65% of card height */
 .trending-trips .trip-card .card-img-top {
   width: 100%;
-  height: 65%; /* Reduced from 70% to give more space for content */
+  height: 55%; /* Reduced to give more space for content */
   object-fit: cover;
   object-position: center;
   flex-shrink: 0;
@@ -289,42 +391,29 @@ header.site-header {
 
 /* Card body takes exactly 35% of card height */
 .trending-trips .trip-card .card-body {
-  height: 35%; /* Increased from 30% to accommodate all content */
   display: flex;
   flex-direction: column;
-  padding: 0.875rem;
-  flex-shrink: 0;
-  overflow: visible;
+  padding: 1rem;
+  flex: 1;
+  min-height: 0;
 }
 
 /* Uniform title sizing */
 .trending-trips .trip-card .card-title {
   font-size: 1rem;
   font-weight: 600;
-  margin-bottom: 0.4rem;
-  line-height: 1.35;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
   color: #222;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  height: 2.7rem;
 }
 
 /* Description text uniform sizing */
 .trending-trips .trip-card .card-text {
   font-size: 0.85rem;
   line-height: 1.4;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   color: #666;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  height: 2.38rem;
-  flex-shrink: 0;
+  flex: 1;
 }
 
 /* Price and button row */
@@ -411,20 +500,46 @@ header.site-header {
 }
 
 /* Footer styles */
-.site-footer { background:#2f5878; color:#fff; }
-.site-footer a { color: #fff; text-decoration:none; }
-.site-footer a:hover {
-  color: #28a745; /* Green color */
+.site-footer { 
+	background: linear-gradient(135deg, #1f2a36 0%, #2d3e4f 100%);
+	color:#fff;
+	padding-top: 2.5rem;
+	padding-bottom: 1.5rem;
 }
-.site-footer .footer-left strong { display:block; font-size:1.1rem; color:#fff; }
-.site-footer .footer-contact { color:rgba(255,255,255,0.95); margin-top:6px; line-height:1.6 }
-.site-footer .social-icon { width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:transparent; border:1px solid rgba(255,255,255,0.08); padding:4px }
+.site-footer a { color: #fff; text-decoration:none; transition: color 0.3s ease; }
+.site-footer a:hover {
+  color: #23995b; /* Green color */
+  text-decoration: underline;
+}
+.site-footer .footer-left { border-right: 1px solid rgba(255,255,255,0.1); padding-right: 2rem; }
+.site-footer .footer-left strong { display:block; font-size:1.3rem; color:#fff; font-weight: 700; margin-bottom: 0.5rem; }
+.site-footer .footer-contact { color:rgba(255,255,255,0.9); margin-top:1rem; line-height:1.8; font-size: 0.95rem; }
+.site-footer .footer-contact div { margin-bottom: 0.5rem; }
+.site-footer .payment-methods { margin-top: 1.5rem; }
+.site-footer .payment-methods > div:first-child { font-weight: 600; color: #fff; margin-bottom: 0.75rem; font-size: 0.95rem; }
+.site-footer .payment-methods .d-flex { flex-wrap: wrap; }
+.site-footer .payment-methods img { background: rgba(255,255,255,0.08); padding: 6px 8px; border-radius: 6px; }
+.site-footer .social-icon { width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); padding:4px; transition: all 0.3s ease; }
+.site-footer .social-icon:hover { background:rgba(35,153,91,0.3); border-color:rgba(35,153,91,0.6); transform: translateY(-3px); }
 .site-footer .social-img { width:100%; height:100%; object-fit:contain; display:block }
-.site-footer .footer-copy { color:rgba(255,255,255,0.9); font-size:0.95rem }
+.site-footer .footer-copy { color:rgba(255,255,255,0.8); font-size:0.95rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 1.5rem; }
+.site-footer .footer-links { padding-left: 2rem; }
+.site-footer .footer-links ul li a { font-size: 0.95rem; }
+.site-footer .footer-links strong { font-size: 1.1rem; color: #fff; font-weight: 700; display: block; margin-bottom: 0.75rem; }
+.site-footer .footer-links ul li { transition: transform 0.2s ease; }
+.site-footer .footer-links ul li:hover { transform: translateX(4px); }
 
 @media (max-width:767px) {
-	.site-footer .footer-left { text-align:left }
-	.site-footer .footer-copy { padding-top:0.75rem }
+	.site-footer .footer-left { 
+		text-align:left;
+		border-right: none;
+		border-bottom: 1px solid rgba(255,255,255,0.1);
+		padding-right: 0;
+		padding-bottom: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+	.site-footer .footer-links { padding-left: 0; }
+	.site-footer .footer-copy { padding-top:1rem }
 }
 
 body { background: #f7f9fb; }
@@ -434,6 +549,40 @@ body { background: #f7f9fb; }
 /* small helper for the inline refresh icon used in the language button */
 .icon-refresh { display:inline-block; width:18px; height:18px; vertical-align:middle; color:inherit; }
 .btn .icon-refresh { margin:3px; }
+
+/* Section title styling with decorative lines */
+.section-title {
+  color: #27ae60;
+  font-weight: 700;
+  font-size: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.section-title .title-line {
+  display: inline-block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #27ae60 0%, #5de67f 100%);
+  border-radius: 2px;
+}
+
+.section-title .title-line:first-child {
+  background: linear-gradient(90deg, #5de67f 0%, #27ae60 100%);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  .section-title .title-line {
+    width: 40px;
+    height: 2px;
+  }
+}
 
 /* Align images and text in trending trips section */
 .trending-trips .trip-card img {
