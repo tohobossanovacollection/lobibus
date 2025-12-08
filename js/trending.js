@@ -5,42 +5,12 @@
     {
       id: 1,
       from: 'Hà Nội',
-      to: 'Đà Nẵng',
-      fromEn: 'Hanoi',
-      toEn: 'Da Nang',
-      price: 450000,
-      image: 'images/routes/danang.jpg',
-      description: 'Tuyến đường nổi tiếng, phong cảnh đẹp',
-      descriptionEn: 'Popular route, beautiful scenery',
-      region: 'north',
-      duration: '14 giờ',
-      durationEn: '14 hours',
-      badge: 'hot'
-    },
-    {
-      id: 2,
-      from: 'TP.HCM',
-      to: 'Đà Lạt',
-      fromEn: 'Ho Chi Minh City',
-      toEn: 'Da Lat',
-      price: 280000,
-      image: 'images/routes/dalat.jpg',
-      description: 'Thành phố ngàn hoa, khí hậu mát mẻ',
-      descriptionEn: 'City of flowers, cool climate',
-      region: 'south',
-      duration: '7 giờ',
-      durationEn: '7 hours',
-      badge: 'hot'
-    },
-    {
-      id: 3,
-      from: 'Hà Nội',
       to: 'Hải Phòng',
       fromEn: 'Hanoi',
-      toEn: 'Hai Phong',
-      price: 150000,
-      image: 'images/routes/haiphong.webp',
-      description: 'Tuyến ngắn, tiện lợi, giá tốt',
+      toEn: 'Haiphong',
+      price: 190000,
+      image: 'images/routes/thaibinh.jpg',
+      description: 'Gần, tiện lợi',
       descriptionEn: 'Short route, convenient, good price',
       region: 'north',
       duration: '2 giờ',
@@ -55,7 +25,7 @@
       toEn: 'Ca Mau',
       price: 180000,
       image: 'images/routes/camau.png',
-      description: 'Miền Tây sông nước, ẩm thực phong phú',
+      description: 'Miền Tây sông nước',
       descriptionEn: 'Mekong Delta, rich cuisine',
       region: 'south',
       duration: '4 giờ',
@@ -70,7 +40,7 @@
       toEn: 'Sapa',
       price: 320000,
       image: 'images/routes/laocai.jpg',
-      description: 'Núi non hùng vĩ, văn hóa bản địa',
+      description: 'Núi non hùng vĩ',
       descriptionEn: 'Majestic mountains, local culture',
       region: 'north',
       duration: '6 giờ',
@@ -100,7 +70,7 @@
       toEn: 'Hoi An',
       price: 80000,
       image: 'images/routes/hoian.jpg',
-      description: 'Phố cổ nổi tiếng, di sản văn hóa',
+      description: 'Phố cổ nổi tiếng',
       descriptionEn: 'Famous ancient town, cultural heritage',
       region: 'central',
       duration: '1 giờ',
@@ -191,10 +161,10 @@
   // Render trips
   function renderTrips(trips) {
     // Show at least 7 trips for layout
-    trips = trips.slice(0, 7);
+    trips = trips.slice(0, 8);
     let html = '';
     // Row 1: 1 large left, 2 small right (xếp ngang)
-    html += '<div class="trending-row trending-row-featured mb-4" style="display: flex; gap: 2rem;">';
+    html += '<div class="trending-row trending-row-featured " style="display: flex; gap: 2rem;">';
     // Card lớn
     html += '<div class="trending-featured-left" style="flex: 1 1 50%; min-width: 0;">';
     if (trips[0]) {
@@ -207,30 +177,28 @@
       html += `
         <div class="trip-card card trending-large-card shadow-sm" data-trip-id="${trip.id}">
           <div style="position:relative;">
-            <img src="${trip.image}" class="card-img-top" alt="${trip.from}" style="height:300px;object-fit:cover;">
+            <img src="${trip.image}" class="card-img-top" alt="${trip.from}">
             ${badgeHtml}
             <div class="fw-bold text-white" style="font-size:2rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.5rem 1rem;">Tuyến xe từ ${trip.from}</div>
           </div>
           <div class="card-body p-0">
-            <div class="p-3 pb-2">
-              <div class="text-white" style="opacity:1;">${trip.description}</div>
-            </div>
+            <div class="text-white" style="opacity:1;">${trip.description}</div>
             <div class="list-group list-group-flush">
-              <div class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="list-group-item d-flex  justify-content-between align-items-center">
                 <div>
                   <div class="fw-bold" style="color:#27ae60;">${trips[1]?.to || ''}</div>
                   <div class="small text-muted">310km - 8 giờ - 07/12/2025</div>
                 </div>
                 <div class="fw-bold" style="font-size:1.1rem;">260.000đ</div>
               </div>
-              <div class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="list-group-item d-flex  justify-content-between align-items-center">
                 <div>
                   <div class="fw-bold" style="color:#27ae60;">${trips[2]?.to || ''}</div>
                   <div class="small text-muted">172km - 5 giờ - 07/12/2025</div>
                 </div>
                 <div class="fw-bold" style="font-size:1.1rem;">165.000đ</div>
               </div>
-              <div class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="list-group-item d-flex  justify-content-between align-items-center">
                 <div>
                   <div class="fw-bold" style="color:#27ae60;">Long Xuyên</div>
                   <div class="small text-muted">209km - 5 giờ - 07/12/2025</div>
@@ -255,30 +223,30 @@
         html += `
           <div class="trip-card card trending-small-card shadow-sm" data-trip-id="${trips[i].id}" style="flex: 1;">
             <div style="position:relative;">
-              <img src="${trips[i].image}" class="card-img-top" alt="${trips[i].from}" style="height:180px;object-fit:cover;">
+              <img src="${trips[i].image}" class="card-img-top" alt="${trips[i].from}" style="height:300px;object-fit:cover;">
               ${badgeHtml}
               <div class="fw-bold text-white" style="font-size:1.3rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.3rem 0.7rem;">Tuyến xe từ ${trips[i].from}</div>
             </div>
             <div class="card-body p-0">
-              <div class="p-3 pb-2">
+            
                 <div class="text-white" style="opacity:0.85;">${trips[i].description}</div>
-              </div>
+              
               <div class="list-group list-group-flush">
-                <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="list-group-item d-flex  justify-content-between align-items-center">
                   <div>
                     <div class="fw-bold" style="color:#27ae60;">${trips[i+1]?.to || ''}</div>
                     <div class="small text-muted">300km - 8 giờ - 07/12/2025</div>
                   </div>
                   <div class="fw-bold" style="font-size:1.1rem;">260.000đ</div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="list-group-item d-flex  justify-content-between align-items-center">
                   <div>
                     <div class="fw-bold" style="color:#27ae60;">${trips[i+2]?.to || ''}</div>
                     <div class="small text-muted">700km - 14 giờ - 07/12/2025</div>
                   </div>
                   <div class="fw-bold" style="font-size:1.1rem;">430.000đ</div>
                 </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="list-group-item d-flex  justify-content-between align-items-center">
                   <div>
                     <div class="fw-bold" style="color:#27ae60;">Cần Thơ</div>
                     <div class="small text-muted">464km - 11 giờ - 07/12/2025</div>
@@ -294,7 +262,7 @@
     html += '</div>';
     html += '</div>';
     // Row 2: 4 small cards xếp ngang
-    html += '<div class="trending-row trending-row-small mt-4" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">';
+    html += '<div class="trending-row trending-row-small" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">';
     for (let i = 3; i <= 6; i++) {
       if (trips[i]) {
         const badgeHtml = trips[i].badge ? `<span class=\"trip-badge ${trips[i].badge}\">${
@@ -305,15 +273,13 @@
         html += `
           <div class="trip-card card trending-small-card shadow-sm" data-trip-id="${trips[i].id}">
             <div style="position:relative;">
-              <img src="${trips[i].image}" class="card-img-top" alt="${trips[i].from}" style="height:140px;object-fit:cover;">
+              <img src="${trips[i].image}" class="card-img-top" alt="${trips[i].from}" style="height:350px;object-fit:cover;">
               ${badgeHtml}
               <div class="fw-bold text-white" style="font-size:1.1rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.2rem 0.5rem;">Tuyến xe từ ${trips[i].from}</div>
             </div>
             <div class="card-body p-0">
-              <div class="p-3 pb-2">
-                <div class="text-white" style="opacity:0.85;">${trips[i].description}</div>
-              </div>
-              <div class="list-group list-group-flush">
+              <div class="text-white" style="opacity:0.85;">${trips[i].description}</div>
+              <div class="list-group list-group-flush d-flex justify-content-between align-items-center">
                 <div class="list-group-item d-flex justify-content-between align-items-center">
                   <div>
                     <div class="fw-bold" style="color:#27ae60;">${trips[i].to}</div>

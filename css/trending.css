@@ -2,7 +2,7 @@
 /* Row 1: 1 thẻ lớn bên trái, 2 thẻ nhỏ bên phải xếp ngang */
 .trending-row-featured {
   display: flex;
-  gap: 2rem;
+  gap: 0;
   margin-bottom: 2rem;
 .trending-featured-left {
   flex: 1 1 50%;
@@ -13,20 +13,23 @@
   min-width: 0;
   display: flex;
   flex-direction: row;
-  gap: 1.5rem;
+  gap: 0;
 }
 /* Thu nhỏ thẻ lớn và nhỏ */
 /* Card lớn và nhỏ */
 .trending-large-card {
-  min-height: 550px;
+  min-height: 600px;
   display: flex;
   flex-direction: column;
 }
 .trending-large-card .card-img-top {
-  height: 320px;
+  height: 420px !important;
   object-fit: cover;
   width: 100%;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 0;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block;
 }
 .trending-small-card {
   height: auto;
@@ -36,8 +39,8 @@
 .trending-small-card .card-img-top {
   height: 140px;
   object-fit: cover;
-  width: 100%;
-  border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;  
+  border-radius: 0;
 }
 /* Overlay title on card image */
 .trip-card .fw-bold.text-white {
@@ -46,13 +49,13 @@
 }
 
 .card-body {
-  min-height: 150px;
-  flex: 1 1 auto;
+  min-height: 0px;
+  flex: 1 1 1;
   display: flex;
   flex-direction: column;
-  margin-top: auto !important;
+  /* margin-top: auto !important; */
 }
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   .trending-row-featured {
     flex-direction: column;
     gap: 1.5rem;
@@ -71,42 +74,32 @@
     min-height: 220px;
   }
   .trending-large-card .card-img-top {
-    height: 140px;
+    height: 420px;
+    object-fit: cover;
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
   }
-  .trending-small-card .card-img-top {
-    height: 100px;
-  }
-}
+} */
 /* Trending custom layout */
 .trending-row {
   display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 0;
+  flex-direction: column;
+  margin: 0 !important;
+  padding: 0 !important;
   flex-wrap: wrap;
 }
 .trending-row-large {
   flex-direction: row;
 }
-.trending-large-card {
-  flex: 2 1 0;
-  min-width: 0;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-}
-.trending-large-card + .trending-large-card {
-  flex: 1 1 0;
-}
-.trending-large-card .card-img-top {
-  height: 100px;
-}
+
 /* Row 2: 4 thẻ nhỏ xếp ngang */
 .trending-row-small {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 0;
 }
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   .trending-row-featured {
     flex-direction: column;
     gap: 1.5rem;
@@ -127,7 +120,7 @@
   .trending-small-card .card-img-top {
     height: 100px;
   }
-}
+} */
 }
 /* Trending Page Specific Styles */
 
@@ -170,7 +163,7 @@
   margin: 0.5rem 0 0;
 }
 
-/* Filter Section */
+/* Filter Section
 .filter-section .card {
   border-radius: 12px;
 }
@@ -192,7 +185,7 @@
 .filter-section .form-control:focus {
   border-color: #667eea;
   box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
-}
+} */
 
 /* Sidebar Filter Links */
 .filter-link {
@@ -214,11 +207,11 @@
 
 /* Trip Grid Layout */
 /* Remove grid from #tripsGrid to allow custom layout to stretch full width */
-#tripsGrid {
+/* #tripsGrid {
   width: 100%;
   padding: 0;
   margin: 0 auto;
-}
+} */
 
 /* Trip Card Enhancements for Trending Page */
 .trip-card {
@@ -251,9 +244,9 @@
 .trip-card .card-body {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0 1rem 0 1rem !important;
   flex: 1 1 auto;
-  margin-top: auto !important;
+  margin-top: 0 !important;
 }
 
 .trip-card .card-title {
@@ -261,7 +254,7 @@
   font-weight: 700;
   color: #222;
   line-height: 1.3;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   white-space: normal;
   overflow: visible;
   display: block;
@@ -271,7 +264,7 @@
   font-size: 0.95rem;
   color: #444;
   line-height: 1.5;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
   white-space: normal;
   overflow: visible;
   display: block;
@@ -303,8 +296,8 @@
 /* Trip meta info */
 .trip-meta {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  gap: 0;
+  margin-top: 0;
   font-size: 0.8rem;
   color: #888;
 }
@@ -312,7 +305,7 @@
 .trip-meta-item {
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0;
 }
 
 .trip-meta-item svg {
@@ -324,10 +317,10 @@
 
 /* Loading animation */
 /* Empty State */
-#emptyState {
+/* #emptyState {
   text-align: center;
   padding: 3rem 1rem;
-}
+} */
 
 .empty-icon {
   font-size: 3rem;
@@ -379,4 +372,14 @@ button,
 .btn,
 .card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.list-group.list-group-flush {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+.list-group-item {
+  border: none !important;
+  padding: 0 !important;
+  background: transparent;
 }
