@@ -2,6 +2,22 @@
 (function() {
   // Trip data
   const tripsData = [
+    // 0-2: FROM HÀ NỘI
+    {
+      id: 0,
+      from: 'Hà Nội',
+      to: 'Đà Lạt',
+      fromEn: 'Hanoi',
+      toEn: 'Da Lat',
+      price: 650000,
+      image: 'images/routes/dalat.jpg',
+      description: 'Thành phố ngàn hoa, khí hậu mát mẻ quanh năm',
+      descriptionEn: 'City of thousands of flowers, cool weather all year',
+      region: 'north',
+      duration: '22 giờ',
+      durationEn: '22 hours',
+      badge: 'hot'
+    },
     {
       id: 1,
       from: 'Hà Nội',
@@ -9,147 +25,309 @@
       fromEn: 'Hanoi',
       toEn: 'Haiphong',
       price: 190000,
-      image: 'images/routes/thaibinh.jpg',
-      description: 'Gần, tiện lợi',
-      descriptionEn: 'Short route, convenient, good price',
+      image: 'images/routes/dalat.jpg',
+      description: 'Thành phố cảng, đường đi ngắn và dễ',
+      descriptionEn: 'Port city, short and easy route',
       region: 'north',
       duration: '2 giờ',
       durationEn: '2 hours',
       badge: 'new'
     },
     {
-      id: 4,
-      from: 'Cần Thơ',
-      to: 'Cà Mau',
-      fromEn: 'Can Tho',
-      toEn: 'Ca Mau',
-      price: 180000,
-      image: 'images/routes/camau.png',
-      description: 'Miền Tây sông nước',
-      descriptionEn: 'Mekong Delta, rich cuisine',
-      region: 'south',
-      duration: '4 giờ',
-      durationEn: '4 hours',
-      badge: null
-    },
-    {
-      id: 5,
+      id: 2,
       from: 'Hà Nội',
-      to: 'Sa Pa',
+      to: 'TP.HCM',
       fromEn: 'Hanoi',
-      toEn: 'Sapa',
-      price: 320000,
-      image: 'images/routes/laocai.jpg',
-      description: 'Núi non hùng vĩ',
-      descriptionEn: 'Majestic mountains, local culture',
+      toEn: 'Ho Chi Minh City',
+      price: 950000,
+      image: 'images/routes/dalat.jpg',
+      description: 'Tuyến Bắc - Nam dài ngày, nhiều trải nghiệm',
+      descriptionEn: 'Long North-South route with many experiences',
       region: 'north',
-      duration: '6 giờ',
-      durationEn: '6 hours',
+      duration: '35 giờ',
+      durationEn: '35 hours',
+      badge: 'sale'
+    },
+
+    // 3-5: FROM TP.HCM
+    {
+      id: 3,
+      from: 'TP.HCM',
+      to: 'Đà Lạt',
+      fromEn: 'Ho Chi Minh City',
+      toEn: 'Da Lat',
+      price: 320000,
+      image: 'images/routes/dalat.jpg',
+      description: 'Trốn nóng Sài Gòn, khám phá cao nguyên',
+      descriptionEn: 'Escape the heat, explore the highlands',
+      region: 'south',
+      duration: '8 giờ',
+      durationEn: '8 hours',
       badge: 'hot'
     },
     {
-      id: 6,
+      id: 4,
       from: 'TP.HCM',
       to: 'Vũng Tàu',
       fromEn: 'Ho Chi Minh City',
       toEn: 'Vung Tau',
       price: 120000,
       image: 'images/routes/vungtau.jpg',
-      description: 'Biển đẹp, gần thành phố',
-      descriptionEn: 'Beautiful beach, close to city',
+      description: 'Biển đẹp, gần thành phố, đi về trong ngày',
+      descriptionEn: 'Nice beach, close to city, good for day trip',
       region: 'south',
       duration: '2.5 giờ',
       durationEn: '2.5 hours',
       badge: 'sale'
     },
     {
-      id: 7,
-      from: 'Đà Nẵng',
-      to: 'Hội An',
-      fromEn: 'Da Nang',
-      toEn: 'Hoi An',
-      price: 80000,
-      image: 'images/routes/hoian.jpg',
-      description: 'Phố cổ nổi tiếng',
-      descriptionEn: 'Famous ancient town, cultural heritage',
-      region: 'central',
-      duration: '1 giờ',
-      durationEn: '1 hour',
-      badge: 'hot'
-    },
-    {
-      id: 8,
-      from: 'Huế',
-      to: 'Đà Nẵng',
-      fromEn: 'Hue',
-      toEn: 'Da Nang',
-      price: 160000,
-      image: 'images/routes/danang.jpg',
-      description: 'Đèo Hải Vân nổi tiếng',
-      descriptionEn: 'Famous Hai Van Pass',
-      region: 'central',
-      duration: '3 giờ',
-      durationEn: '3 hours',
-      badge: null
-    },
-    {
-      id: 9,
+      id: 5,
       from: 'TP.HCM',
       to: 'Nha Trang',
       fromEn: 'Ho Chi Minh City',
       toEn: 'Nha Trang',
       price: 380000,
       image: 'images/routes/nhatrang.jpg',
-      description: 'Thành phố biển xinh đẹp',
-      descriptionEn: 'Beautiful coastal city',
+      description: 'Thành phố biển sôi động, nhiều khu vui chơi',
+      descriptionEn: 'Lively beach city with many attractions',
       region: 'south',
       duration: '9 giờ',
       durationEn: '9 hours',
       badge: 'new'
     },
+
+    // 6-8: FROM ĐÀ NẴNG
     {
-      id: 10,
-      from: 'Hà Nội',
-      to: 'Ninh Bình',
-      fromEn: 'Hanoi',
-      toEn: 'Ninh Binh',
-      price: 140000,
-      image: 'images/routes/ninhbinh.jpg',
-      description: 'Vịnh Hạ Long trên cạn',
-      descriptionEn: 'Halong Bay on land',
-      region: 'north',
-      duration: '2 giờ',
-      durationEn: '2 hours',
+      id: 6,
+      from: 'Đà Nẵng',
+      to: 'Hội An',
+      fromEn: 'Da Nang',
+      toEn: 'Hoi An',
+      price: 80000,
+      image: 'images/routes/hoian.jpg',
+      description: 'Phố cổ lung linh đèn lồng, di sản văn hóa',
+      descriptionEn: 'Ancient town with lanterns, cultural heritage',
+      region: 'central',
+      duration: '1 giờ',
+      durationEn: '1 hour',
       badge: 'hot'
     },
     {
-      id: 11,
-      from: 'TP.HCM',
-      to: 'Mũi Né',
-      fromEn: 'Ho Chi Minh City',
-      toEn: 'Mui Ne',
-      price: 220000,
-      image: 'images/routes/phanthiet.jpg',
-      description: 'Đồi cát, biển đẹp',
-      descriptionEn: 'Sand dunes, beautiful beach',
-      region: 'south',
-      duration: '5 giờ',
-      durationEn: '5 hours',
+      id: 7,
+      from: 'Đà Nẵng',
+      to: 'Huế',
+      fromEn: 'Da Nang',
+      toEn: 'Hue',
+      price: 160000,
+      image: 'images/routes/danang-hue.jpg',
+      description: 'Cố đô, lăng tẩm, ẩm thực cung đình',
+      descriptionEn: 'Ancient capital, royal tombs, cuisine',
+      region: 'central',
+      duration: '3 giờ',
+      durationEn: '3 hours',
+      badge: null
+    },
+    {
+      id: 8,
+      from: 'Đà Nẵng',
+      to: 'TP.HCM',
+      fromEn: 'Da Nang',
+      toEn: 'Ho Chi Minh City',
+      price: 520000,
+      image: 'images/routes/danang-hcm.jpg',
+      description: 'Tuyến trục dọc, xe giường nằm chất lượng cao',
+      descriptionEn: 'Main axis route, high quality sleeper buses',
+      region: 'central',
+      duration: '20 giờ',
+      durationEn: '20 hours',
+      badge: 'new'
+    },
+
+    // 9-11: FROM HUẾ
+    {
+      id: 9,
+      from: 'Huế',
+      to: 'Đà Nẵng',
+      fromEn: 'Hue',
+      toEn: 'Da Nang',
+      price: 150000,
+      image: 'images/routes/hue-danang.jpg',
+      description: 'Đèo Hải Vân hùng vĩ, cảnh biển đẹp',
+      descriptionEn: 'Magnificent Hai Van pass with beautiful sea view',
+      region: 'central',
+      duration: '3 giờ',
+      durationEn: '3 hours',
+      badge: 'hot'
+    },
+    {
+      id: 10,
+      from: 'Huế',
+      to: 'Hà Nội',
+      fromEn: 'Hue',
+      toEn: 'Hanoi',
+      price: 420000,
+      image: 'images/routes/hue-hanoi.jpg',
+      description: 'Tuyến Bắc Trung Bộ, xe giường nằm tiện nghi',
+      descriptionEn: 'North Central route with comfortable sleeper buses',
+      region: 'central',
+      duration: '13 giờ',
+      durationEn: '13 hours',
       badge: 'sale'
     },
     {
-      id: 12,
-      from: 'Đà Nẵng',
-      to: 'Quy Nhơn',
-      fromEn: 'Da Nang',
-      toEn: 'Quy Nhon',
-      price: 240000,
-      image: 'images/routes/binhdinh.jpg',
-      description: 'Biển xanh, thanh bình',
-      descriptionEn: 'Blue sea, peaceful',
+      id: 11,
+      from: 'Huế',
+      to: 'TP.HCM',
+      fromEn: 'Hue',
+      toEn: 'Ho Chi Minh City',
+      price: 730000,
+      image: 'images/routes/hue-hcm.jpg',
+      description: 'Hành trình dài xuyên Việt, ngắm cảnh dọc đường',
+      descriptionEn: 'Long trans-Vietnam journey with scenic views',
       region: 'central',
+      duration: '24 giờ',
+      durationEn: '24 hours',
+      badge: null
+    },
+
+    // 12-14: FROM NHA TRANG
+    {
+      id: 12,
+      from: 'Nha Trang',
+      to: 'Đà Lạt',
+      fromEn: 'Nha Trang',
+      toEn: 'Da Lat',
+      price: 220000,
+      image: 'images/routes/nhatrang-dalat.jpg',
+      description: 'Từ biển lên núi, khí hậu thay đổi rõ rệt',
+      descriptionEn: 'From sea to mountains, clear climate change',
+      region: 'central',
+      duration: '4 giờ',
+      durationEn: '4 hours',
+      badge: 'new'
+    },
+    {
+      id: 13,
+      from: 'Nha Trang',
+      to: 'TP.HCM',
+      fromEn: 'Nha Trang',
+      toEn: 'Ho Chi Minh City',
+      price: 380000,
+      image: 'images/routes/nhatrang-hcm.jpg',
+      description: 'Tuyến ven biển, nhiều điểm dừng đẹp',
+      descriptionEn: 'Coastal route with many beautiful stops',
+      region: 'central',
+      duration: '9 giờ',
+      durationEn: '9 hours',
+      badge: 'hot'
+    },
+    {
+      id: 14,
+      from: 'Nha Trang',
+      to: 'Hà Nội',
+      fromEn: 'Nha Trang',
+      toEn: 'Hanoi',
+      price: 820000,
+      image: 'images/routes/nhatrang-hanoi.jpg',
+      description: 'Kết nối biển miền Trung với thủ đô',
+      descriptionEn: 'Connects central sea city with capital',
+      region: 'central',
+      duration: '24 giờ',
+      durationEn: '24 hours',
+      badge: 'sale'
+    },
+
+    // 15-17: FROM CẦN THƠ
+    {
+      id: 15,
+      from: 'Cần Thơ',
+      to: 'TP.HCM',
+      fromEn: 'Can Tho',
+      toEn: 'Ho Chi Minh City',
+      price: 150000,
+      image: 'images/routes/cantho-hcm.jpg',
+      description: 'Tuyến đi nhanh giữa miền Tây và Sài Gòn',
+      descriptionEn: 'Fast route between Mekong Delta and Saigon',
+      region: 'south',
+      duration: '3.5 giờ',
+      durationEn: '3.5 hours',
+      badge: null
+    },
+    {
+      id: 16,
+      from: 'Cần Thơ',
+      to: 'Châu Đốc',
+      fromEn: 'Can Tho',
+      toEn: 'Chau Doc',
+      price: 180000,
+      image: 'images/routes/cantho-chaudoc.jpg',
+      description: 'Tham quan Miếu Bà Chúa Xứ, núi Sam',
+      descriptionEn: 'Visit Ba Chua Xu temple and Sam mountain',
+      region: 'south',
+      duration: '4 giờ',
+      durationEn: '4 hours',
+      badge: 'new'
+    },
+    {
+      id: 17,
+      from: 'Cần Thơ',
+      to: 'Cà Mau',
+      fromEn: 'Can Tho',
+      toEn: 'Ca Mau',
+      price: 260000,
+      image: 'images/routes/cantho-camau.jpg',
+      description: 'Hành trình về cực Nam của Tổ quốc',
+      descriptionEn: 'Journey to the southernmost point of Vietnam',
+      region: 'south',
       duration: '6 giờ',
       durationEn: '6 hours',
+      badge: 'hot'
+    },
+
+    // 18-20: FROM HẢI PHÒNG
+    {
+      id: 18,
+      from: 'Hải Phòng',
+      to: 'Hà Nội',
+      fromEn: 'Haiphong',
+      toEn: 'Hanoi',
+      price: 180000,
+      image: 'images/routes/haiphong-hanoi.jpg',
+      description: 'Kết nối nhanh giữa thủ đô và thành phố cảng',
+      descriptionEn: 'Fast connection between capital and port city',
+      region: 'north',
+      duration: '2 giờ',
+      durationEn: '2 hours',
+      badge: 'sale'
+    },
+    {
+      id: 19,
+      from: 'Hải Phòng',
+      to: 'Cát Bà',
+      fromEn: 'Haiphong',
+      toEn: 'Cat Ba',
+      price: 120000,
+      image: 'images/routes/haiphong-catba.jpg',
+      description: 'Đảo ngọc vịnh Lan Hạ, nước biển xanh trong',
+      descriptionEn: 'Cat Ba island at Lan Ha bay, clear blue water',
+      region: 'north',
+      duration: '1.5 giờ',
+      durationEn: '1.5 hours',
+      badge: 'hot'
+    },
+    {
+      id: 20,
+      from: 'Hải Phòng',
+      to: 'Quảng Ninh',
+      fromEn: 'Haiphong',
+      toEn: 'Quang Ninh',
+      price: 160000,
+      image: 'images/routes/haiphong-quangninh.jpg',
+      description: 'Thuận tiện đi Hạ Long, Bãi Cháy',
+      descriptionEn: 'Convenient route to Ha Long and Bai Chay',
+      region: 'north',
+      duration: '2.5 giờ',
+      durationEn: '2.5 hours',
       badge: null
     }
   ];
@@ -158,159 +336,184 @@
   let currentLang = localStorage.getItem('xn.lang') || 'vi';
   const tripsGrid = document.getElementById('tripsGrid');
 
-  // Render trips
+  // Render trips with new grid layout
   function renderTrips(trips) {
-    // Show at least 7 trips for layout
-    trips = trips.slice(0, 8);
+    // Use first 12 trips for the new layout
+    trips = trips.slice(0, 12);
     let html = '';
-    // Row 1: 1 large left, 2 small right (xếp ngang)
-    html += '<div class="trending-row trending-row-featured " style="display: flex; gap: 2rem;">';
-    // Card lớn
-    html += '<div class="trending-featured-left" style="flex: 1 1 50%; min-width: 0;">';
+    
+    // Container for both rows
+    html += '<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; auto-rows: auto;">';
+    
+    // ROW 1: 1 large card (2 cols) + 2 small cards (1 col each, stacked vertically)
+    // Large card (trip 0) - spans 2 columns and 2 rows
     if (trips[0]) {
-      const trip = trips[0];
-      const badgeHtml = trip.badge ? `<span class=\"trip-badge ${trip.badge}\">${
-        trip.badge === 'hot' ? '🔥 HOT' : 
-        trip.badge === 'new' ? '✨ MỚI' : 
+      const trip0 = trips[0];
+      const badgeHtml = trip0.badge ? `<span class=\"trip-badge ${trip0.badge}\">${
+        trip0.badge === 'hot' ? '🔥 HOT' : 
+        trip0.badge === 'new' ? '✨ MỚI' : 
         '💰 SALE'
       }</span>` : '';
+      
       html += `
-        <div class="trip-card card trending-large-card shadow-sm" data-trip-id="${trip.id}">
-          <div style="position:relative;">
-            <img src="${trip.image}" class="card-img-top" alt="${trip.from}">
+        <div class="trip-card card shadow-sm" data-trip-id="${trip0.id}" 
+             style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; 
+                    grid-column: span 2; grid-row: span 2; cursor: pointer;">
+          <div style="position: relative; height: 100%; flex: 1; min-height: 400px; background: #f0f0f0;">
+            <img src="${trip0.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${trip0.from}">
             ${badgeHtml}
-            <div class="fw-bold text-white" style="font-size:2rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.5rem 1rem;">Tuyến xe từ ${trip.from}</div>
-          </div>
-          <div class="card-body p-0">
-            <div class="text-white" style="opacity:1;">${trip.description}</div>
-            <div class="list-group list-group-flush">
-              <div class="list-group-item d-flex  justify-content-between align-items-center">
-                <div>
-                  <div class="fw-bold" style="color:#27ae60;">${trips[1]?.to || ''}</div>
-                  <div class="small text-muted">310km - 8 giờ - 07/12/2025</div>
-                </div>
-                <div class="fw-bold" style="font-size:1.1rem;">260.000đ</div>
-              </div>
-              <div class="list-group-item d-flex  justify-content-between align-items-center">
-                <div>
-                  <div class="fw-bold" style="color:#27ae60;">${trips[2]?.to || ''}</div>
-                  <div class="small text-muted">172km - 5 giờ - 07/12/2025</div>
-                </div>
-                <div class="fw-bold" style="font-size:1.1rem;">165.000đ</div>
-              </div>
-              <div class="list-group-item d-flex  justify-content-between align-items-center">
-                <div>
-                  <div class="fw-bold" style="color:#27ae60;">Long Xuyên</div>
-                  <div class="small text-muted">209km - 5 giờ - 07/12/2025</div>
-                </div>
-                <div class="fw-bold" style="font-size:1.1rem;">200.000đ</div>
-              </div>
+            
+            <!-- Overlay content at bottom -->
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 100%); 
+                        padding: 2rem 1.5rem; color: white;">
+              <div class="fw-bold" style="font-size: 1.3rem; margin-bottom: 0.3rem;">${trip0.from} → ${trip0.to}</div>
+              <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">${trip0.description}</div>
+              <div class="fw-bold" style="font-size: 1.1rem; color: #4edc89;">${(trip0.price).toLocaleString('vi-VN')}đ</div>
             </div>
           </div>
         </div>
       `;
     }
-    html += '</div>';
-    // 2 card nhỏ bên phải
-    html += '<div class="trending-featured-right" style="flex: 1 1 50%; min-width: 0; display: flex; gap: 1.5rem;">';
+    
+    // Small cards on the right (trips 1-2) - each spans 1 column, 1 row, stacked
     for (let i = 1; i <= 2; i++) {
       if (trips[i]) {
-        const badgeHtml = trips[i].badge ? `<span class=\"trip-badge ${trips[i].badge}\">${
-          trips[i].badge === 'hot' ? '🔥 HOT' : 
-          trips[i].badge === 'new' ? '✨ MỚI' : 
+        const trip = trips[i];
+        const badgeHtml = trip.badge ? `<span class=\"trip-badge ${trip.badge}\">${
+          trip.badge === 'hot' ? '🔥 HOT' : 
+          trip.badge === 'new' ? '✨ MỚI' : 
           '💰 SALE'
         }</span>` : '';
+        
         html += `
-          <div class="trip-card card trending-small-card shadow-sm" data-trip-id="${trips[i].id}" style="flex: 1;">
-            <div style="position:relative;">
-              <img src="${trips[i].image}" class="card-img-top" alt="${trips[i].from}" style="height:300px;object-fit:cover;">
+          <div class="trip-card card shadow-sm" data-trip-id="${trip.id}" 
+               style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; 
+                      cursor: pointer; grid-column: span 2;">
+            <div style="position: relative; height: 180px; background: #f0f0f0;">
+              <img src="${trip.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${trip.from}">
               ${badgeHtml}
-              <div class="fw-bold text-white" style="font-size:1.3rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.3rem 0.7rem;">Tuyến xe từ ${trips[i].from}</div>
             </div>
-            <div class="card-body p-0">
             
-                <div class="text-white" style="opacity:0.85;">${trips[i].description}</div>
-              
-              <div class="list-group list-group-flush">
-                <div class="list-group-item d-flex  justify-content-between align-items-center">
-                  <div>
-                    <div class="fw-bold" style="color:#27ae60;">${trips[i+1]?.to || ''}</div>
-                    <div class="small text-muted">300km - 8 giờ - 07/12/2025</div>
-                  </div>
-                  <div class="fw-bold" style="font-size:1.1rem;">260.000đ</div>
-                </div>
-                <div class="list-group-item d-flex  justify-content-between align-items-center">
-                  <div>
-                    <div class="fw-bold" style="color:#27ae60;">${trips[i+2]?.to || ''}</div>
-                    <div class="small text-muted">700km - 14 giờ - 07/12/2025</div>
-                  </div>
-                  <div class="fw-bold" style="font-size:1.1rem;">430.000đ</div>
-                </div>
-                <div class="list-group-item d-flex  justify-content-between align-items-center">
-                  <div>
-                    <div class="fw-bold" style="color:#27ae60;">Cần Thơ</div>
-                    <div class="small text-muted">464km - 11 giờ - 07/12/2025</div>
-                  </div>
-                  <div class="fw-bold" style="font-size:1.1rem;">445.000đ</div>
-                </div>
-              </div>
+            <div style="flex: 1; display: flex; flex-direction: column; padding: 1rem;">
+              <div class="fw-bold" style="font-size: 0.95rem; margin-bottom: 0.3rem;">${trip.from} → ${trip.to}</div>
+              <div style="color: #666; font-size: 0.8rem; margin-bottom: 0.5rem; flex: 1;">${trip.description}</div>
+              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">${(trip.price).toLocaleString('vi-VN')}đ</div>
+              <div class="small text-muted">${trip.duration}</div>
             </div>
           </div>
         `;
       }
     }
-    html += '</div>';
-    html += '</div>';
-    // Row 2: 4 small cards xếp ngang
-    html += '<div class="trending-row trending-row-small" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">';
+    
+    // ROW 2: 4 cards spanning 1 column each
     for (let i = 3; i <= 6; i++) {
       if (trips[i]) {
-        const badgeHtml = trips[i].badge ? `<span class=\"trip-badge ${trips[i].badge}\">${
-          trips[i].badge === 'hot' ? '🔥 HOT' : 
-          trips[i].badge === 'new' ? '✨ MỚI' : 
+        const trip = trips[i];
+        const badgeHtml = trip.badge ? `<span class=\"trip-badge ${trip.badge}\">${
+          trip.badge === 'hot' ? '🔥 HOT' : 
+          trip.badge === 'new' ? '✨ MỚI' : 
           '💰 SALE'
         }</span>` : '';
+        
         html += `
-          <div class="trip-card card trending-small-card shadow-sm" data-trip-id="${trips[i].id}">
-            <div style="position:relative;">
-              <img src="${trips[i].image}" class="card-img-top" alt="${trips[i].from}" style="height:350px;object-fit:cover;">
+          <div class="trip-card card shadow-sm" data-trip-id="${trip.id}" 
+               style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; 
+                      cursor: pointer; grid-column: span 1;">
+            <div style="position: relative; height: 200px; background: #f0f0f0;">
+              <img src="${trip.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${trip.from}">
               ${badgeHtml}
-              <div class="fw-bold text-white" style="font-size:1.1rem;position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(transparent,rgba(0,0,0,0.7));padding:0.2rem 0.5rem;">Tuyến xe từ ${trips[i].from}</div>
             </div>
-            <div class="card-body p-0">
-              <div class="text-white" style="opacity:0.85;">${trips[i].description}</div>
-              <div class="list-group list-group-flush d-flex justify-content-between align-items-center">
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <div class="fw-bold" style="color:#27ae60;">${trips[i].to}</div>
-                    <div class="small text-muted">550km - 10 giờ - 07/12/2025</div>
-                  </div>
-                  <div class="fw-bold" style="font-size:1.1rem;">380.000đ</div>
-                </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <div class="fw-bold" style="color:#27ae60;">BX An Sương</div>
-                    <div class="small text-muted">990km - 20 giờ - 07/12/2025</div>
-                  </div>
-                  <div class="fw-bold" style="font-size:1.1rem;">495.000đ</div>
-                </div>
-                <div class="list-group-item d-flex justify-content-between align-items-center">
-                  <div>
-                    <div class="fw-bold" style="color:#27ae60;">Nha Trang</div>
-                    <div class="small text-muted">550km - 10 giờ - 07/12/2025</div>
-                  </div>
-                  <div class="fw-bold" style="font-size:1.1rem;">380.000đ</div>
-                </div>
-              </div>
+            
+            <div style="flex: 1; display: flex; flex-direction: column; padding: 1rem;">
+              <div class="fw-bold" style="font-size: 0.95rem; margin-bottom: 0.3rem;">${trip.from} → ${trip.to}</div>
+              <div style="color: #666; font-size: 0.8rem; margin-bottom: 0.5rem; flex: 1;">${trip.description}</div>
+              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">${(trip.price).toLocaleString('vi-VN')}đ</div>
+              <div class="small text-muted">${trip.duration}</div>
             </div>
           </div>
         `;
       }
     }
+    
+    // Add remaining cards (7-11) - 2 rows x 4 columns (rows 3-4)
+    for (let i = 7; i <= 11; i++) {
+      if (trips[i]) {
+        const trip = trips[i];
+        const badgeHtml = trip.badge ? `<span class=\"trip-badge ${trip.badge}\">${
+          trip.badge === 'hot' ? '🔥 HOT' : 
+          trip.badge === 'new' ? '✨ MỚI' : 
+          '💰 SALE'
+        }</span>` : '';
+        
+        html += `
+          <div class="trip-card card shadow-sm" data-trip-id="${trip.id}" 
+               style="display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; 
+                      cursor: pointer; grid-column: span 1;">
+            <div style="position: relative; height: 200px; background: #f0f0f0;">
+              <img src="${trip.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${trip.from}">
+              ${badgeHtml}
+            </div>
+            
+            <div style="flex: 1; display: flex; flex-direction: column; padding: 1rem;">
+              <div class="fw-bold" style="font-size: 0.95rem; margin-bottom: 0.3rem;">${trip.from} → ${trip.to}</div>
+              <div style="color: #666; font-size: 0.8rem; margin-bottom: 0.5rem; flex: 1;">${trip.description}</div>
+              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">${(trip.price).toLocaleString('vi-VN')}đ</div>
+              <div class="small text-muted">${trip.duration}</div>
+            </div>
+          </div>
+        `;
+      }
+    }
+    
     html += '</div>';
     tripsGrid.innerHTML = html;
+    
+    // Add click handlers to trip cards
+    addTripCardClickHandlers();
   }
 
+  // Add click handlers to navigate to ChiTietTuyen.html
+  function addTripCardClickHandlers() {
+    // Click handler for main trip cards
+    document.querySelectorAll('.trip-card').forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        // If clicking on a list item with data-route-trip, use that
+        if (e.target.closest('[data-route-trip]')) {
+          return; // Let the list item handler take over
+        }
+        
+        const tripId = card.getAttribute('data-trip-id');
+        const trip = tripsData.find(t => t.id == tripId);
+        if (trip) {
+          navigateToRoute(trip.from, trip.to, trip.duration);
+        }
+      });
+    });
+
+    // Click handler for individual list items
+    document.querySelectorAll('[data-route-trip]').forEach(item => {
+      item.style.cursor = 'pointer';
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const routeString = item.getAttribute('data-route-trip');
+        const [from, to] = routeString.split(' → ').map(s => s.trim());
+        navigateToRoute(from, to, '10 giờ');
+      });
+    });
+  }
+
+  // Helper function to navigate to ChiTietTuyen.html
+  function navigateToRoute(from, to, duration) {
+    const routeString = `${from} → ${to}`;
+    const params = new URLSearchParams({
+      route: routeString,
+      type: 'default',
+      distance: '550km',
+      duration: duration || '10 giờ'
+    });
+    window.location.href = `ChiTietTuyen.html?${params.toString()}`;
+  }
 
   // Listen for language changes
   document.addEventListener('languageChanged', (e) => {
