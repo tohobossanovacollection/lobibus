@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chi tiết tin tức | LobiBus</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/news.css">
+  </head>
+  <body>
+    <header class="site-header bg-white">
+      <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
+        <img src="images/logo.svg" alt="LobiBus logo" class="logo">
+        <span class="brand-name h5 mb-0">LobiBus</span>
+      </div></a>
+      <div class="container d-flex align-items-center justify-content-between">
+        <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
+          <a class="nav-link px-3" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="nav-link px-3" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="nav-link px-3" href="TraCuu.html" data-i18n="available">Tra cứu mã đặt vé</a>
+          <a class="nav-link px-3" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="nav-link px-3" href="news.html" data-i18n="news">Tin tức</a>
+          <a class="nav-link px-3" href="contact.html" data-i18n="contact">Liên hệ</a>
+        </nav>
+      </div>
+      <div class="actions d-flex align-items-center gap-2">
+        <div class="btn-group">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ" style="border-radius: 6px; border-width: 1px; border-style: solid; border-color: #6c757d;">
+            <img id="lang-flag" src="images/vietnam-flag.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+            <span id="lang-text">VI</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="vi">
+              <img src="images/viet-nam.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+              Tiếng Việt
+            </button></li>
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="en">
+              <img src="images/united-states.png" alt="USA" style="width: 20px; height: 15px; object-fit: cover;">
+              English
+            </button></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <nav class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close">×</button>
+        </div>
+        <div class="mobile-nav-body">
+          <a class="mobile-nav-link" href="index.html" data-i18n="book">Đặt chuyến</a>
+          <a class="mobile-nav-link" href="LichTrinh.html" data-i18n="lookup">Lịch trình</a>
+          <a class="mobile-nav-link" href="TraCuu.html" data-i18n="available">Tra cứu mã đặt vé</a>
+          <a class="mobile-nav-link" href="trending.html" data-i18n="trending">Chuyến đi đang trend</a>
+          <a class="mobile-nav-link" href="news.html" data-i18n="news">Tin tức</a>
+          <a class="mobile-nav-link" href="contact.html" data-i18n="contact">Liên hệ</a>
+        </div>
+      </nav>
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    </header>
+
+    <main class="container py-4">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none text-success">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="news.html" class="text-decoration-none text-success">Tin tức</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Chi tiết tin tức</li>
+        </ol>
+      </nav>
+
+      <div class="row">
+        <!-- Main Content -->
+        <div class="col-12 col-lg-8">
+          <article class="news-detail-article">
+            <!-- Article Header -->
+            <header class="article-header mb-4">
+              <span id="article-badge" class="badge bg-danger mb-3" style="font-size: 0.85rem; padding: 0.5rem 1rem;">Khuyến mãi</span>
+              <h1 id="article-title" class="article-title mb-3" style="color: #1e8449; font-size: 1.8rem; font-weight: 700; line-height: 1.4;">
+                Đang tải...
+              </h1>
+              <div class="article-meta d-flex align-items-center gap-4 text-muted mb-4">
+                <span class="d-flex align-items-center gap-2">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                  </svg>
+                  <span id="article-date">01/12/2025</span>
+                </span>
+                <span class="d-flex align-items-center gap-2">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                  </svg>
+                  <span id="article-views">1,234 lượt xem</span>
+                </span>
+              </div>
+            </header>
+
+            <!-- Featured Image -->
+            <div class="article-featured-image mb-4">
+              <img id="article-image" src="images/routes/namdinh.png" alt="Khuyến mãi miền Bắc" class="img-fluid rounded shadow-sm w-100" style="max-height: 450px; object-fit: cover;">
+            </div>
+
+            <!-- Article Content -->
+            <div id="article-content" class="article-content">
+              <p class="lead" style="font-size: 1.1rem; color: #333; line-height: 1.8;">
+                Đang tải nội dung...
+              </p>
+            </div>
+
+              <!-- CTA Box -->
+              <div class="cta-box p-4 rounded my-4" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">
+                <div class="row align-items-center">
+                  <div class="col-12 col-md-8 text-white mb-3 mb-md-0">
+                    <h4 class="mb-2" style="font-weight: 600;">🎉 Đặt vé ngay hôm nay!</h4>
+                    <p class="mb-0" style="opacity: 0.9;">Nhanh tay đặt vé để nhận ưu đãi. Số lượng vé khuyến mãi có hạn!</p>
+                  </div>
+                  <div class="col-12 col-md-4 text-md-end">
+                    <a href="index.html" class="btn btn-light btn-lg" style="font-weight: 600; color: #27ae60;">
+                      Đặt vé ngay →
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tags -->
+              <div class="article-tags mt-4 pt-4 border-top">
+                <span class="text-muted me-2"><strong>Tags:</strong></span>
+                <span id="article-tags">
+                  <a href="#" class="badge bg-light text-dark me-2 text-decoration-none">Đặt vé online</a>
+                </span>
+              </div>
+
+              <!-- Share -->
+              <div class="article-share mt-4 pt-4 border-top">
+                <span class="text-muted me-3"><strong>Chia sẻ:</strong></span>
+                <a href="#" class="btn btn-outline-primary btn-sm me-2" style="border-radius: 50%; width: 38px; height: 38px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                  </svg>
+                </a>
+                <a href="#" class="btn btn-outline-danger btn-sm me-2" style="border-radius: 50%; width: 38px; height: 38px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917
+                     3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 
+                     5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 
+                     1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-
+                     .01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-
+                     .891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.
+                     299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-
+                     .51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 
+                     3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                  </svg>
+                </a>
+                <a href="#" class="btn btn-outline-info btn-sm" style="border-radius: 50%; width: 38px; height: 38px; padding: 0; display: inline-flex; align-items: center; justify-content: center;">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                  </svg>
+                </a>
+              </div>
+          </article>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="col-12 col-lg-4 mt-4 mt-lg-0">
+          <div class="sticky-sidebar">
+            <!-- Related News -->
+            <div class="card shadow-sm mb-4">
+              <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">📰 Tin tức liên quan</h5>
+              </div>
+              <div id="related-news" class="card-body p-0">
+                <!-- Related news will be loaded dynamically -->
+              </div>
+            </div>
+
+            <!-- Quick Book Widget -->
+            <div class="card shadow-sm mb-4">
+              <div class="card-header text-white" style="background: linear-gradient(135deg, #27ae60 0%, #229954 100%);">
+                <h5 class="mb-0">🎫 Đặt vé nhanh</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold">Điểm đi</label>
+                    <select class="form-select">
+                      <option>Hà Nội</option>
+                      <option>TP. Hồ Chí Minh</option>
+                      <option>Đà Nẵng</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold">Điểm đến</label>
+                    <select class="form-select">
+                      <option>Nam Định</option>
+                      <option>Lào Cai</option>
+                      <option>Hải Phòng</option>
+                      <option>Thái Nguyên</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label small fw-bold">Ngày đi</label>
+                    <input type="date" class="form-control">
+                  </div>
+                  <a href="index.html" class="btn btn-success w-100">Tìm chuyến xe →</a>
+                </form>
+              </div>
+            </div>
+
+            <!-- Hotline -->
+            <div class="card shadow-sm border-success">
+              <div class="card-body text-center py-4">
+                <div class="mb-2">
+                  <svg width="40" height="40" fill="#27ae60" viewBox="0 0 16 16">
+                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                  </svg>
+                </div>
+                <h5 class="text-success mb-1">Hotline hỗ trợ</h5>
+                <a href="tel:0936363363" class="h4 text-decoration-none text-success fw-bold">0936 363 363</a>
+                <p class="text-muted small mb-0 mt-2">Hỗ trợ 24/7</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-4">
+      <div class="container">
+        <div class="row align-items-start py-4">
+          <div class="col-12 col-md-6 footer-left">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <img src="images/logo.svg" alt="LobiBus logo" style="width: 40px; height: 40px;">
+              <strong style="font-size: 1.8rem; color: #27ae60;">LobiBus</strong>
+            </div>
+            <div class="footer-contact mt-2">
+              <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
+              <div>Hotline: 0936 363 363</div>
+              <div>Email: <a href="mailto:info@mountaintravel.vn">info@LobiBus.vn</a></div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-3">
+              <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
+                <img src="images/fb.png" alt="Facebook" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="Instagram" title="Instagram">
+                <img src="images/ig.png" alt="Instagram" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="YouTube" title="YouTube">
+                <img src="images/yt.png" alt="YouTube" class="social-img">
+              </a>
+            </div>
+            <div class="mt-4">
+              <div class="mb-2" style="font-weight: 600; color: white;">Phương thức thanh toán:</div>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <img src="images/visa.png" alt="Visa" style="height: 32px;">
+                <img src="images/mastercard.png" alt="Mastercard" style="height: 32px;">
+                <img src="images/momo.png" alt="Momo" style="height: 32px;">
+                <img src="images/zalopay.png" alt="ZaloPay" style="height: 32px;">
+                <img src="images/shopeepay.png" alt="ShopeePay" style="height: 32px;">
+                <img src="images/smartpay.png" alt="SmartPay" style="height: 32px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex align-items-start justify-content-md-start mt-3 mt-md-0">
+            <div class="footer-links">
+              <div class="row g-4">
+                <div class="col-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Thông tin</strong></li>
+                    <li class="mb-2"><a href="ChinhSachBaoMat.html" style="white-space: nowrap;">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="DieuKhoanSuDung.html" style="white-space: nowrap;">Điều khoản sử dụng</a></li>
+                    <li class="mb-2"><a href="CauHoiThuongGap.html" style="white-space: nowrap;">Câu hỏi thường gặp</a></li>
+                    <li class="mb-2"><a href="VeChungToi.html">Về chúng tôi</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 ps-5">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Dịch vụ</strong></li>
+                    <li class="mb-2"><a href="index.html" style="white-space: nowrap;">Đặt vé xe</a></li>
+                    <li class="mb-2"><a href="TraCuu.html" style="white-space: nowrap;">Tra cứu mã đặt vé</a></li>
+                    <li class="mb-2"><a href="trending.html" style="white-space: nowrap;">Chuyến đi hot trend</a></li>
+                    <li class="mb-2"><a href="contact.html" style="white-space: nowrap;">Liên hệ</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 mt-4">
+                <img src="images/BCT.png" alt="Bộ Công Thương" style="height: 70px; background: transparent;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center py-3 footer-copy">© 2025 lobibus.com. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/news-detail.js"></script>
+  </body>
+</html>
