@@ -125,16 +125,16 @@
 /* Trending Page Specific Styles */
 
 .page-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/trees-forest-1920x1080-nature-forests-hd-art-wallpaper-preview.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: linear-gradient(135deg, #27ae60 0%, #1e8449 50%, #16693b 100%);
   color: white;
-  padding: 4rem 1rem 3rem;
-  margin-bottom: 2rem;
+  padding: 5rem 1rem 4rem;
+  margin-bottom: 3rem;
   position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid rgba(78, 220, 137, 0.4);
 }
 
+/* Decorative background pattern */
 .page-header::before {
   content: '';
   position: absolute;
@@ -142,25 +142,46 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
   z-index: 0;
+}
+
+/* Top accent line */
+.page-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #4edc89, transparent);
+  z-index: 1;
 }
 
 .page-header .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .page-header h1 {
   margin: 0;
-  font-weight: 800;
-  text-shadow: 0 2px 8px rgba(78, 220, 137, 0.5);
+  font-weight: 700;
+  font-size: 2.5rem;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
 }
 
 .page-header .lead {
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  margin: 0.5rem 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0.8rem 0 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  max-width: 500px;
 }
 
 /* Filter Section
@@ -226,6 +247,10 @@
   flex-direction: column;
 }
 
+.trip-card {
+  position: relative;
+}
+
 .trip-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
@@ -239,6 +264,34 @@
 
 .trip-card:hover .card-img-top {
   transform: scale(1.05);
+}
+
+/* CTA mũi tên hiển thị khi hover */
+.trip-card .trip-cta {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: #28a745;
+  color: #fff;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 14px rgba(40,167,69,0.35);
+  z-index: 10;
+}
+
+.trip-card:hover .trip-cta {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .trip-card .card-body {
@@ -347,15 +400,18 @@
 /* Responsive adjustments */
 @media (max-width: 767px) {
   .page-header {
-    padding: 2rem 0 1.5rem;
+    padding: 3rem 1rem 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .page-header h1 {
     font-size: 1.75rem;
+    font-weight: 700;
   }
 
   .page-header .lead {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    max-width: none;
   }
 
   .filter-section .col-12 {

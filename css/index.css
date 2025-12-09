@@ -215,7 +215,7 @@ header.site-header {
 	position: -webkit-sticky; /* Safari */
 	position: sticky;
 	top: 0;
-	z-index: 1100;
+	z-index: 1050; /* Thấp hơn drawer overlay (1200) để bị che tối */
 	border-bottom: 3px solid #23995b;
 	padding: 0.75rem 0;
 }
@@ -294,16 +294,13 @@ header.site-header {
 .cta { display:inline-block; padding:0.75rem 1.05rem; background:#0b5; color:#fff; border-radius:10px; font-weight:700; font-size:0.95rem }
 
 /* small utility adjustments */
-/* Only make the main hero carousel a fixed height. Other carousels (testimonials)
-   should size to their content so indicators sit close to cards. */
-#mainCarousel .carousel-inner { /* fixed carousel viewport height so hero image slides match */
-	height: 450px;
-}
-#mainCarousel .carousel-item { height: 100%; }
-#mainCarousel .carousel-item img { object-fit: cover; height: 100%; width:100%; }
+/* Constrain main hero carousel height (~65vh) but keep video controls visible */
+#mainCarousel .carousel-inner { max-height: 65vh; }
+#mainCarousel .carousel-item { max-height: 65vh; }
+#mainCarousel .carousel-item img { object-fit: cover; width:100%; height: 65vh; max-height: 65vh; }
 
-/* Ensure embedded iframe/video slides in main carousel fill the same height as images */
-#mainCarousel .carousel-item .ratio { height: 100%; min-height: 0; }
+/* Keep iframe inside a fixed 65vh ratio box so controls aren’t clipped */
+#mainCarousel .carousel-item .ratio { height: 65vh; max-height: 65vh; min-height: 0; }
 #mainCarousel .carousel-item iframe { width:100%; height:100%; border:0; }
 
 /* Booking flex inputs: make fields flex to fill space without gaps */
@@ -318,7 +315,7 @@ header.site-header {
 }
 
 /* Testimonials styles */
-.testimonials h3 { font-weight:700; margin-top:0; }
+.testimonials h3 { font-weight:700; margin-top:0; color:#27ae60; }
 .testimonial-card { display:flex; gap:1rem; background:#fff; border:1px solid #eef2f4; border-radius:8px; align-items:flex-start; }
 /* Return natural auto height; remove column flex stretching */
 .testimonial-card .testi-body { display:flex; flex-direction:column; }
@@ -549,37 +546,41 @@ body { background: #f7f9fb; }
 .icon-refresh { display:inline-block; width:18px; height:18px; vertical-align:middle; color:inherit; }
 .btn .icon-refresh { margin:3px; }
 
-/* Section title styling with decorative lines */
+/* Section title styling - matching DatChuyen featured section */
 .section-title {
-  color: #27ae60;
-  font-weight: 700;
-  font-size: 1.75rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
+  font-size: 2rem !important;
+  color: #27ae60 !important;
+  margin-bottom: 1rem !important;
+  font-weight: 700 !important;
+  display: block !important;
+  text-align: left !important;
   position: relative;
+  padding-bottom: 0.75rem;
 }
 
-.section-title .title-line {
-  display: inline-block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #27ae60 0%, #5de67f 100%);
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #27ae60, #1e8449);
   border-radius: 2px;
 }
 
-.section-title .title-line:first-child {
-  background: linear-gradient(90deg, #5de67f 0%, #27ae60 100%);
+.section-title .title-line {
+  display: none;
 }
 
 @media (max-width: 768px) {
   .section-title {
-    font-size: 1.4rem;
+    font-size: 1.5rem !important;
   }
   
-  .section-title .title-line {
-    width: 40px;
-    height: 2px;
+  .section-title::after {
+    width: 60px;
+    height: 3px;
   }
 }
 

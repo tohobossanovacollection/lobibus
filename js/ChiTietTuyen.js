@@ -86,12 +86,37 @@ function setRouteThumb(route) {
 // Lấy thông tin từ URL
 function getRouteInfoFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
+    const from = urlParams.get('from') || '';
+    const to = urlParams.get('to') || '';
+    const seatsRequested = parseInt(urlParams.get('seats') || '1', 10) || 1;
     return {
         route: urlParams.get('route') || '',
         type: urlParams.get('type') || '',
         distance: urlParams.get('distance') || '',
-        duration: urlParams.get('duration') || ''
+        duration: urlParams.get('duration') || '',
+        departDate: urlParams.get('departDate') || '',
+        returnDate: urlParams.get('returnDate') || '',
+        tripType: urlParams.get('tripType') || 'oneway',
+        from,
+        to,
+        seatsRequested
     };
+}
+
+function normalizeRouteInfo(raw) {
+    const info = { ...raw };
+    // Rebuild route string from from/to if missing
+    if (!info.route && info.from && info.to) info.route = `${info.from} → ${info.to}`;
+    if (!info.route) info.route = 'Tuyến xe';
+    // Smart defaults when metadata missing (direct booking without LichTrinh)
+    if (!info.distance || parseDistanceKm(info.distance) === 0) {
+        info.distance = '350 km';
+    }
+    if (!info.duration || parseDurationToMinutes(info.duration) === 0) {
+        info.duration = '8 giờ';
+    }
+    // Type không cần set - mỗi tuyến sẽ có đa dạng loại xe được tạo tự động
+    return info;
 }
 
 // Lấy số chỗ ngồi dựa trên loại xe
@@ -273,14 +298,18 @@ function createSeededRng(seedStr) {
 function getStableSeedForRouteMonth(routeInfo) {
     const now = new Date();
     const monthKey = `${now.getFullYear()}-${now.getMonth() + 1}`;
-    return `${routeInfo.route}|${routeInfo.type}|${routeInfo.distance}|${routeInfo.duration}|${monthKey}`;
+    // Chuẩn hóa route để đảm bảo cùng tuyến luôn cho cùng danh sách
+    const normalizedRoute = normalizeText(routeInfo.route);
+    const normalizedDist = normalizeText(routeInfo.distance);
+    const normalizedDur = normalizeText(routeInfo.duration);
+    return `${normalizedRoute}|${normalizedDist}|${normalizedDur}|${monthKey}`;
 }
 
 // Hiển thị thông tin tuyến
 function displayRouteInfo(routeInfo) {
     document.getElementById('routeName').textContent = routeInfo.route;
-    document.getElementById('distance').textContent = routeInfo.distance;
-    document.getElementById('duration').textContent = routeInfo.duration;
+    document.getElementById('distance').textContent = routeInfo.distance || 'Đang cập nhật';
+    document.getElementById('duration').textContent = routeInfo.duration || 'Đang cập nhật';
 }
 
 // Tạo card cho mỗi chuyến xe
@@ -435,6 +464,7 @@ function busThumbOnError(img) {
 let allBuses = [];
 let currentRouteInfo = null;
 let currentSortOption = 'default';
+let preferredSeats = 1;
 let currentFilters = {
     timeMin: null,
     timeMax: null,
@@ -454,8 +484,9 @@ function displayBusList(routeInfo, filterDate = null, sortOption = 'default') {
     
     // Cập nhật số chỗ ngồi cho tất cả xe dựa trên loại xe từ tuyến
     const totalSeats = getSeatsByType(routeInfo.type);
-    // Tính giá theo km và loại xe
-    const km = parseDistanceKm(routeInfo.distance);
+    // Tính giá theo km và loại xe (fallback 350km khi không có metadata)
+    const kmParsed = parseDistanceKm(routeInfo.distance);
+    const km = kmParsed > 0 ? kmParsed : 350;
     const rate = getRateByType(routeInfo.type);
     const basePriceNumber = km * rate;
     const template = buses && buses.length > 0 ? buses[0] : {
@@ -471,7 +502,9 @@ function displayBusList(routeInfo, filterDate = null, sortOption = 'default') {
     // Tạo danh sách ngày 01-30/12/2025 và mỗi ngày 0-3 chuyến
     const days = Array.from({ length: 30 }, (_, i) => i + 1); // 1..30
     allBuses = [];
-    const durationMin = parseDurationToMinutes(routeInfo.duration);
+    // Duration for schedule arrival calculation (fallback 8h if no metadata)
+    const routeDurationMin = parseDurationToMinutes(routeInfo.duration);
+    const durationMin = routeDurationMin > 0 ? routeDurationMin : 8 * 60;
     // Build or load stable list per route & month
     const monthSeed = getStableSeedForRouteMonth(routeInfo);
     const rng = createSeededRng(monthSeed);
@@ -727,29 +760,33 @@ function openBookingDrawer(route, busName, departure, price, dateISO) {
         }
         bdRemaining.textContent = (remaining !== null) ? (remaining + ' ghế') : 'N/A';
 
-        // Cài giới hạn cho input số vé
-        bdQty.value = 1;
+        // Cài giới hạn cho input số vé và ưu tiên số ghế người dùng chọn từ trang trước
+        // Max luôn là 5 cho mọi xe
+        const desired = Math.max(1, preferredSeats || 1);
+        const maxAllowed = remaining !== null ? Math.min(5, Math.max(1, Number(remaining))) : 5;
+        const initialQty = Math.max(1, Math.min(desired, maxAllowed));
+        bdQty.value = initialQty;
         if (remaining !== null) {
-            bdQty.max = String(Math.max(1, remaining));
+            bdQty.max = String(maxAllowed);
             bdQty.min = '1';
             bdQty.disabled = false;
         } else {
-            bdQty.removeAttribute('max');
+            bdQty.max = '5';
             bdQty.min = '1';
             bdQty.disabled = true;
         }
 
         // Khi người dùng nhập: cho phép xóa '1' khi focus (để trống),
         // cho phép nhập 0/giá trị tạm thời khi gõ; nhưng khi hoàn tất
-        // (onchange hoặc Enter) sẽ ép giá trị cuối cùng vào [1, remaining]
+        // (onchange hoặc Enter) sẽ ép giá trị cuối cùng vào [1, min(5, remaining)]
         const clampQtyFinal = () => {
             if (!bdQty) return;
             const minV = 1;
-            const maxV = remaining !== null ? Math.max(1, Number(remaining)) : null;
+            const maxV = remaining !== null ? Math.min(5, Math.max(1, Number(remaining))) : 5;
             let raw = bdQty.value == null ? '' : String(bdQty.value).trim();
             let v = parseInt(raw, 10);
             if (isNaN(v) || v < minV) v = minV;
-            if (maxV !== null && v > maxV) v = maxV;
+            if (v > maxV) v = maxV;
             bdQty.value = String(v);
         };
 
@@ -761,7 +798,7 @@ function openBookingDrawer(route, busName, departure, price, dateISO) {
             if (!bdQty) return;
             const txt = String(bdQty.value || '').trim();
             if (txt === '') return; // allow empty while typing
-            const maxV = remaining !== null ? Math.max(1, Number(remaining)) : null;
+            const maxV = remaining !== null ? Math.min(5, Math.max(1, Number(remaining))) : 5;
             let v = parseInt(txt, 10);
             if (isNaN(v)) return;
             if (maxV !== null && v > maxV) v = maxV;
@@ -810,8 +847,11 @@ function confirmBooking() {
     let qty = 1;
     if (qtyInput) qty = parseInt(qtyInput.value || '1', 10) || 1;
     if (qty < 1) qty = 1;
-    if (qty > remaining) {
-        alert('Số vé vượt quá số ghế còn lại. Vui lòng nhập số nhỏ hơn hoặc bằng ' + remaining + '.');
+    
+    // Giới hạn tối đa 5 vé cho mọi xe
+    const maxAllowed = Math.min(5, remaining);
+    if (qty > maxAllowed) {
+        alert('Số vé vượt quá giới hạn. Vui lòng nhập số từ 1 đến ' + maxAllowed + ' vé.');
         return;
     }
 
@@ -822,26 +862,32 @@ function confirmBooking() {
 
 // Khởi tạo trang
 document.addEventListener('DOMContentLoaded', function() {
-    const routeInfo = getRouteInfoFromURL();
+    let routeInfo = normalizeRouteInfo(getRouteInfoFromURL());
     
     if (!routeInfo.route) {
         // Nếu không có thông tin tuyến, quay về trang lịch trình
         window.location.href = 'LichTrinh.html';
         return;
     }
-    
+
+    preferredSeats = Math.max(1, routeInfo.seatsRequested || 1);
     currentRouteInfo = routeInfo;
     displayRouteInfo(routeInfo);
     // Cập nhật ảnh minh họa theo tuyến
     setRouteThumb(routeInfo.route);
-    // Khởi tạo danh sách với sắp xếp mặc định
-    displayBusList(routeInfo, null, currentSortOption);
-    
+
     // Xử lý sự kiện chọn ngày
     const btnFilterDate = document.getElementById('btnFilterDate');
     const btnClearDate = document.getElementById('btnClearDate');
     const dateFilter = document.getElementById('dateFilter');
     const sortRadios = document.querySelectorAll('input[name="sortOption"]');
+    const initialDate = routeInfo.departDate || '';
+    if (dateFilter && initialDate) {
+        dateFilter.value = initialDate;
+    }
+    const initialFilterDate = dateFilter ? (dateFilter.value || null) : null;
+    // Khởi tạo danh sách với sắp xếp mặc định và ngày được chọn từ form
+    displayBusList(routeInfo, initialFilterDate, currentSortOption);
     // Filter controls
     const timeMinEl = document.getElementById('filterTimeMin');
     const timeMaxEl = document.getElementById('filterTimeMax');

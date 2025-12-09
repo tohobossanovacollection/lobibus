@@ -353,7 +353,7 @@ button[aria-expanded="true"] .chevron-icon { transform: rotate(180deg); }
     opacity: 0;
     visibility: hidden;
     transition: opacity 220ms ease, visibility 220ms ease;
-    z-index: 1040;
+    z-index: 1200; /* Cao hơn header (1100) để che cả menu */
 }
 .drawer-overlay.open { opacity: 1; visibility: visible; }
 
@@ -368,7 +368,7 @@ button[aria-expanded="true"] .chevron-icon { transform: rotate(180deg); }
     box-shadow: -12px 0 30px rgba(0,0,0,0.18);
     transform: translateX(110%);
     transition: transform 280ms cubic-bezier(.2,.9,.2,1);
-    z-index: 1050;
+    z-index: 1210; /* Cao hơn overlay (1200) để luôn sáng và tương tác được */
     display: flex;
     flex-direction: column;
 }

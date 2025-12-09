@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Giới thiệu về Hội An - Phố cổ huyền bí</title>
+    <link rel="icon" href="images/logo.svg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/gioi-thieu.css">
+  </head>
+  <body>
+    <header class="site-header bg-white">
+      <a href="index.html"><div class="logo-wrap d-flex align-items-center gap-2">
+        <img src="images/logo.svg" alt="LobiBus logo" class="logo">
+        <span class="brand-name h5 mb-0">LobiBus</span>
+      </div></a>
+      <div class="container d-flex align-items-center justify-content-between">
+        <nav class="main-nav d-none d-md-flex" aria-label="Main navigation">
+          <a class="nav-link px-3" href="DatChuyen.html">Đặt chuyến</a>
+          <a class="nav-link px-3" href="LichTrinh.html">Lịch trình</a>
+          <a class="nav-link px-3" href="TraCuu.html">Tra cứu mã đặt vé</a>
+          <a class="nav-link px-3" href="trending.html">Chuyến đi đang trend</a>
+          <a class="nav-link px-3" href="news.html">Tin tức</a>
+          <a class="nav-link px-3" href="contact.html">Liên hệ</a>
+        </nav>
+      </div>
+      <div class="actions d-flex align-items-center gap-2">
+        <div class="btn-group">
+          <button id="lang-btn" type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Chuyển ngôn ngữ" style="border-radius: 6px; border-width: 1px; border-style: solid; border-color: #6c757d;">
+            <img id="lang-flag" src="images/vietnam-flag.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+            <span id="lang-text">VI</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="vi">
+              <img src="images/viet-nam.png" alt="Vietnam" style="width: 20px; height: 15px; object-fit: cover;">
+              Tiếng Việt
+            </button></li>
+            <li><button class="dropdown-item lang-select d-flex align-items-center gap-2" data-lang="en">
+              <img src="images/united-states.png" alt="USA" style="width: 20px; height: 15px; object-fit: cover;">
+              English
+            </button></li>
+          </ul>
+        </div>
+        <button class="btn btn-outline-primary btn-sm d-md-none" id="mobile-menu-toggle">Menu</button>
+      </div>
+      
+      <nav class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close">×</button>
+        </div>
+        <div class="mobile-nav-body">
+          <a class="mobile-nav-link" href="index.html">Đặt chuyến</a>
+          <a class="mobile-nav-link" href="LichTrinh.html">Lịch trình</a>
+          <a class="mobile-nav-link" href="TraCuu.html">Tra cứu mã đặt vé</a>
+          <a class="mobile-nav-link" href="trending.html">Chuyến đi đang trend</a>
+          <a class="mobile-nav-link" href="news.html">Tin tức</a>
+          <a class="mobile-nav-link" href="contact.html">Liên hệ</a>
+        </div>
+      </nav>
+      <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    </header>
+
+    <main>
+      <div class="article-container">
+        <a href="DatChuyen.html" class="back-to-booking">← Quay lại Đặt chuyến</a>
+        
+        <div class="article-header">
+          <h1 class="article-title">Giới thiệu về Hội An: Phố cổ huyền bí của Việt Nam</h1>
+          <div class="article-meta">09/12/2025 | 6.892 lượt xem</div>
+          <div class="article-rating">★★★★☆ 4.5/5 - (18 đánh giá)</div>
+        </div>
+
+        <div class="article-intro">
+          Hội An là một thành phố lịch sử nằm ở tỉnh Quảng Nam, được UNESCO công nhận là Di sản Văn hóa Thế giới. Với phố cổ xinh đẹp, kiến trúc độc đáo và nền văn hóa phong phú, Hội An là điểm đến lý tưởng cho du khách yêu thích lịch sử và văn hóa.
+        </div>
+
+        <img src="images/hoianoldtown.jpg" alt="Phố cổ Hội An" class="article-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'1200\' height=\'600\'%3E%3Crect fill=\'%23ddd\' width=\'1200\' height=\'600\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'24\' fill=\'%23999\'%3EPhố cổ Hội An%3C/text%3E%3C/svg%3E'">
+        <p class="image-caption">Phố cổ Hội An - Di sản văn hóa thế giới (Ảnh: sưu tầm)</p>
+
+        <div class="article-content">
+          <h2>1. Hội An là thành phố gì?</h2>
+          
+          <p>Hội An là một thành phố lớn ở tỉnh Quảng Nam, phía bắc Thành phố Hồ Chí Minh khoảng 900 km. Được biết là cảng thương mại lớn từ thế kỷ 15-19, Hội An giữ lại được nhiều nét đặc trưng của kiến trúc Đông Á cổ xưa. Phố cổ Hội An được xây dựng với sự pha trộn của các yếu tố kiến trúc từ Trung Quốc, Nhật Bản và Việt Nam.</p>
+
+          <p>Hội An nổi tiếng với những ngôi nhà cổ, các cửa hàng thủ công mỹ nghệ, quán cà phê và nhà hàng ẩm thực. Ngoài ra, Hội An còn có bãi biển Cửa Đại xinh đẹp với nước biển xanh trong và cát trắng mênh mông.</p>
+
+          <img src="images/thucongmynghe.jpg" alt="Cửa hàng thủ công Hội An" class="article-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'1200\' height=\'600\'%3E%3Crect fill=\'%23ddd\' width=\'1200\' height=\'600\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'24\' fill=\'%23999\'%3ECửa hàng thủ công Hội An%3C/text%3E%3C/svg%3E'">
+          <p class="image-caption">Các cửa hàng thủ công truyền thống tại Hội An (Ảnh: sưu tầm)</p>
+
+          <h2>2. Những điểm tham quan nổi bật tại Hội An</h2>
+
+          <p>Khi đến Hội An, du khách không nên bỏ qua các điểm tham quan sau:</p>
+
+          <ul>
+            <li><strong>Phố cổ Hội An</strong> - Là khu vực có nhiều ngôi nhà cổ đẹp nhất, được xây dựng từ thế kỷ 15-19 với kiến trúc Đông Á độc đáo.</li>
+            <li><strong>Cầu Nhật Bản</strong> - Cầu cổ được xây dựng vào thế kỷ 17 bởi cộng đồng Nhật Bản, là biểu tượng của Hội An.</li>
+            <li><strong>Chùa Cầu</strong> - Đền thờ Quan Công với kiến trúc độc đáo, kết hợp giữa kiến trúc Trung Quốc và Việt Nam.</li>
+            <li><strong>Nhà Diễm Chiêu</strong> - Một trong những ngôi nhà cổ đẹp nhất ở Hội An, hiện là bảo tàng.</li>
+            <li><strong>Bãi biển Cửa Đại</strong> - Bãi biển sạch đẹp với cát trắng, nước biển xanh, phù hợp cho các hoạt động biển.</li>
+            <li><strong>Khu trưng bày gốm sứ Thanh Hà</strong> - Nơi trưng bày các tác phẩm gốm sứ truyền thống của Hội An.</li>
+            <li><strong>Chợ Hội An</strong> - Chợ truyền thống nơi có nhiều hàng hóa địa phương và đặc sản.</li>
+          </ul>
+
+          <img src="images/caunhatban.jpg" alt="Cầu Nhật Bản Hội An" class="article-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'1200\' height=\'600\'%3E%3Crect fill=\'%23ddd\' width=\'1200\' height=\'600\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'24\' fill=\'%23999\'%3ECầu Nhật Bản%3C/text%3E%3C/svg%3E'">
+          <p class="image-caption">Cầu Nhật Bản - Biểu tượng của Hội An (Ảnh: sưu tầm)</p>
+
+          <h2>3. Ẩm thực Hội An</h2>
+
+          <p>Hội An nổi tiếng với nhiều món ăn đặc sản độc đáo:</p>
+
+          <ul>
+            <li><strong>Cao Lầu</strong> - Món ăn đặc trưng của Hội An với mì dai, nước sốt độc đáo và thịt nướng.</li>
+            <li><strong>Cơm gà Hội An</strong> - Cơm trắng ăn kèm gà nướng, được ăn kèm nước sốt chua ngọt.</li>
+            <li><strong>Bánh mì Hội An</strong> - Bánh mì giòn với nhân đa dạng như thịt nướng, gà, cá.</li>
+            <li><strong>Bánh hoai</strong> - Món bánh tráng nước kiểu cổ, được ăn với nước sốt chua cay.</li>
+            <li><strong>Hủ tiếu Hội An</strong> - Hủ tiếu trong nước dùng ngon, được thêm giá, tương ớt.</li>
+            <li><strong>Chả cá nướng</strong> - Chả cá tươi nướng trên than hoa, ăn kèm bánh tráng và rau sống.</li>
+          </ul>
+
+          <img src="images/caolau.jpg" alt="Cao lầu Hội An" class="article-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'1200\' height=\'600\'%3E%3Crect fill=\'%23ddd\' width=\'1200\' height=\'600\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'24\' fill=\'%23999\'%3ECao lầu Hội An%3C/text%3E%3C/svg%3E'">
+          <p class="image-caption">Cao lầu - Đặc sản nổi tiếng của Hội An (Ảnh: sưu tầm)</p>
+
+          <h2>4. Khi nào là thời điểm tốt nhất để đến Hội An?</h2>
+
+          <p>Thời điểm tốt nhất để đến Hội An là từ tháng 10 đến tháng 4 năm sau, khi thời tiết mát mẻ, không mưa nhiều. Tránh đến Hội An vào mùa mưa (tháng 9-10) khi có nguy hiểm lũ lụt.</p>
+
+          <div class="highlight-box">
+            <p><strong>Gợi ý:</strong> Hội An cách Đà Nẵng chỉ khoảng 30km. Bạn có thể kết hợp chuyến du lịch Đà Nẵng - Hội An - Nha Trang để có trải nghiệm đa dạng. LOBIBUS cung cấp các chuyến xe chất lượng cao đến các thành phố này với giá cả phù hợp.</p>
+          </div>
+
+          <h2>5. Cách di chuyển trong Hội An</h2>
+
+          <p>Khi đến Hội An, du khách có thể di chuyển bằng:</p>
+
+          <ul>
+            <li><strong>Xe máy thuê</strong> - Phương tiện phổ biến nhất, giá thuê khoảng 50.000-150.000 đồng/ngày.</li>
+            <li><strong>Xe đạp</strong> - Thích hợp cho những ai muốn khám phá phố cổ một cách chậm rãi.</li>
+            <li><strong>Tàu xe công cộng</strong> - Có các tuyến xe buýt để đến các điểm du lịch xung quanh.</li>
+            <li><strong>Taxi hoặc GrabCar</strong> - Thuận tiện cho những chuyến ngắn trong thành phố.</li>
+          </ul>
+
+          <p>Hội An là một điểm đến tuyệt vời cho những ai yêu thích lịch sử, văn hóa và ẩm thực. Với phố cổ xinh đẹp, con người thân thiện và ẩm thực phong phú, Hội An chắc chắn sẽ để lại những ấn tượng đáng nhớ. Hãy đặt vé xe khách qua LOBIBUS để có chuyến hành trình thoải mái và an toàn đến thành phố này!</p>
+        </div>
+
+        <div class="article-nav mt-5 pt-4">
+          <div>
+            <a href="GioiThieuDaNang.html" class="nav-link">← Đà Nẵng</a>
+          </div>
+          <div class="text-center"></div>
+          <div>
+            <!-- Placeholder for next destination link if needed -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row align-items-start py-4">
+          <div class="col-12 col-md-6 footer-left">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <img src="images/logo.svg" alt="LobiBus logo" style="width: 40px; height: 40px;">
+              <strong style="font-size: 1.8rem; color: #27ae60;">LobiBus</strong>
+            </div>
+            <div class="footer-contact mt-2">
+              <div>Địa chỉ: Số 12, Phố Chùa Bộc, Hà Nội</div>
+              <div>Hotline: 0936 363 363</div>
+              <div>Email: <a href="mailto:info@LobiBus.vn">info@LobiBus.vn</a></div>
+            </div>
+            <div class="d-flex align-items-center gap-3 mt-3">
+              <a class="social-icon" href="#" aria-label="Facebook" title="Facebook">
+                <img src="images/fb.png" alt="Facebook" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="Instagram" title="Instagram">
+                <img src="images/ig.png" alt="Instagram" class="social-img">
+              </a>
+              <a class="social-icon" href="#" aria-label="YouTube" title="YouTube">
+                <img src="images/yt.png" alt="YouTube" class="social-img">
+              </a>
+            </div>
+            <div class="mt-4">
+              <div class="mb-2" style="font-weight: 600; color: white;">Phương thức thanh toán:</div>
+              <div class="d-flex align-items-center gap-2 flex-wrap">
+                <img src="images/visa.png" alt="Visa" style="height: 32px;">
+                <img src="images/mastercard.png" alt="Mastercard" style="height: 32px;">
+                <img src="images/momo.png" alt="Momo" style="height: 32px;">
+                <img src="images/zalopay.png" alt="ZaloPay" style="height: 32px;">
+                <img src="images/shopeepay.png" alt="ShopeePay" style="height: 32px;">
+                <img src="images/smartpay.png" alt="SmartPay" style="height: 32px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex align-items-start justify-content-md-start mt-3 mt-md-0">
+            <div class="footer-links">
+              <div class="row g-4">
+                <div class="col-6">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Thông tin</strong></li>
+                    <li class="mb-2"><a href="ChinhSachBaoMat.html" style="white-space: nowrap;">Chính sách bảo mật</a></li>
+                    <li class="mb-2"><a href="DieuKhoanSuDung.html" style="white-space: nowrap;">Điều khoản sử dụng</a></li>
+                    <li class="mb-2"><a href="CauHoiThuongGap.html" style="white-space: nowrap;">Câu hỏi thường gặp</a></li>
+                    <li class="mb-2"><a href="VeChungToi.html">Về chúng tôi</a></li>
+                  </ul>
+                </div>
+                <div class="col-6 ps-5">
+                  <ul class="list-unstyled">
+                    <li class="mb-3"><strong style="font-size: 1.2rem;">Dịch vụ</strong></li>
+                    <li class="mb-2"><a href="DatChuyen.html" style="white-space: nowrap;">Đặt vé xe</a></li>
+                    <li class="mb-2"><a href="TraCuu.html" style="white-space: nowrap;">Tra cứu mã đặt vé</a></li>
+                    <li class="mb-2"><a href="trending.html" style="white-space: nowrap;">Chuyến đi hot trend</a></li>
+                    <li class="mb-2"><a href="contact.html" style="white-space: nowrap;">Liên hệ</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-3 mt-4">
+                <img src="images/BCT.png" alt="Bộ Công Thương" style="height: 70px; background: transparent;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 text-center py-3 footer-copy">© 2025 lobibus.com. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

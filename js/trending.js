@@ -25,7 +25,7 @@
       fromEn: 'Hanoi',
       toEn: 'Haiphong',
       price: 190000,
-      image: 'images/routes/dalat.jpg',
+      image: 'images/routes/haiphong.webp',
       description: 'Thành phố cảng, đường đi ngắn và dễ',
       descriptionEn: 'Port city, short and easy route',
       region: 'north',
@@ -40,7 +40,7 @@
       fromEn: 'Hanoi',
       toEn: 'Ho Chi Minh City',
       price: 950000,
-      image: 'images/routes/dalat.jpg',
+      image: 'images/routes/hochiminh.jpg',
       description: 'Tuyến Bắc - Nam dài ngày, nhiều trải nghiệm',
       descriptionEn: 'Long North-South route with many experiences',
       region: 'north',
@@ -119,7 +119,7 @@
       fromEn: 'Da Nang',
       toEn: 'Hue',
       price: 160000,
-      image: 'images/routes/danang-hue.jpg',
+      image: 'images/routes/hue.jpg',
       description: 'Cố đô, lăng tẩm, ẩm thực cung đình',
       descriptionEn: 'Ancient capital, royal tombs, cuisine',
       region: 'central',
@@ -134,7 +134,7 @@
       fromEn: 'Da Nang',
       toEn: 'Ho Chi Minh City',
       price: 520000,
-      image: 'images/routes/danang-hcm.jpg',
+      image: 'images/routes/hochiminh.jpg',
       description: 'Tuyến trục dọc, xe giường nằm chất lượng cao',
       descriptionEn: 'Main axis route, high quality sleeper buses',
       region: 'central',
@@ -151,7 +151,7 @@
       fromEn: 'Hue',
       toEn: 'Da Nang',
       price: 150000,
-      image: 'images/routes/hue-danang.jpg',
+      image: 'images/routes/danang.jpg',
       description: 'Đèo Hải Vân hùng vĩ, cảnh biển đẹp',
       descriptionEn: 'Magnificent Hai Van pass with beautiful sea view',
       region: 'central',
@@ -166,7 +166,7 @@
       fromEn: 'Hue',
       toEn: 'Hanoi',
       price: 420000,
-      image: 'images/routes/hue-hanoi.jpg',
+      image: 'images/routes/hanoi.jpg',
       description: 'Tuyến Bắc Trung Bộ, xe giường nằm tiện nghi',
       descriptionEn: 'North Central route with comfortable sleeper buses',
       region: 'central',
@@ -181,7 +181,7 @@
       fromEn: 'Hue',
       toEn: 'Ho Chi Minh City',
       price: 730000,
-      image: 'images/routes/hue-hcm.jpg',
+      image: 'images/routes/hochiminh.jpg',
       description: 'Hành trình dài xuyên Việt, ngắm cảnh dọc đường',
       descriptionEn: 'Long trans-Vietnam journey with scenic views',
       region: 'central',
@@ -198,7 +198,7 @@
       fromEn: 'Nha Trang',
       toEn: 'Da Lat',
       price: 220000,
-      image: 'images/routes/nhatrang-dalat.jpg',
+      image: 'images/routes/dalat.jpg',
       description: 'Từ biển lên núi, khí hậu thay đổi rõ rệt',
       descriptionEn: 'From sea to mountains, clear climate change',
       region: 'central',
@@ -213,7 +213,7 @@
       fromEn: 'Nha Trang',
       toEn: 'Ho Chi Minh City',
       price: 380000,
-      image: 'images/routes/nhatrang-hcm.jpg',
+      image: 'images/routes/hochiminh.jpg',
       description: 'Tuyến ven biển, nhiều điểm dừng đẹp',
       descriptionEn: 'Coastal route with many beautiful stops',
       region: 'central',
@@ -228,7 +228,7 @@
       fromEn: 'Nha Trang',
       toEn: 'Hanoi',
       price: 820000,
-      image: 'images/routes/nhatrang-hanoi.jpg',
+      image: 'images/routes/hanoi.jpg',
       description: 'Kết nối biển miền Trung với thủ đô',
       descriptionEn: 'Connects central sea city with capital',
       region: 'central',
@@ -245,7 +245,7 @@
       fromEn: 'Can Tho',
       toEn: 'Ho Chi Minh City',
       price: 150000,
-      image: 'images/routes/cantho-hcm.jpg',
+      image: 'images/routes/hochiminh.jpg',
       description: 'Tuyến đi nhanh giữa miền Tây và Sài Gòn',
       descriptionEn: 'Fast route between Mekong Delta and Saigon',
       region: 'south',
@@ -260,7 +260,7 @@
       fromEn: 'Can Tho',
       toEn: 'Chau Doc',
       price: 180000,
-      image: 'images/routes/cantho-chaudoc.jpg',
+      image: 'images/routes/kiengiang.jpg',
       description: 'Tham quan Miếu Bà Chúa Xứ, núi Sam',
       descriptionEn: 'Visit Ba Chua Xu temple and Sam mountain',
       region: 'south',
@@ -275,7 +275,7 @@
       fromEn: 'Can Tho',
       toEn: 'Ca Mau',
       price: 260000,
-      image: 'images/routes/cantho-camau.jpg',
+      image: 'images/routes/camau.png',
       description: 'Hành trình về cực Nam của Tổ quốc',
       descriptionEn: 'Journey to the southernmost point of Vietnam',
       region: 'south',
@@ -292,7 +292,7 @@
       fromEn: 'Haiphong',
       toEn: 'Hanoi',
       price: 180000,
-      image: 'images/routes/haiphong-hanoi.jpg',
+      image: 'images/routes/hanoi.jpg',
       description: 'Kết nối nhanh giữa thủ đô và thành phố cảng',
       descriptionEn: 'Fast connection between capital and port city',
       region: 'north',
@@ -307,7 +307,7 @@
       fromEn: 'Haiphong',
       toEn: 'Cat Ba',
       price: 120000,
-      image: 'images/routes/haiphong-catba.jpg',
+      image: 'images/routes/haiphong.webp',
       description: 'Đảo ngọc vịnh Lan Hạ, nước biển xanh trong',
       descriptionEn: 'Cat Ba island at Lan Ha bay, clear blue water',
       region: 'north',
@@ -322,7 +322,7 @@
       fromEn: 'Haiphong',
       toEn: 'Quang Ninh',
       price: 160000,
-      image: 'images/routes/haiphong-quangninh.jpg',
+      image: 'images/routes/laocai.jpg',
       description: 'Thuận tiện đi Hạ Long, Bãi Cháy',
       descriptionEn: 'Convenient route to Ha Long and Bai Chay',
       region: 'north',
@@ -338,8 +338,8 @@
 
   // Render trips with new grid layout
   function renderTrips(trips) {
-    // Use first 12 trips for the new layout
-    trips = trips.slice(0, 12);
+    // Use first 15 trips for the new layout (3 + 4 + 8)
+    trips = trips.slice(0, 15);
     let html = '';
     
     // Container for both rows
@@ -368,8 +368,9 @@
                         padding: 2rem 1.5rem; color: white;">
               <div class="fw-bold" style="font-size: 1.3rem; margin-bottom: 0.3rem;">${trip0.from} → ${trip0.to}</div>
               <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">${trip0.description}</div>
-              <div class="fw-bold" style="font-size: 1.1rem; color: #4edc89;">${(trip0.price).toLocaleString('vi-VN')}đ</div>
+              <div class="fw-bold" style="font-size: 1.1rem; color: #4edc89;">Từ ${(trip0.price).toLocaleString('vi-VN')}đ</div>
             </div>
+            <button class="trip-cta" aria-label="Xem chi tiết">→</button>
           </div>
         </div>
       `;
@@ -392,12 +393,13 @@
             <div style="position: relative; height: 180px; background: #f0f0f0;">
               <img src="${trip.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${trip.from}">
               ${badgeHtml}
+              <button class="trip-cta" aria-label="Xem chi tiết">→</button>
             </div>
             
             <div style="flex: 1; display: flex; flex-direction: column; padding: 1rem;">
               <div class="fw-bold" style="font-size: 0.95rem; margin-bottom: 0.3rem;">${trip.from} → ${trip.to}</div>
               <div style="color: #666; font-size: 0.8rem; margin-bottom: 0.5rem; flex: 1;">${trip.description}</div>
-              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">${(trip.price).toLocaleString('vi-VN')}đ</div>
+              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">Từ ${(trip.price).toLocaleString('vi-VN')}đ</div>
               <div class="small text-muted">${trip.duration}</div>
             </div>
           </div>
@@ -422,12 +424,13 @@
             <div style="position: relative; height: 200px; background: #f0f0f0;">
               <img src="${trip.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${trip.from}">
               ${badgeHtml}
+              <button class="trip-cta" aria-label="Xem chi tiết">→</button>
             </div>
             
             <div style="flex: 1; display: flex; flex-direction: column; padding: 1rem;">
               <div class="fw-bold" style="font-size: 0.95rem; margin-bottom: 0.3rem;">${trip.from} → ${trip.to}</div>
               <div style="color: #666; font-size: 0.8rem; margin-bottom: 0.5rem; flex: 1;">${trip.description}</div>
-              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">${(trip.price).toLocaleString('vi-VN')}đ</div>
+              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">Từ ${(trip.price).toLocaleString('vi-VN')}đ</div>
               <div class="small text-muted">${trip.duration}</div>
             </div>
           </div>
@@ -435,8 +438,8 @@
       }
     }
     
-    // Add remaining cards (7-11) - 2 rows x 4 columns (rows 3-4)
-    for (let i = 7; i <= 11; i++) {
+    // Add remaining cards (7-14) - 2 rows x 4 columns (rows 3-4)
+    for (let i = 7; i <= 14; i++) {
       if (trips[i]) {
         const trip = trips[i];
         const badgeHtml = trip.badge ? `<span class=\"trip-badge ${trip.badge}\">${
@@ -452,12 +455,13 @@
             <div style="position: relative; height: 200px; background: #f0f0f0;">
               <img src="${trip.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${trip.from}">
               ${badgeHtml}
+              <button class="trip-cta" aria-label="Xem chi tiết">→</button>
             </div>
             
             <div style="flex: 1; display: flex; flex-direction: column; padding: 1rem;">
               <div class="fw-bold" style="font-size: 0.95rem; margin-bottom: 0.3rem;">${trip.from} → ${trip.to}</div>
               <div style="color: #666; font-size: 0.8rem; margin-bottom: 0.5rem; flex: 1;">${trip.description}</div>
-              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">${(trip.price).toLocaleString('vi-VN')}đ</div>
+              <div class="fw-bold" style="font-size: 0.9rem; color: #27ae60;">Từ ${(trip.price).toLocaleString('vi-VN')}đ</div>
               <div class="small text-muted">${trip.duration}</div>
             </div>
           </div>
@@ -506,11 +510,14 @@
   // Helper function to navigate to ChiTietTuyen.html
   function navigateToRoute(from, to, duration) {
     const routeString = `${from} → ${to}`;
+    // Find matching trip data for accurate distance
+    const trip = tripsData.find(t => t.from === from && t.to === to);
+    const distance = trip ? trip.distance : '350 km';
+    const tripDuration = duration || (trip ? trip.duration : '8 giờ');
     const params = new URLSearchParams({
       route: routeString,
-      type: 'default',
-      distance: '550km',
-      duration: duration || '10 giờ'
+      distance: distance,
+      duration: tripDuration
     });
     window.location.href = `ChiTietTuyen.html?${params.toString()}`;
   }

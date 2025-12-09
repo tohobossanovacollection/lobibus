@@ -109,7 +109,7 @@ function handleBookTicket(event) {
         const distance = tripItem.querySelector('.trip-distance').textContent.trim();
         const duration = tripItem.querySelector('.trip-duration').textContent.trim();
         
-        // Chuyển sang trang chi tiết với thông tin tuyến
+        // Chuyển sang trang chi tiết - ChiTietTuyen sẽ tự động tạo đa dạng loại xe
         const params = new URLSearchParams({
             route: route,
             distance: distance,
