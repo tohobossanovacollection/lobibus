@@ -10,6 +10,12 @@ html,body {
 }
 a { color: inherit; text-decoration: none }
 
+/* Global scale: shrink UI to 90% on desktop; keep mobile at 100% */
+html { zoom: 0.9; }
+@media (max-width: 767px) {
+  html { zoom: 1; }
+}
+
 /* ===== Lightweight fallback styles (used when Bootstrap CDN is unavailable) ===== */
 /* These are intentionally compact and only target classes used in this project. */
 .container { width:100%; max-width:1200px; margin-left:auto; margin-right:auto; padding-left:1rem; padding-right:1rem; }
@@ -39,13 +45,21 @@ a { color: inherit; text-decoration: none }
 /* Buttons */
 .btn { display:inline-block; padding:0.55rem 0.9rem; border-radius:8px; cursor:pointer; border:1px solid transparent; background:#e9ecef; color:#111; font-size:0.925rem; }
 .btn-sm { padding:0.35rem 0.6rem; font-size:0.875rem; }
-.btn-outline-primary { background:transparent; border-color:#27ae60; color:#27ae60; }
-.btn-outline-primary:hover { background:#27ae60; color:#fff; }
+.btn-outline-primary { background:transparent; border-color:#27ae60 !important; color:#27ae60 !important; }
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active { background:#27ae60 !important; color:#fff !important; border-color:#27ae60 !important; box-shadow:0 0 0 0.2rem rgba(39,174,96,0.25) !important; }
+.text-primary { color:#27ae60 !important; }
 .btn-outline-secondary { background:transparent; border-color:#6c757d; color:#6c757d; }
 .btn-outline-secondary:hover { opacity:0.9; }
 .btn-success { background:#198754; color:#fff; border-color:#198754; }
 .btn-group { display:inline-flex; }
 .btn-check { display:none; }
+
+/* Carousel indicators to green */
+.carousel-indicators [data-bs-target] { background-color:#27ae60; }
+.carousel-indicators .active { background-color:#27ae60; }
 
 /* Forms */
 .form-control, input[type="date"], select.form-select { display:block; width:100%; padding:0.58rem 0.7rem; border:1px solid #ced4da; border-radius:8px; font-size:0.95rem; }
@@ -79,6 +93,20 @@ a { color: inherit; text-decoration: none }
 .nav-link:hover {
   color: #0b5;
   background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+  border-radius: 8px;
+}
+
+/* Article nav (giữa các trang giới thiệu) dùng xanh lá, không overlay tím */
+.article-nav .nav-link {
+  color: #27ae60;
+  font-weight: 600;
+  padding: 0.35rem 0.5rem;
+}
+
+.article-nav .nav-link:hover,
+.article-nav .nav-link:focus {
+  color: #1e8449;
+  background: rgba(39, 174, 96, 0.12);
   border-radius: 8px;
 }
 
