@@ -206,6 +206,22 @@
   transform: translateY(-2px);
 }
 
+/* Ghế bị vô hiệu (đã đủ số lượng cần chọn) */
+.seat.disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  border-color: #cfcfcf;
+  background-color: #f7f7f7;
+  color: #888;
+}
+.seat.disabled:hover,
+.seat.disabled:focus {
+  background-color: #f7f7f7; /* không nháy xanh */
+  color: #888;
+  box-shadow: none;
+  transform: none;
+}
+
 .seat.selected {
   background: #27ae60;
   color: white;
@@ -217,6 +233,12 @@
   border-color: #adb5bd;
   cursor: not-allowed;
   color: #6c757d;
+}
+.seat.occupied:hover,
+.seat.occupied:focus {
+  background: #e9ecef;
+  box-shadow: none;
+  transform: none;
 }
 
 .seat-legend {

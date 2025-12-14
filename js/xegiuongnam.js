@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cập nhật tổng tiền
     updateTotalPrice();
 
-    // Xử lý nút Hủy
+    // Xử lý nút Hủy: quay về trang Lịch trình
     document.querySelector('.btn-cancel')?.addEventListener('click', function() {
-        window.location.href = 'ChiTietTuyen.html';
+        window.location.href = 'LichTrinh.html';
     });
 
     // Xử lý nút Thanh toán
@@ -195,6 +195,7 @@ function toggleSeat(seatBtn, seat) {
     updateSelectedSeatsDisplay();
     updateTotalPrice();
     updateContinueButton();
+    applySeatAvailabilityState();
 }
 
 function updateSelectedSeatsDisplay() {
@@ -225,9 +226,13 @@ function updateTotalPrice() {
     // Tổng tiền là số cố định dựa trên số ghế đã chọn ở trang trước
     const totalPrice = pricePerSeat * (bookingData.requiredQty || 0);
     const totalPriceDisplay = document.getElementById('total-price');
+    const paymentAmountDisplay = document.getElementById('paymentAmount');
     
     if (totalPriceDisplay) {
         totalPriceDisplay.textContent = totalPrice.toLocaleString('vi-VN') + ' ₫';
+    }
+    if (paymentAmountDisplay) {
+        paymentAmountDisplay.textContent = totalPrice.toLocaleString('vi-VN') + '₫';
     }
 }
 
@@ -237,6 +242,30 @@ function updateContinueButton() {
     
     const isComplete = bookingData.selectedSeats.length === bookingData.requiredQty;
     btn.disabled = !isComplete;
+}
+
+// Ẩn tất cả ghế chưa chọn khi đã chọn đủ; khi bỏ chọn thì hiện lại
+function applySeatAvailabilityState() {
+    const isComplete = bookingData.selectedSeats.length === bookingData.requiredQty;
+    const allSeatButtons = document.querySelectorAll('.seat');
+    allSeatButtons.forEach(btn => {
+        const code = btn.dataset.code;
+        const isSelected = bookingData.selectedSeats.includes(code);
+        const isOccupied = btn.classList.contains('occupied') || btn.disabled;
+        if (isComplete) {
+            // Disable click các ghế chưa chọn (trừ ghế đã bán/occupied)
+            if (!isSelected && !btn.classList.contains('occupied')) {
+                btn.disabled = true;
+                btn.classList.add('disabled');
+            }
+        } else {
+            // Re-enable các ghế khả dụng (không phải occupied)
+            if (!btn.classList.contains('occupied')) {
+                btn.disabled = false;
+                btn.classList.remove('disabled');
+            }
+        }
+    });
 }
 
 function displayBookingInfo() {
