@@ -664,7 +664,7 @@ body { background: #f7f9fb; }
 
 .latest-news .news-card .card-title {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   color: #222;
@@ -678,7 +678,7 @@ body { background: #f7f9fb; }
 
 .latest-news .news-card .card-text {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
