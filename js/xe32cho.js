@@ -12,12 +12,21 @@ let bookingData = {
 // Dữ liệu ghế (32 ghế, từ A01 đến A32)
 // 4 cột: A, B, C, D; 8 hàng mỗi cột
 let seatData = [];
+let totalSeats = 32;
+let availableSeats = null;
 
 document.addEventListener('DOMContentLoaded', function() {
     // Lấy tham số từ URL
     const urlParams = new URLSearchParams(window.location.search);
     const rawPrice = urlParams.get('price');
     const normalizedPrice = rawPrice ? parseInt(String(rawPrice).replace(/[^0-9]/g, '')) : 0;
+    
+    // Lấy tổng ghế và ghế trống từ ChiTietTuyen
+    const totalParam = parseInt(urlParams.get('total'));
+    const availableParam = parseInt(urlParams.get('available'));
+    if (!isNaN(totalParam) && totalParam > 0) totalSeats = totalParam;
+    if (!isNaN(availableParam) && availableParam >= 0) availableSeats = availableParam;
+    
     bookingData = {
         route: urlParams.get('route') || '',
         bus: urlParams.get('bus') || '',
@@ -40,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cập nhật tổng tiền
     updateTotalPrice();
 
-    // Xử lý nút Hủy: quay về trang Lịch trình
+    // Xử lý nút Hủy
     document.querySelector('.btn-cancel')?.addEventListener('click', function() {
-        window.location.href = 'LichTrinh.html';
+        window.location.href = 'ChiTietTuyen.html';
     });
 
     // Xử lý nút Thanh toán
@@ -84,26 +93,40 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeSeats() {
     seatData = [];
     const columns = ['A', 'B', 'C', 'D'];
-    const seatsPerColumn = 8;
+    const seatsPerColumn = Math.ceil(totalSeats / columns.length);
     
-    columns.forEach((col, colIdx) => {
+    // Tạo danh sách ghế theo tổng thực tế
+    let created = 0;
+    columns.forEach((col) => {
         for (let row = 1; row <= seatsPerColumn; row++) {
-            const seatNum = colIdx * seatsPerColumn + row;
+            if (created >= totalSeats) break;
             const seatCode = col + String(row).padStart(2, '0');
             seatData.push({
                 code: seatCode,
-                occupied: false, // Random cho demo, có thể sửa
+                occupied: false,
                 selected: false
             });
+            created++;
         }
     });
     
-    // Ngẫu nhiên một số ghế bị chiếm (20% ghế)
-    const occupiedCount = Math.floor(seatData.length * 0.2);
-    for (let i = 0; i < occupiedCount; i++) {
-        const randomIdx = Math.floor(Math.random() * seatData.length);
-        seatData[randomIdx].occupied = true;
+    // Đặt số ghế đã đặt (ẩn đi): total - available
+    let occupiedCount = Math.floor(seatData.length * 0.2);
+    if (availableSeats !== null) {
+        occupiedCount = Math.max(0, Math.min(seatData.length, seatData.length - availableSeats));
     }
+    
+    // Đánh dấu ghế đã đặt
+    const indices = Array.from({ length: seatData.length }, (_, i) => i);
+    for (let i = indices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [indices[i], indices[j]] = [indices[j], indices[i]];
+    }
+    
+    // Ẩn ghế đã đặt: loại bỏ khỏi render bằng occupied = true
+    indices.slice(0, occupiedCount).forEach(idx => {
+        seatData[idx].occupied = true;
+    });
 }
 
 function renderSeatMap() {
@@ -171,7 +194,6 @@ function toggleSeat(seatBtn, seatIdx) {
     updateSelectedSeatsDisplay();
     updateTotalPrice();
     updateContinueButton();
-    applySeatAvailabilityState();
 }
 
 function updateSelectedSeatsDisplay() {
@@ -200,13 +222,9 @@ function updateTotalPrice() {
     // Tổng tiền cố định theo số ghế đã chọn ở trang trước
     const totalPrice = pricePerSeat * (bookingData.requiredQty || 0);
     const totalPriceDisplay = document.getElementById('total-price');
-    const paymentAmountDisplay = document.getElementById('paymentAmount');
     
     if (totalPriceDisplay) {
         totalPriceDisplay.textContent = totalPrice.toLocaleString('vi-VN') + ' ₫';
-    }
-    if (paymentAmountDisplay) {
-        paymentAmountDisplay.textContent = totalPrice.toLocaleString('vi-VN') + '₫';
     }
 }
 
@@ -216,30 +234,6 @@ function updateContinueButton() {
     
     const isComplete = bookingData.selectedSeats.length === bookingData.requiredQty;
     btn.disabled = !isComplete;
-}
-
-// Ẩn tất cả ghế chưa chọn khi đã chọn đủ; khi bỏ chọn thì hiện lại
-function applySeatAvailabilityState() {
-    const isComplete = bookingData.selectedSeats.length === bookingData.requiredQty;
-    const allSeatButtons = document.querySelectorAll('.seat');
-    allSeatButtons.forEach(btn => {
-        const code = btn.dataset.code;
-        const isSelected = bookingData.selectedSeats.includes(code);
-        const isOccupied = btn.classList.contains('occupied') || btn.disabled;
-        if (isComplete) {
-            // Disable click các ghế chưa chọn (trừ ghế đã bán/occupied)
-            if (!isSelected && !btn.classList.contains('occupied')) {
-                btn.disabled = true;
-                btn.classList.add('disabled');
-            }
-        } else {
-            // Re-enable các ghế khả dụng (không phải occupied)
-            if (!btn.classList.contains('occupied')) {
-                btn.disabled = false;
-                btn.classList.remove('disabled');
-            }
-        }
-    });
 }
 
 function displayBookingInfo() {

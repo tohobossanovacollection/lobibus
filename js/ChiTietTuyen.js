@@ -752,13 +752,17 @@ function openBookingDrawer(route, busName, departure, price, dateISO, busType) {
         bdDeparture.textContent = departure || '-';
         bdPrice.textContent = (price ? (String(price) + ' ₫') : '-');
 
-        // Tìm chuyến tương ứng trong allBuses để lấy số ghế còn lại
+        // Tìm chuyến tương ứng trong allBuses để lấy số ghế còn lại và tổng số ghế
         let remaining = null;
+        let totalSeats = null;
         if (Array.isArray(allBuses)) {
             const match = allBuses.find(b => b.name === busName && b.dateISO === dateISO && b.departure === departure);
-            if (match) remaining = Number(match.availableSeats || 0);
+            if (match) {
+                remaining = Number(match.availableSeats || 0);
+                totalSeats = Number(match.seats || 0);
+            }
         }
-        bdRemaining.textContent = (remaining !== null) ? (remaining + ' ghế') : 'N/A';
+        bdRemaining.textContent = (remaining !== null) ? (remaining + '/' + (totalSeats || '?') + ' ghế') : 'N/A';
 
         // Cài giới hạn cho input số vé và ưu tiên số ghế người dùng chọn từ trang trước
         // Max luôn là 5 cho mọi xe
@@ -818,6 +822,7 @@ function openBookingDrawer(route, busName, departure, price, dateISO, busType) {
             bdConfirm.dataset.price = price || '';
             bdConfirm.dataset.date = dateISO || '';
             bdConfirm.dataset.remaining = remaining !== null ? String(remaining) : '0';
+            bdConfirm.dataset.totalseats = totalSeats !== null ? String(totalSeats) : '0';
             bdConfirm.dataset.type = busType || '';
         }
 
@@ -845,6 +850,7 @@ function confirmBooking() {
     const date = btn.dataset.date || '';
     const busType = btn.dataset.type || '';
     const remaining = parseInt(btn.dataset.remaining || '0', 10) || 0;
+    const totalSeats = parseInt(btn.dataset.totalseats || '0', 10) || 0;
     const qtyInput = document.getElementById('bdQty');
     let qty = 1;
     if (qtyInput) qty = parseInt(qtyInput.value || '1', 10) || 1;
@@ -868,8 +874,17 @@ function confirmBooking() {
         targetPage = 'xe32cho.html';
     }
 
-    // Chuyển sang trang xe với tham số số lượng
-    const params = new URLSearchParams({ route, bus, departure, price: String(price), date, qty: String(qty) });
+    // Chuyển sang trang xe với tham số số lượng, tổng ghế và ghế trống
+    const params = new URLSearchParams({ 
+        route, 
+        bus, 
+        departure, 
+        price: String(price), 
+        date, 
+        qty: String(qty),
+        total: String(totalSeats),
+        available: String(remaining)
+    });
     window.location.href = `${targetPage}?${params.toString()}`;
 }
 
