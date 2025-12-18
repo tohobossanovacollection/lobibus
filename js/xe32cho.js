@@ -430,8 +430,13 @@ function showPaymentConfirmModal() {
 
     // Sự kiện nút "Thanh toán"
     document.getElementById('btnPaymentConfirm').addEventListener('click', function() {
-        // Hiển thị thông báo cảm ơn rồi chuyển về trang chủ
+        // Lưu vé vào TraCuu theo format quy định rồi hiển thị cảm ơn
         document.body.removeChild(overlay);
+        try {
+            saveBookingToLookup();
+        } catch (e) {
+            console.error('Không thể lưu vé:', e);
+        }
         showThankYouModal();
     });
 
@@ -494,8 +499,87 @@ function showThankYouModal() {
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
 
-    // Chuyển về trang index sau 2 giây
+    // Chuyển sang trang TraCuu sau 2 giây
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'TraCuu.html';
     }, 2000);
+}
+
+// Lưu dữ liệu đặt vé vào localStorage để TraCuu hiển thị
+function saveBookingToLookup() {
+    const name = document.getElementById('customerName')?.value?.trim() || '';
+    const phone = document.getElementById('customerPhone')?.value?.trim() || '';
+    const email = document.getElementById('customerEmail')?.value?.trim() || '';
+
+    // Tạo mã đặt vé: LB + yyyymmdd + random 4 số
+    const now = new Date();
+    const y = String(now.getFullYear());
+    const m = String(now.getMonth() + 1).padStart(2, '0');
+    const d = String(now.getDate()).padStart(2, '0');
+    const rand = String(Math.floor(Math.random() * 10000)).padStart(4, '0');
+    const bookingCode = `LB${y}${m}${d}${rand}`;
+
+    // Tách FROM/TO từ route "A → B"
+    let from = '';
+    let to = '';
+    if (bookingData.route && bookingData.route.includes('→')) {
+        const parts = bookingData.route.split('→');
+        from = parts[0].trim();
+        to = parts[1].trim();
+    } else {
+        from = bookingData.route || '';
+        to = '';
+    }
+
+    // Định dạng ngày dd/mm/yyyy cho TraCuu
+    const departureDate = formatDateDDMMYYYY(bookingData.date);
+
+    // Lập dữ liệu theo format TraCuu yêu cầu
+    const payload = {
+        bookingCode,
+        fullName: name || 'Khách đặt vé',
+        passengers: bookingData.requiredQty || (bookingData.selectedSeats?.length || 1),
+        seats: (bookingData.selectedSeats || []).join(', '),
+        departureTime: bookingData.departure || '-',
+        departureDate,
+        from,
+        to,
+        plateNumber: bookingData.bus || '-',
+        gate: String(Math.floor(Math.random() * 10) + 1).padStart(2, '0'),
+        tripStatus: 'Đúng giờ',
+        phone,
+        email
+    };
+    // Append to booking list for multi-ticket support
+    try {
+        let list = [];
+        try { list = JSON.parse(localStorage.getItem('bookingList') || '[]'); } catch { list = []; }
+        // Merge legacy single booking if exists and not in list
+        try {
+            const legacy = JSON.parse(localStorage.getItem('bookingData') || 'null');
+            if (legacy && !list.some(b => b.bookingCode === legacy.bookingCode)) {
+                list.push(legacy);
+            }
+        } catch {}
+        // Append current
+        list.push(payload);
+        localStorage.setItem('bookingList', JSON.stringify(list));
+    } catch (e) {
+        console.warn('Không thể append bookingList, fallback bookingData:', e);
+    }
+    // Keep last booking for backward compatibility
+    localStorage.setItem('bookingData', JSON.stringify(payload));
+}
+
+function formatDateDDMMYYYY(dateStr) {
+    if (!dateStr) return '-';
+    try {
+        const dt = new Date(dateStr + 'T00:00:00');
+        const dd = String(dt.getDate()).padStart(2, '0');
+        const mm = String(dt.getMonth() + 1).padStart(2, '0');
+        const yyyy = String(dt.getFullYear());
+        return `${dd}/${mm}/${yyyy}`;
+    } catch {
+        return dateStr;
+    }
 }
